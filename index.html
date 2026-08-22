@@ -1,94 +1,124 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Novidades dos Beats</title>
-
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
+        /* Estilos Gerais (Tema Escuro) */
         body {
+            background-color: #0b0b0b;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 15px;
-            font-family: Arial, sans-serif;
-            background: #0a0a0a;
-            color: white;
+            padding: 20px;
             text-align: center;
-            overflow-x: hidden;
         }
 
-        h1 {
-            color: #1DB954;
-            font-size: 2em;
-            margin-bottom: 10px;
+        .titulo-principal {
+            color: #00ff66; /* Verde neon para destacar */
+            font-size: 28px;
+            margin-bottom: 5px;
         }
 
-        p {
+        .subtitulo {
+            color: #aaaaaa;
             font-size: 16px;
+            margin-bottom: 30px;
         }
 
-        .musica {
-            background: #1a1a1a;
-            margin: 20px auto;
-            padding: 15px;
-            border-radius: 15px;
+        /* Container dos Cards (Grade Interativa) */
+        .container-beats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Card Individual de Cada Beat */
+        .card-beat {
+            background-color: #161616;
+            border: 1px solid #222222;
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        /* Efeito de interatividade ao passar o mouse ou tocar */
+        .card-beat:hover {
+            transform: translateY(-5px);
+            border-color: #00ff66;
+        }
+
+        .nome-musica {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        /* Estilização do Player de Áudio */
+        audio {
             width: 100%;
-            max-width: 600px;
-            overflow: hidden;
+            margin-bottom: 15px;
+            border-radius: 8px;
         }
 
-        .musica h3 {
-            margin-top: 0;
+        /* Botão de Ação Interativo */
+        .btn-acao {
+            display: inline-block;
+            background-color: #00ff66;
+            color: #0b0b0b;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 12px 20px;
+            border-radius: 6px;
+            width: 80%;
+            transition: background 0.2s;
         }
 
-        iframe {
-            display: block;
-            width: 100%;
-            height: 315px;
-            border: none;
-            border-radius: 15px;
-        }
-
-        @media (max-width: 600px) {
-            body {
-                padding: 10px;
-            }
-
-            h1 {
-                font-size: 1.7em;
-            }
-
-            .musica {
-                padding: 10px;
-                margin: 15px auto;
-            }
-
-            iframe {
-                height: 220px;
-            }
+        .btn-acao:hover {
+            background-color: #00cc52;
         }
     </style>
 </head>
-
 <body>
 
-    <h1>Novidades dos Beats</h1>
+    <h1 class="titulo-principal">Novidades dos Beats</h1>
+    <p class="subtitulo">As melhores novidades dos beats aqui!</p>
 
-    <p>As melhores novidades dos beats aqui!</p>
+    <!-- Lista de Beats Interativa -->
+    <div class="container-beats">
 
-    <div class="musica">
-        <h3>Nome da música aqui</h3>
+        <!-- CARD DO BEAT 1 -->
+        <div class="card-beat">
+            <div class="nome-musica">Beat 1 - Nome do Seu Beat</div>
+            
+            <!-- Player Nativo de Áudio -->
+            <audio controls>
+                <source src="audio/seu-beat-1.mp3" type="audio/mpeg">
+                Seu navegador não suporta o player de áudio.
+            </audio>
 
-        <iframe
-            src="https://www.youtube.com/embed/VIDEO_ID"
-            title="Vídeo da música"
-            allowfullscreen>
-        </iframe>
+            <!-- Link para o seu contato ou redes sociais -->
+            <a href="https://wa.me" target="_blank" class="btn-acao">Tenho Interesse</a>
+        </div>
+
+        <!-- CARD DO BEAT 2 -->
+        <div class="card-beat">
+            <div class="nome-musica">Beat 2 - Nome do Seu Beat</div>
+            
+            <audio controls>
+                <source src="audio/seu-beat-2.mp3" type="audio/mpeg">
+                Seu navegador não suporta o player de áudio.
+            </audio>
+
+            <a href="https://wa.me" target="_blank" class="btn-acao">Tenho Interesse</a>
+        </div>
+
     </div>
 
 </body>
-</html>
+    </html>
+    
