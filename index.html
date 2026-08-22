@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Novidades dos Beats</title>
     <style>
-        /* Estilos Gerais (Tema Escuro) */
+        /* Estilos Gerais (Tema Escuro Mantido) */
         body {
             background-color: #0b0b0b;
             color: #ffffff;
@@ -14,111 +14,65 @@
             padding: 20px;
             text-align: center;
         }
-
-        .titulo-principal {
-            color: #00ff66; /* Verde neon para destacar */
+        h1 {
+            color: #00ff66; /* Verde Neon */
             font-size: 28px;
             margin-bottom: 5px;
+            margin-top: 40px;
         }
-
-        .subtitulo {
+        p {
             color: #aaaaaa;
             font-size: 16px;
             margin-bottom: 30px;
         }
-
-        /* Container dos Cards (Grade Interativa) */
-        .container-beats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        /* Card Individual de Cada Beat */
         .card-beat {
             background-color: #161616;
-            border: 1px solid #222222;
             border-radius: 12px;
             padding: 20px;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            margin: 20px auto;
+            max-width: 400px;
+            box-sizing: border-box;
         }
-
-        /* Efeito de interatividade ao passar o mouse ou tocar */
-        .card-beat:hover {
-            transform: translateY(-5px);
-            border-color: #00ff66;
-        }
-
         .nome-musica {
             font-size: 18px;
             font-weight: bold;
             margin-bottom: 15px;
-            color: #ffffff;
         }
-
-        /* Estilização do Player de Áudio */
         audio {
             width: 100%;
             margin-bottom: 15px;
-            border-radius: 8px;
         }
-
-        /* Botão de Ação Interativo */
-        .btn-acao {
-            display: inline-block;
+        .botao-interesse {
+            display: block;
             background-color: #00ff66;
-            color: #0b0b0b;
+            color: #000000;
             text-decoration: none;
             font-weight: bold;
-            padding: 12px 20px;
-            border-radius: 6px;
-            width: 80%;
-            transition: background 0.2s;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: background 0.3s;
         }
-
-        .btn-acao:hover {
+        .botao-interesse:hover {
             background-color: #00cc52;
         }
     </style>
 </head>
 <body>
 
-    <h1 class="titulo-principal">Novidades dos Beats</h1>
-    <p class="subtitulo">As melhores novidades dos beats aqui!</p>
+    <h1>Novidades dos Beats</h1>
+    <p>As melhores novidades dos beats aqui!</p>
 
-    <!-- Lista de Beats Interativa -->
-    <div class="container-beats">
-
-        <!-- CARD DO BEAT 1 -->
-        <div class="card-beat">
-            <div class="nome-musica">Beat 1 - Nome do Seu Beat</div>
-            
-            <!-- Player Nativo de Áudio -->
-            <audio controls>
-                <source src="audio/seu-beat-1.mp3" type="audio/mpeg">
-                Seu navegador não suporta o player de áudio.
-            </audio>
-
-            <!-- Link para o seu contato ou redes sociais -->
-            <a href="https://wa.me" target="_blank" class="btn-acao">Tenho Interesse</a>
-        </div>
-
-        <!-- CARD DO BEAT 2 -->
-        <div class="card-beat">
-            <div class="nome-musica">Beat 2 - Nome do Seu Beat</div>
-            
-            <audio controls>
-                <source src="audio/seu-beat-2.mp3" type="audio/mpeg">
-                Seu navegador não suporta o player de áudio.
-            </audio>
-
-            <a href="https://wa.me" target="_blank" class="btn-acao">Tenho Interesse</a>
-        </div>
-
+    <!-- CARD DO BEAT ÚNICO -->
+    <div class="card-beat">
+        <div class="nome-musica"> Silva Bregas Mariana </div>
+        <audio controls>
+            <source src="beat1.mp3" type="audio/mpeg">
+            Seu navegador não suporta este áudio.
+        </audio>
+        <!-- IMPORTANTE: Substitua o número abaixo pelo seu número real -->
+        <a href="https://wa.me" target="_blank" class="botao-interesse">Tenho Interesse</a>
     </div>
 
 </body>
-    </html>
-    
+</html>
