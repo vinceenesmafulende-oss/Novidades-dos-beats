@@ -1,1288 +1,927 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Novidades dos Beats - Nossos Artistas</title>
-
-<meta name="description" content="Conheça os artistas e talentos da nossa comunidade musical.">
-
-<style>
-
-/* =========================
-   CONFIGURAÇÕES GERAIS
-========================= */
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background:
-        radial-gradient(circle at top right, rgba(0,255,150,0.08), transparent 30%),
-        radial-gradient(circle at bottom left, rgba(0,255,150,0.05), transparent 30%),
-        #080b10;
-    color: #ffffff;
-    line-height: 1.6;
-    overflow-x: hidden;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-button {
-    font-family: inherit;
-}
-
-/* =========================
-   BARRA DO TOPO
-========================= */
-
-.top-line {
-    height: 4px;
-    background: linear-gradient(90deg, #00ff99, #00c978, #00ff99);
-}
-
-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(8, 11, 16, 0.94);
-    backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-
-.navbar {
-    width: 94%;
-    max-width: 1200px;
-    margin: auto;
-    min-height: 75px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    font-size: 20px;
-    font-weight: 900;
-    color: #00ff99;
-}
-
-.logo-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: linear-gradient(135deg, #00ff99, #00a866);
-    color: #07100c;
-    font-size: 20px;
-}
-
-.menu {
-    display: flex;
-    gap: 30px;
-    align-items: center;
-}
-
-.menu a {
-    color: #bfc5cf;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.menu a:hover,
-.menu a.active {
-    color: #00ff99;
-}
-
-.menu-btn {
-    display: none;
-    border: 1px solid rgba(0,255,153,0.3);
-    background: #111720;
-    color: #00ff99;
-    width: 45px;
-    height: 45px;
-    border-radius: 12px;
-    font-size: 22px;
-}
-
-/* =========================
-   HERO
-========================= */
-
-.hero {
-    width: 94%;
-    max-width: 1200px;
-    min-height: 430px;
-    margin: 35px auto 25px;
-
-    position: relative;
-    overflow: hidden;
-
-    border-radius: 30px;
-    border: 1px solid rgba(0,255,153,0.18);
-
-    background:
-        linear-gradient(90deg,
-        rgba(5,9,13,0.98) 0%,
-        rgba(5,9,13,0.88) 42%,
-        rgba(5,9,13,0.35) 100%),
-        url("https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=1600&q=85")
-        center/cover;
-}
-
-.hero-content {
-    min-height: 430px;
-    padding: 55px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-}
-
-.hero-small {
-    color: #00ff99;
-    font-size: 15px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    margin-bottom: 12px;
-}
-
-.hero h1 {
-    font-size: clamp(42px, 8vw, 82px);
-    line-height: 0.95;
-    text-transform: uppercase;
-    max-width: 650px;
-}
-
-.hero h1 span {
-    color: #00ff99;
-}
-
-.hero p {
-    color: #c4cad3;
-    font-size: 18px;
-    max-width: 520px;
-    margin: 25px 0;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-}
-
-.btn {
-    border: none;
-    border-radius: 14px;
-    padding: 14px 23px;
-    font-size: 15px;
-    font-weight: 900;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn-green {
-    background: #00e889;
-    color: #04110a;
-    box-shadow: 0 8px 30px rgba(0,255,153,0.2);
-}
-
-.btn-green:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 35px rgba(0,255,153,0.35);
-}
-
-.btn-dark {
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.14);
-    color: white;
-}
-
-.btn-dark:hover {
-    border-color: #00ff99;
-    color: #00ff99;
-}
-
-/* =========================
-   CONTEÚDO
-========================= */
-
-.container {
-    width: 94%;
-    max-width: 1200px;
-    margin: auto;
-}
-
-.section {
-    margin: 70px auto;
-}
-
-.section-title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 25px;
-}
-
-.section-title h2 {
-    font-size: 30px;
-}
-
-.section-title h2::before {
-    content: "";
-    display: inline-block;
-    width: 5px;
-    height: 28px;
-    background: #00ff99;
-    border-radius: 10px;
-    margin-right: 12px;
-    vertical-align: -4px;
-}
-
-.section-title a {
-    color: #00ff99;
-    font-weight: bold;
-}
-
-/* =========================
-   ARTISTA PRINCIPAL
-========================= */
-
-.artist-card {
-    position: relative;
-    overflow: hidden;
-
-    background: linear-gradient(145deg, #151b25, #0d1219);
-
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 28px;
-
-    padding: 35px;
-
-    box-shadow: 0 20px 70px rgba(0,0,0,0.35);
-}
-
-.artist-top {
-    display: grid;
-    grid-template-columns: 210px 1fr auto;
-    gap: 30px;
-    align-items: center;
-}
-
-.artist-photo {
-    width: 210px;
-    height: 210px;
-    object-fit: cover;
-
-    border-radius: 50%;
-    border: 6px solid #00ed91;
-
-    box-shadow:
-        0 0 0 7px rgba(0,255,153,0.08),
-        0 0 40px rgba(0,255,153,0.15);
-}
-
-.artist-info h3 {
-    font-size: 34px;
-    margin-bottom: 3px;
-}
-
-.genre {
-    color: #00ff99;
-    font-weight: 900;
-    letter-spacing: 1px;
-}
-
-.artist-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 18px;
-    margin-top: 18px;
-    color: #b7bec8;
-}
-
-.artist-meta span {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-}
-
-.artist-meta strong {
-    color: #00ff99;
-}
-
-.listen-btn {
-    white-space: nowrap;
-    padding: 15px 25px;
-    border-radius: 50px;
-
-    border: 1px solid #00ff99;
-    background: rgba(0,255,153,0.08);
-    color: #00ff99;
-
-    font-weight: 900;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.listen-btn:hover {
-    background: #00ff99;
-    color: #06100a;
-    transform: scale(1.04);
-}
-
-.socials {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.social {
-    width: 43px;
-    height: 43px;
-    border-radius: 50%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: 1px solid rgba(255,255,255,0.14);
-    color: #d7dce3;
-
-    transition: 0.3s;
-}
-
-.social:hover {
-    border-color: #00ff99;
-    color: #00ff99;
-    transform: translateY(-3px);
-}
-
-.biography {
-    margin-top: 35px;
-    padding: 25px 30px;
-
-    border-left: 4px solid #00ff99;
-    background: rgba(0,255,153,0.035);
-
-    color: #c6ccd4;
-    font-size: 17px;
-    font-style: italic;
-}
-
-/* =========================
-   ESTATÍSTICAS
-========================= */
-
-.stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin-top: 25px;
-}
-
-.stat {
-    padding: 18px;
-    border-radius: 18px;
-    background: #10161e;
-    border: 1px solid rgba(255,255,255,0.06);
-}
-
-.stat strong {
-    display: block;
-    color: #00ff99;
-    font-size: 25px;
-}
-
-.stat small {
-    color: #8f98a6;
-}
-
-/* =========================
-   LETRAS
-========================= */
-
-.lyrics-box {
-    background: #0f141c;
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 22px;
-    overflow: hidden;
-}
-
-.lyric-item {
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-}
-
-.lyric-item:last-child {
-    border-bottom: none;
-}
-
-.lyric-title {
-    width: 100%;
-    padding: 22px;
-
-    border: none;
-    background: #151c26;
-    color: white;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    text-align: left;
-    cursor: pointer;
-
-    font-size: 18px;
-    font-weight: 900;
-}
-
-.lyric-title span:first-child {
-    color: #00ff99;
-}
-
-.plus {
-    font-size: 25px;
-    color: #00ff99;
-}
-
-.lyric-content {
-    display: none;
-    padding: 25px 30px;
-    color: #c8ced6;
-    background: #0c1118;
-}
-
-.lyric-content.open {
-    display: block;
-}
-
-.lyric-content p {
-    margin-bottom: 16px;
-}
-
-/* =========================
-   ARTISTAS
-========================= */
-
-.artists-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.artist-small {
-    background: linear-gradient(145deg, #151b24, #0d1218);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 22px;
-    padding: 25px;
-    text-align: center;
-    transition: 0.3s;
-}
-
-.artist-small:hover {
-    transform: translateY(-7px);
-    border-color: rgba(0,255,153,0.4);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-}
-
-.artist-small img {
-    width: 115px;
-    height: 115px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 4px solid #00e889;
-    margin-bottom: 15px;
-}
-
-.artist-small h3 {
-    margin-bottom: 3px;
-}
-
-.artist-small p {
-    color: #00ff99;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-/* =========================
-   COMUNIDADE
-========================= */
-
-.community {
-    padding: 35px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 25px;
-
-    border-radius: 25px;
-    border: 1px solid rgba(0,255,153,0.2);
-
-    background:
-        linear-gradient(135deg,
-        rgba(0,255,153,0.08),
-        rgba(255,255,255,0.02));
-}
-
-.community h2 {
-    margin-bottom: 8px;
-}
-
-.community p {
-    color: #aeb6c1;
-}
-
-.community-icon {
-    font-size: 55px;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-footer {
-    margin-top: 80px;
-    padding: 45px 20px 30px;
-
-    border-top: 1px solid rgba(255,255,255,0.08);
-    background: #06090d;
-
-    text-align: center;
-}
-
-.footer-logo {
-    color: #00ff99;
-    font-size: 25px;
-    font-weight: 900;
-}
-
-footer p {
-    color: #78818d;
-    margin: 10px auto 20px;
-    max-width: 500px;
-}
-
-.footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    flex-wrap: wrap;
-}
-
-.footer-links a:hover {
-    color: #00ff99;
-}
-
-.copyright {
-    margin-top: 25px;
-    font-size: 13px;
-}
-
-/* =========================
-   ANIMAÇÃO
-========================= */
-
-.fade {
-    animation: fadeUp 0.8s ease both;
-}
-
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* =========================
-   TELEMÓVEL
-========================= */
-
-@media (max-width: 800px) {
-
-    .navbar {
-        min-height: 65px;
-    }
-
-    .menu {
-        display: none;
-
-        position: absolute;
-        top: 65px;
-        left: 0;
-        right: 0;
-
-        padding: 20px;
-
-        background: #0b1016;
-        border-bottom: 1px solid rgba(255,255,255,0.08);
-
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .menu.show {
-        display: flex;
-    }
-
-    .menu-btn {
-        display: block;
-    }
-
-    .hero {
-        margin-top: 20px;
-        min-height: 500px;
-    }
-
-    .hero-content {
-        min-height: 500px;
-        padding: 30px 25px;
-    }
-
-    .hero h1 {
-        font-size: 48px;
-    }
-
-    .hero p {
-        font-size: 16px;
-    }
-
-    .artist-top {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .artist-photo {
-        margin: auto;
-    }
-
-    .artist-info h3 {
-        font-size: 29px;
-    }
-
-    .artist-meta {
-        justify-content: center;
-    }
-
-    .socials {
-        justify-content: center;
-    }
-
-    .listen-btn {
-        justify-self: center;
-        margin: auto;
-    }
-
-    .stats {
-        grid-template-columns: 1fr;
-    }
-
-    .artists-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .community {
-        flex-direction: column;
-        text-align: center;
-    }
-}
-
-/* =========================
-   TELEMÓVEIS PEQUENOS
-========================= */
-
-@media (max-width: 480px) {
-
-    .container,
-    .hero {
-        width: 94%;
-    }
-
-    .hero {
-        border-radius: 22px;
-    }
-
-    .hero-content {
-        padding: 25px 20px;
-    }
-
-    .hero h1 {
-        font-size: 40px;
-    }
-
-    .artist-card {
-        padding: 22px 17px;
-        border-radius: 22px;
-    }
-
-    .artist-photo {
-        width: 175px;
-        height: 175px;
-    }
-
-    .artist-info h3 {
-        font-size: 26px;
-    }
-
-    .biography {
-        padding: 20px;
-        font-size: 15px;
-    }
-
-    .section {
-        margin: 50px auto;
-    }
-
-    .section-title h2 {
-        font-size: 23px;
-    }
-
-    .community {
-        padding: 25px 18px;
-    }
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Novidades dos Beats</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at top, #17351f 0%, #080808 35%),
+                #080808;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           CABEÇALHO
+        ========================= */
+
+        header {
+            width: 100%;
+            padding: 30px 18px 35px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.35);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 900;
+            color: #1ed760;
+            margin-bottom: 8px;
+            text-shadow: 0 0 20px rgba(30,215,96,0.25);
+        }
+
+        .subtitle {
+            color: #aaa;
+            font-size: 15px;
+            margin-bottom: 25px;
+        }
+
+        /* =========================
+           BARRA DE PESQUISA
+        ========================= */
+
+        .search-box {
+            width: 100%;
+            max-width: 720px;
+            margin: auto;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            height: 58px;
+            padding: 0 58px 0 22px;
+
+            background: #151515;
+            color: white;
+
+            border: 2px solid #292929;
+            border-radius: 50px;
+
+            outline: none;
+            font-size: 16px;
+
+            transition: 0.3s;
+        }
+
+        .search-box input::placeholder {
+            color: #777;
+        }
+
+        .search-box input:focus {
+            border-color: #1ed760;
+            box-shadow: 0 0 25px rgba(30,215,96,0.18);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            font-size: 23px;
+            pointer-events: none;
+        }
+
+        /* =========================
+           CONTEÚDO
+        ========================= */
+
+        main {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 30px 18px 60px;
+        }
+
+        .welcome {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .welcome h1 {
+            font-size: 27px;
+            margin-bottom: 8px;
+        }
+
+        .welcome h1 span {
+            color: #1ed760;
+        }
+
+        .welcome p {
+            color: #888;
+        }
+
+        /* =========================
+           CATEGORIAS
+        ========================= */
+
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .category {
+            border: 1px solid #333;
+            background: #151515;
+            color: #ddd;
+
+            padding: 10px 18px;
+            border-radius: 30px;
+
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .category:hover,
+        .category.active {
+            background: #1ed760;
+            border-color: #1ed760;
+            color: white;
+        }
+
+        /* =========================
+           GRID
+        ========================= */
+
+        .music-grid {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(250px, 1fr)
+            );
+
+            gap: 22px;
+        }
+
+        /* =========================
+           CARD
+        ========================= */
+
+        .music-card {
+            background: linear-gradient(
+                145deg,
+                #171717,
+                #0f0f0f
+            );
+
+            border: 1px solid #292929;
+            border-radius: 20px;
+
+            padding: 20px;
+
+            transition: 0.3s;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .music-card::before {
+            content: "";
+            position: absolute;
+
+            width: 100px;
+            height: 100px;
+
+            background: #1ed760;
+
+            filter: blur(70px);
+            opacity: 0.08;
+
+            top: -40px;
+            right: -40px;
+        }
+
+        .music-card:hover {
+            transform: translateY(-6px);
+            border-color: #1ed760;
+
+            box-shadow:
+                0 15px 35px rgba(0,0,0,0.5);
+        }
+
+        /* =========================
+           CAPA
+        ========================= */
+
+        .cover {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+
+            border-radius: 16px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #1ed760,
+                    #075d2c
+                );
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 65px;
+
+            margin-bottom: 18px;
+
+            overflow: hidden;
+        }
+
+        .cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* =========================
+           INFORMAÇÕES
+        ========================= */
+
+        .music-card h2 {
+            font-size: 20px;
+            margin-bottom: 7px;
+        }
+
+        .artist {
+            color: #1ed760;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .type {
+            display: inline-block;
+
+            padding: 6px 11px;
+
+            border-radius: 20px;
+
+            background: #242424;
+            color: #aaa;
+
+            font-size: 12px;
+
+            margin-bottom: 15px;
+        }
+
+        /* =========================
+           PLAYER
+        ========================= */
+
+        audio {
+            width: 100%;
+            height: 40px;
+            margin-bottom: 12px;
+        }
+
+        /* =========================
+           BOTÃO DOWNLOAD
+        ========================= */
+
+        .download {
+            display: block;
+
+            width: 100%;
+
+            padding: 12px;
+
+            border-radius: 25px;
+
+            background: #1ed760;
+            color: white;
+
+            text-align: center;
+            text-decoration: none;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .download:hover {
+            background: #18b851;
+            transform: scale(1.02);
+        }
+
+        /* =========================
+           SEM RESULTADOS
+        ========================= */
+
+        .no-results {
+            display: none;
+
+            text-align: center;
+
+            padding: 60px 20px;
+
+            color: #888;
+        }
+
+        .no-results .emoji {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .no-results h2 {
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        /* =========================
+           RODAPÉ
+        ========================= */
+
+        footer {
+            text-align: center;
+
+            padding: 30px 15px;
+
+            background: #0d0d0d;
+
+            border-top: 1px solid #222;
+
+            color: #777;
+
+            line-height: 1.7;
+        }
+
+        footer strong {
+            color: #1ed760;
+        }
+
+        /* =========================
+           CELULAR
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 25px 14px 30px;
+            }
+
+            .logo {
+                font-size: 26px;
+            }
+
+            .subtitle {
+                font-size: 14px;
+            }
+
+            .search-box input {
+                height: 54px;
+                font-size: 15px;
+            }
+
+            main {
+                padding: 25px 14px 50px;
+            }
+
+            .welcome h1 {
+                font-size: 23px;
+            }
+
+            .music-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .music-card {
+                padding: 16px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="top-line"></div>
-
 <!-- =========================
-     MENU
+     CABEÇALHO
 ========================= -->
 
 <header>
 
-<nav class="navbar">
+    <div class="logo">
+        🎵 Novidades dos Beats
+    </div>
 
-<a href="#inicio" class="logo">
-    <span class="logo-icon">♪</span>
-    <span>Novidades<br>dos Beats</span>
-</a>
+    <div class="subtitle">
+        Descobre novas músicas, artistas e beats
+    </div>
 
-<button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <!-- PESQUISA -->
 
-<div class="menu" id="menu">
+    <div class="search-box">
 
-<a href="#inicio" class="active">Início</a>
-<a href="#artista">Artista</a>
-<a href="#artistas">Artistas</a>
-<a href="#letras">Letras</a>
-<a href="#contacto">Contacto</a>
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Pesquisar artista, música ou beat..."
+            autocomplete="off"
+        >
 
-</div>
+        <span class="search-icon">🔍</span>
 
-</nav>
+    </div>
 
 </header>
 
 
 <!-- =========================
-     HERO
+     CONTEÚDO
 ========================= -->
 
-<main id="inicio">
+<main>
 
-<section class="hero fade">
+    <div class="welcome">
 
-<div class="hero-content">
+        <h1>
+            🎧 As melhores <span>novidades</span>
+        </h1>
 
-<div class="hero-small">
-    🎵 TALENTOS DA NOSSA COMUNIDADE
-</div>
+        <p>
+            Pesquisa e encontra facilmente a tua música favorita.
+        </p>
 
-<h1>
-    NOSSOS<br>
-    <span>ARTISTAS</span>
-</h1>
+    </div>
 
-<p>
-    Descubra novos talentos, conheça artistas
-    e acompanhe a música que está a movimentar
-    a nossa comunidade.
-</p>
 
-<div class="hero-buttons">
+    <!-- CATEGORIAS -->
 
-<a href="#artista" class="btn btn-green">
-    🎤 Conhecer artistas
-</a>
+    <div class="categories">
 
-<a href="#letras" class="btn btn-dark">
-    ♪ Ver letras
-</a>
+        <button
+            class="category active"
+            data-category="todos">
+            Todos
+        </button>
 
-</div>
+        <button
+            class="category"
+            data-category="musica">
+            🎵 Músicas
+        </button>
 
-</div>
+        <button
+            class="category"
+            data-category="beat">
+            🔥 Beats
+        </button>
 
-</section>
+        <button
+            class="category"
+            data-category="artista">
+            🎤 Artistas
+        </button>
 
+    </div>
 
-<!-- =========================
-     ARTISTA PRINCIPAL
-========================= -->
 
-<section class="section container" id="artista">
+    <!-- MÚSICAS -->
 
-<div class="section-title">
+    <div
+        class="music-grid"
+        id="musicGrid">
 
-<h2>Artista em destaque</h2>
 
-<a href="#artistas">
-    Ver todos →
-</a>
+        <!-- =====================
+             MÚSICA 1
+        ====================== -->
 
-</div>
+        <div
+            class="music-card"
+            data-name="Meu Novo Beat"
+            data-artist="DJ Maestro"
+            data-type="beat">
 
+            <div class="cover">
+                🎧
+            </div>
 
-<div class="artist-card fade">
+            <h2>
+                Meu Novo Beat
+            </h2>
 
-<div class="artist-top">
+            <div class="artist">
+                DJ Maestro
+            </div>
 
-<img
-class="artist-photo"
-src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=500&q=85"
-alt="Foto do artista"
->
+            <span class="type">
+                Beat
+            </span>
 
-<div class="artist-info">
+            <!--
+            COLOCA O TEU MP3 AQUI:
 
-<h3>Nome do Artista</h3>
+            <audio controls>
+                <source src="beat1.mp3" type="audio/mpeg">
+            </audio>
+            -->
 
-<div class="genre">
-    HIP-HOP / RAP
-</div>
+            <a
+                href="beat1.mp3"
+                class="download"
+                download>
+                ⬇️ Baixar Beat
+            </a>
 
-<div class="artist-meta">
+        </div>
 
-<span>📍 <strong>Moçambique</strong></span>
 
-<span>📅 Desde <strong>2018</strong></span>
+        <!-- =====================
+             MÚSICA 2
+        ====================== -->
 
-<span>🎧 <strong>15.2K</strong> ouvintes</span>
+        <div
+            class="music-card"
+            data-name="Amor da Minha Vida"
+            data-artist="Silva Beats"
+            data-type="musica">
+
+            <div class="cover">
+                🎵
+            </div>
+
+            <h2>
+                Amor da Minha Vida
+            </h2>
+
+            <div class="artist">
+                Silva Beats
+            </div>
+
+            <span class="type">
+                Música
+            </span>
+
+            <!--
+            <audio controls>
+                <source src="amor.mp3" type="audio/mpeg">
+            </audio>
+            -->
+
+            <a
+                href="amor.mp3"
+                class="download"
+                download>
+                ⬇️ Baixar Música
+            </a>
+
+        </div>
+
+
+        <!-- =====================
+             MÚSICA 3
+        ====================== -->
+
+        <div
+            class="music-card"
+            data-name="Afro Beat 2026"
+            data-artist="DJ Vince"
+            data-type="beat">
 
-</div>
+            <div class="cover">
+                🔥
+            </div>
 
-<div class="socials">
+            <h2>
+                Afro Beat 2026
+            </h2>
+
+            <div class="artist">
+                DJ Vince
+            </div>
+
+            <span class="type">
+                Beat
+            </span>
+
+            <a
+                href="afrobeat.mp3"
+                class="download"
+                download>
+                ⬇️ Baixar Beat
+            </a>
+
+        </div>
+
+
+        <!-- =====================
+             MÚSICA 4
+        ====================== -->
+
+        <div
+            class="music-card"
+            data-name="Minha Cidade"
+            data-artist="Maestro Music"
+            data-type="musica">
 
-<a class="social" href="#" aria-label="Instagram">◎</a>
+            <div class="cover">
+                🎤
+            </div>
 
-<a class="social" href="#" aria-label="YouTube">▶</a>
+            <h2>
+                Minha Cidade
+            </h2>
 
-<a class="social" href="#" aria-label="Facebook">f</a>
+            <div class="artist">
+                Maestro Music
+            </div>
 
-<a class="social" href="#" aria-label="Spotify">●</a>
+            <span class="type">
+                Música
+            </span>
 
-</div>
+            <a
+                href="minhacidade.mp3"
+                class="download"
+                download>
+                ⬇️ Baixar Música
+            </a>
 
-</div>
+        </div>
 
 
-<div>
+        <!-- =====================
+             MÚSICA 5
+        ====================== -->
 
-<button
-class="listen-btn"
-onclick="playMusic()"
->
-▶ Ouvir Agora
-</button>
+        <div
+            class="music-card"
+            data-name="Dance Tonight"
+            data-artist="Young Star"
+            data-type="musica">
 
-</div>
+            <div class="cover">
+                💃
+            </div>
 
-</div>
+            <h2>
+                Dance Tonight
+            </h2>
 
+            <div class="artist">
+                Young Star
+            </div>
 
-<div class="biography">
+            <span class="type">
+                Música
+            </span>
 
-<strong>“</strong>
+            <a
+                href="dance.mp3"
+                class="download"
+                download>
+                ⬇️ Baixar Música
+            </a>
 
-Breve biografia do artista, descrevendo o seu
-estilo, influências e trajetória no mundo da
-música. Fale sobre suas conquistas, projetos
-e o que torna este artista único.
+        </div>
 
-</div>
 
+        <!-- =====================
+             MÚSICA 6
+        ====================== -->
 
-<div class="stats">
+        <div
+            class="music-card"
+            data-name="Piano Beat"
+            data-artist="Maestro Beats"
+            data-type="beat">
 
-<div class="stat">
-<strong>15.2K</strong>
-<small>Ouvintes</small>
-</div>
+            <div class="cover">
+                🎹
+            </div>
 
-<div class="stat">
-<strong>24</strong>
-<small>Músicas lançadas</small>
-</div>
+            <h2>
+                Piano Beat
+            </h2>
 
-<div class="stat">
-<strong>8</strong>
-<small>Anos de carreira</small>
-</div>
+            <div class="artist">
+                Maestro Beats
+            </div>
 
-</div>
+            <span class="type">
+                Beat
+            </span>
 
-</div>
+            <a
+                href="pianobeat.mp3"
+                class="download"
+                download>
+                ⬇️ Baixar Beat
+            </a>
 
-</section>
+        </div>
 
 
-<!-- =========================
-     LETRAS
-========================= -->
+    </div>
 
-<section class="section container" id="letras">
 
-<div class="section-title">
+    <!-- SEM RESULTADOS -->
 
-<h2>Letras em destaque</h2>
+    <div
+        class="no-results"
+        id="noResults">
 
-<a href="#">
-    Ver todas →
-</a>
+        <div class="emoji">
+            🔍
+        </div>
 
-</div>
+        <h2>
+            Nenhum resultado
+        </h2>
 
+        <p>
+            Não encontramos nenhuma música,
+            artista ou beat com essa pesquisa.
+        </p>
 
-<div class="lyrics-box">
-
-
-<div class="lyric-item">
-
-<button
-class="lyric-title"
-onclick="toggleLyrics(this)"
->
-
-<span>🎵 Nome da Música 1</span>
-
-<span class="plus">+</span>
-
-</button>
-
-<div class="lyric-content">
-
-<p>
-Verso inicial da música...
-</p>
-
-<p>
-Refrão marcante aqui...
-</p>
-
-<p>
-Linha final da estrofe.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="lyric-item">
-
-<button
-class="lyric-title"
-onclick="toggleLyrics(this)"
->
-
-<span>🎵 Nome da Música 2</span>
-
-<span class="plus">+</span>
-
-</button>
-
-<div class="lyric-content">
-
-<p>
-Aqui podes colocar o primeiro verso
-da segunda música.
-</p>
-
-<p>
-Aqui entra o refrão da música.
-</p>
-
-<p>
-E aqui podes colocar o restante da letra.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="lyric-item">
-
-<button
-class="lyric-title"
-onclick="toggleLyrics(this)"
->
-
-<span>🎵 Nome da Música 3</span>
-
-<span class="plus">+</span>
-
-</button>
-
-<div class="lyric-content">
-
-<p>
-Verso da terceira música...
-</p>
-
-<p>
-Refrão da terceira música...
-</p>
-
-</div>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     OUTROS ARTISTAS
-========================= -->
-
-<section class="section container" id="artistas">
-
-<div class="section-title">
-
-<h2>Mais artistas</h2>
-
-<a href="#">
-    Ver todos →
-</a>
-
-</div>
-
-
-<div class="artists-grid">
-
-
-<div class="artist-small">
-
-<img
-src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=300&q=80"
-alt="Artista"
->
-
-<h3>Artista 01</h3>
-
-<p>HIP-HOP / RAP</p>
-
-</div>
-
-
-<div class="artist-small">
-
-<img
-src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=300&q=80"
-alt="Artista"
->
-
-<h3>Artista 02</h3>
-
-<p>AFROBEATS</p>
-
-</div>
-
-
-<div class="artist-small">
-
-<img
-src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80"
-alt="Artista"
->
-
-<h3>Artista 03</h3>
-
-<p>R&B / SOUL</p>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     COMUNIDADE
-========================= -->
-
-<section class="section container">
-
-<div class="community">
-
-<div class="community-icon">
-    🎤
-</div>
-
-<div>
-
-<h2>Faça parte da comunidade</h2>
-
-<p>
-Apoie os artistas locais e ajude a
-fortalecer a nossa cena musical.
-</p>
-
-</div>
-
-<a
-href="#contacto"
-class="btn btn-green"
->
-Siga-nos nas redes →
-</a>
-
-</div>
-
-</section>
+    </div>
 
 </main>
 
 
 <!-- =========================
-     FOOTER
+     RODAPÉ
 ========================= -->
 
-<footer id="contacto">
+<footer>
 
-<div class="footer-logo">
-    🎵 NOVEDADES DOS BEATS
-</div>
+    <strong>Novidades dos Beats</strong>
 
-<p>
-    Música, artistas, letras e novidades
-    da nossa comunidade.
-</p>
+    <br>
 
-<div class="footer-links">
+    Música • Beats • Artistas
 
-<a href="#inicio">Início</a>
+    <br>
 
-<a href="#artista">Artistas</a>
-
-<a href="#letras">Letras</a>
-
-<a href="#">Instagram</a>
-
-<a href="#">YouTube</a>
-
-</div>
-
-<div class="copyright">
-
-© 2026 Novidades dos Beats.
-Todos os direitos reservados.
-
-</div>
+    © 2026 Todos os direitos reservados.
 
 </footer>
 
 
-<!-- =========================
-     JAVASCRIPT
-========================= -->
-
 <script>
 
-/* MENU DO TELEMÓVEL */
+    const searchInput =
+        document.getElementById("searchInput");
 
-function toggleMenu() {
+    const cards =
+        document.querySelectorAll(".music-card");
 
-    const menu = document.getElementById("menu");
+    const noResults =
+        document.getElementById("noResults");
 
-    menu.classList.toggle("show");
-
-}
-
-
-/* FECHAR MENU AO CLICAR */
-
-document.querySelectorAll(".menu a").forEach(function(link) {
-
-    link.addEventListener("click", function() {
-
-        document.getElementById("menu").classList.remove("show");
-
-    });
-
-});
+    const categoryButtons =
+        document.querySelectorAll(".category");
 
 
-/* LETRAS */
+    let selectedCategory = "todos";
 
-function toggleLyrics(button) {
 
-    const content = button.nextElementSibling;
-    const symbol = button.querySelector(".plus");
+    /* =========================
+       PESQUISA
+    ========================= */
 
-    content.classList.toggle("open");
+    function filterMusic() {
 
-    if (content.classList.contains("open")) {
+        const search =
+            searchInput.value
+            .toLowerCase()
+            .trim();
 
-        symbol.textContent = "−";
+        let found = 0;
 
-    } else {
 
-        symbol.textContent = "+";
+        cards.forEach(function(card) {
+
+            const name =
+                card.dataset.name.toLowerCase();
+
+            const artist =
+                card.dataset.artist.toLowerCase();
+
+            const type =
+                card.dataset.type.toLowerCase();
+
+
+            const completeText =
+                name + " " +
+                artist + " " +
+                type;
+
+
+            const matchesSearch =
+                completeText.includes(search);
+
+
+            let matchesCategory = true;
+
+
+            if (selectedCategory !== "todos") {
+
+                matchesCategory =
+                    type === selectedCategory;
+
+            }
+
+
+            if (
+                matchesSearch &&
+                matchesCategory
+            ) {
+
+                card.style.display = "";
+
+                found++;
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+
+        if (found === 0) {
+
+            noResults.style.display = "block";
+
+        } else {
+
+            noResults.style.display = "none";
+
+        }
 
     }
 
-}
 
+    /* =========================
+       DIGITAR NA PESQUISA
+    ========================= */
 
-/* BOTÃO OUVIR */
-
-function playMusic() {
-
-    alert(
-        "🎵 O player de música será adicionado aqui. " +
-        "Depois podemos ligar este botão ao teu ficheiro MP3."
+    searchInput.addEventListener(
+        "input",
+        filterMusic
     );
 
-}
+
+    /* =========================
+       CATEGORIAS
+    ========================= */
+
+    categoryButtons.forEach(function(button) {
+
+        button.addEventListener(
+            "click",
+            function() {
+
+                categoryButtons.forEach(
+                    function(btn) {
+
+                        btn.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+
+                this.classList.add("active");
+
+
+                selectedCategory =
+                    this.dataset.category;
+
+
+                filterMusic();
+
+            }
+        );
+
+    });
 
 </script>
 
 </body>
-    </html>
+   </html>
