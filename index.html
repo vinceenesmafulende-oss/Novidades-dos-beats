@@ -1,161 +1,224 @@
-<style>
-/* Remove margens padrão e corrige o fundo */
-body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: #141923;
-}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Artistas</title>
+    <style>
+        /* O SEU CSS COLADO AQUI */
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #141923;
+        }
 
-/* O container principal ocupa 100% da largura da tela */
-.secao-artistas {
-    background-color: #141923;
-    padding: 40px 0;
-    width: 100%;
-    text-align: center;
-    border-top: 2px solid #00f29a;
-    font-family: sans-serif;
-    box-sizing: border-box;
-}
+        .secao-artistas {
+            background-color: #141923;
+            padding: 40px 0;
+            width: 100%;
+            text-align: center;
+            border-top: 2px solid #00f29a;
+            font-family: sans-serif;
+            box-sizing: border-box;
+        }
 
-.secao-artistas h2 {
-    color: #00f29a;
-    font-size: 26px;
-    margin-bottom: 5px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
+        .secao-artistas h2 {
+            color: #00f29a;
+            font-size: 26px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-.secao-artistas > p {
-    color: #a0aec0;
-    font-size: 14px;
-    margin-bottom: 30px;
-    padding: 0 15px;
-}
+        .secao-artistas > p {
+            color: #a0aec0;
+            font-size: 14px;
+            margin-bottom: 30px;
+            padding: 0 15px;
+        }
 
-/* Alinha os cards e preenche o espaço no celular */
-.galeria-artistas {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100%;
-    padding: 0 15px;
-    box-sizing: border-box;
-}
+        .galeria-artistas {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 100%;
+            padding: 0 15px;
+            box-sizing: border-box;
+        }
 
-/* O CARD AGORA É TOTALMENTE RESPONSIVO E SE ADAPTA A QUALQUER TELA */
-.card-artista {
-    background: #1e2530;
-    padding: 25px;
-    border-radius: 16px;
-    width: 100%;          /* Ocupa a tela inteira no celular */
-    max-width: 420px;     /* Não deixa ficar gigante no computador */
-    box-sizing: border-box;
-    text-align: left;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
+        .card-artista {
+            background: #1e2530;
+            padding: 25px;
+            border-radius: 16px;
+            width: 100%;          
+            max-width: 420px;     
+            box-sizing: border-box;
+            text-align: left;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
 
-.foto-container {
-    text-align: center;
-}
+        .foto-container {
+            text-align: center;
+        }
 
-.foto-container img {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    border: 3px solid #00f29a;
-    object-fit: cover;
-    margin-bottom: 15px;
-}
+        .foto-container img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 3px solid #00f29a;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
 
-.info-artista h3 {
-    color: #ffffff;
-    font-size: 20px;
-    margin: 5px 0 2px 0;
-    text-align: center;
-}
+        .info-artista h3 {
+            color: #ffffff;
+            font-size: 20px;
+            margin: 5px 0 2px 0;
+            text-align: center;
+        }
 
-.estilo-tag {
-    display: block;
-    color: #00f29a;
-    font-size: 11px;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-bottom: 15px;
-    text-align: center;
-}
+        .estilo-tag {
+            display: block;
+            color: #00f29a;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            text-align: center;
+        }
 
-.biografia {
-    color: #cbd5e1;
-    font-size: 13px;
-    line-height: 1.5;
-    margin-bottom: 20px;
-    font-style: italic;
-    border-left: 2px solid rgba(0, 242, 154, 0.3);
-    padding-left: 10px;
-}
+        .biografia {
+            color: #cbd5e1;
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            font-style: italic;
+            border-left: 2px solid rgba(0, 242, 154, 0.3);
+            padding-left: 10px;
+        }
 
-.container-letras {
-    margin-bottom: 20px;
-    background: #141923;
-    padding: 12px;
-    border-radius: 8px;
-}
+        .container-letras {
+            margin-bottom: 20px;
+            background: #141923;
+            padding: 12px;
+            border-radius: 8px;
+        }
 
-.container-letras h4 {
-    color: #ffffff;
-    font-size: 13px;
-    margin-top: 0;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-}
+        .container-letras h4 {
+            color: #ffffff;
+            font-size: 13px;
+            margin-top: 0;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
 
-.item-musica {
-    margin-bottom: 8px;
-}
+        .item-musica {
+            margin-bottom: 8px;
+        }
 
-.accordion-letra {
-    background: #1e2530;
-    border-radius: 6px;
-    overflow: hidden;
-}
+        .accordion-letra {
+            background: #1e2530;
+            border-radius: 6px;
+            overflow: hidden;
+        }
 
-.accordion-letra summary {
-    padding: 10px;
-    color: #00f29a;
-    font-size: 13px;
-    font-weight: bold;
-    cursor: pointer;
-}
+        .accordion-letra summary {
+            padding: 10px;
+            color: #00f29a;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+        }
 
-.texto-letra {
-    padding: 12px;
-    background: #111622;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    max-height: 200px;
-    overflow-y: auto;
-}
+        .texto-letra {
+            padding: 12px;
+            background: #111622;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            max-height: 200px;
+            overflow-y: auto;
+        }
 
-.texto-letra p {
-    color: #e2e8f0;
-    font-size: 12px;
-    line-height: 1.6;
-    margin: 0;
-    white-space: pre-line;
-}
+        .texto-letra p {
+            color: #e2e8f0;
+            font-size: 12px;
+            line-height: 1.6;
+            margin: 0;
+            white-space: pre-line;
+        }
 
-.btn-instagram {
-    display: block;
-    background: transparent;
-    color: #00f29a;
-    border: 1px solid #00f29a;
-    padding: 10px 16px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: bold;
-    text-decoration: none;
-    text-align: center;
-}
-</style>
+        .btn-instagram {
+            display: block;
+            background: transparent;
+            color: #00f29a;
+            border: 1px solid #00f29a;
+            padding: 10px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ESTRUTURA DO SITE -->
+    <section class="secao-artistas">
+        <h2>Nossos Artistas</h2>
+        <p>Conheça os talentos que fazem parte da nossa comunidade.</p>
+
+        <div class="galeria-artistas">
+            
+            <!-- CARD ARTISTA 1 -->
+            <article class="card-artista">
+                <div class="foto-container">
+                    <img src="https://picsum.photos" alt="Foto do Artista">
+                </div>
+                
+                <div class="info-artista">
+                    <h3>Nome do Artista</h3>
+                </div>
+                
+                <span class="estilo-tag">Hip-Hop / Rap</span>
+                
+                <div class="biografia">
+                    "Breve biografia ou citação do artista que descreve o seu estilo, influências e trajetória no mundo da música."
+                </div>
+                
+                <div class="container-letras">
+                    <h4>Letras em Destaque</h4>
+                    
+                    <div class="item-musica">
+                        <details class="accordion-letra">
+                            <summary>Nome da Música 1</summary>
+                            <div class="texto-letra">
+                                <p>Verso inicial da música...
+                                Refrão marcante aqui...
+                                Linha final da estrofe.</p>
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="item-musica">
+                        <details class="accordion-letra">
+                            <summary>Nome da Música 2</summary>
+                            <div class="texto-letra">
+                                <p>Letra da segunda música...
+                                Disposta linha por linha...
+                                Graças ao white-space: pre-line.</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                
+                <a href="#" class="btn-instagram" target="_blank" rel="noopener noreferrer">Ver Instagram</a>
+            </article>
+
+        </div>
+    </section>
+
+</body>
+</html>
