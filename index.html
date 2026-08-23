@@ -1,311 +1,244 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Novidades dos Beats</title>
-    <!-- Ícones externos para o Player -->
-    <link rel="stylesheet" href="https://cloudflare.com">
-    
-    <style>
-        /* --- ESTILIZAÇÃO GERAL --- */
-        :root {
-            --bg-principal: #0b0c10;
-            --bg-card: #1f2833;
-            --cor-neon: #02f39b; /* Verde neon estilo Spotify, mais agradável aos olhos */
-            --cor-neon-hover: #00b875;
-            --texto-claro: #ffffff;
-            --texto-mutado: #c5c6c7;
-        }
+<!-- SEÇÃO DE ARTISTAS COM BIOGRAFIA E LETRAS -->
+<section class="secao-artistas">
+    <h2>Artistas da Casa</h2>
+    <p>Quem está rimando e fazendo história com os nossos beats:</p>
 
-        body {
-            background-color: var(--bg-principal);
-            color: var(--texto-claro);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    <div class="galeria-artistas">
+        
+        <!-- CARD DO ARTISTA 1 -->
+        <div class="card-artista">
+            <div class="foto-container">
+                <!-- Substitua pelo link da foto real do artista -->
+                <img src="https://unsplash.com" alt="Foto do Artista">
+            </div>
+            
+            <div class="info-artista">
+                <h3>MC Nome do Artista</h3>
+                <span class="estilo-tag">Trap / Drill</span>
+                
+                <p class="biografia">"Cria da zona norte, rimando desde 2021. Busco passar a realidade das ruas através de linhas agressivas e flows rápidos."</p>
+                
+                <!-- ESPAÇO DAS MÚSICAS E LETRAS -->
+                <div class="container-letras">
+                    <h4>Músicas Com Nossos Beats:</h4>
+                    
+                    <!-- Música 1 -->
+                    <div class="item-musica">
+                        <details class="accordion-letra">
+                            <summary>🎵 Nome da Música 1 <span>(Clique para ver a letra)</span></summary>
+                            <div class="texto-letra">
+                                <p>[Refrão]<br>
+                                Minha caminhada é de ouro e de fé<br>
+                                dropo esse beat focado no topo<br>
+                                sei muito bem quem corre de pé<br>
+                                se eu cair eu levanto de novo...</p>
+                                
+                                <p>[Verso 1]<br>
+                                Linhas rimadas direto da mente<br>
+                                o grave batendo de forma pesada<br>
+                                os mano avançando sempre pra frente<br>
+                                na pista com a banca mais braba...</p>
+                            </div>
+                        </details>
+                    </div>
 
-        h1 {
-            color: var(--cor-neon);
-            font-size: 2rem;
-            margin-bottom: 5px;
-            text-align: center;
-        }
-
-        .subtitle {
-            color: var(--texto-mutado);
-            font-size: 1rem;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        /* --- CONTAINER DOS BEATS --- */
-        .catalog {
-            width: 100%;
-            max-width: 500px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        /* --- CARD DO BEAT --- */
-        .beat-card {
-            background-color: var(--bg-card);
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .beat-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        /* Capa do Beat fictícia */
-        .beat-cover {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #2c3e50, #000000);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--cor-neon);
-            font-size: 1.5rem;
-        }
-
-        .beat-info {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .beat-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin: 0 0 5px 0;
-        }
-
-        /* Badges de Gênero/Tags */
-        .beat-tags {
-            display: flex;
-            gap: 5px;
-        }
-
-        .tag {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--cor-neon);
-            font-size: 0.75rem;
-            padding: 2px 8px;
-            border-radius: 20px;
-            text-transform: uppercase;
-        }
-
-        /* --- PLAYER CUSTOMIZADO --- */
-        .custom-player {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background-color: rgba(0, 0, 0, 0.3);
-            padding: 10px 15px;
-            border-radius: 8px;
-        }
-
-        .play-btn {
-            background: none;
-            border: none;
-            color: var(--texto-claro);
-            font-size: 1.2rem;
-            cursor: pointer;
-            width: 30px;
-            transition: color 0.2s;
-        }
-
-        .play-btn:hover {
-            color: var(--cor-neon);
-        }
-
-        .time-display {
-            font-size: 0.85rem;
-            color: var(--texto-mutado);
-            min-width: 35px;
-        }
-
-        /* Barra de progresso customizada */
-        .progress-bar {
-            flex-grow: 1;
-            -webkit-appearance: none;
-            appearance: none;
-            background: #4f5d75;
-            height: 6px;
-            border-radius: 3px;
-            outline: none;
-            cursor: pointer;
-        }
-
-        .progress-bar::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--cor-neon);
-            cursor: pointer;
-            transition: transform 0.1s;
-        }
-
-        .progress-bar::-webkit-slider-thumb:hover {
-            transform: scale(1.3);
-        }
-
-        /* --- BOTÃO DE AÇÃO --- */
-        .buy-btn {
-            background-color: var(--cor-neon);
-            color: #000000;
-            border: none;
-            border-radius: 8px;
-            padding: 12px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: background-color 0.2s, transform 0.1s;
-        }
-
-        .buy-btn:hover {
-            background-color: var(--cor-neon-hover);
-        }
-
-        .buy-btn:active {
-            transform: scale(0.98);
-        }
-
-        /* Esconde o player padrão do HTML para não duplicar */
-        audio {
-            display: none;
-        }
-    </style>
-</head>
-<body>
-
-    <h1>Novidades dos Beats</h1>
-    <div class="subtitle">As melhores novidades dos beats aqui!</div>
-
-    <div class="catalog">
-
-        <!-- CARD DO BEAT 1 -->
-        <div class="beat-card">
-            <div class="beat-header">
-                <div class="beat-cover"><i class="fa-solid fa-music"></i></div>
-                <div class="beat-info">
-                    <p class="beat-title">Beat 1 - Nome do Seu Beat</p>
-                    <div class="beat-tags">
-                        <span class="tag">Trap</span>
-                        <span class="tag">140 BPM</span>
+                    <!-- Música 2 (Opcional - Pode apagar se o artista só tiver 1 música) -->
+                    <div class="item-musica">
+                        <details class="accordion-letra">
+                            <summary>🎵 Nome da Música 2 <span>(Clique para ver a letra)</span></summary>
+                            <div class="texto-letra">
+                                <p>[Verso Único]<br>
+                                Letra da segunda música aqui...<br>
+                                Rimas fluindo no flow desse trap...<br>
+                                Conquistando espaço sem dar nenhum blefe...</p>
+                            </div>
+                        </details>
                     </div>
                 </div>
+
+                <a href="https://instagram.com" target="_blank" class="btn-instagram">Instagram do Artista</a>
             </div>
-
-            <!-- Player de Áudio Oculto -->
-            <audio id="audio1" src="SEU_ARQUIVO_DE_AUDIO_1.mp3"></audio>
-
-            <!-- Interface do Player Customizado -->
-            <div class="custom-player" data-audio="audio1">
-                <button class="play-btn"><i class="fa-solid fa-play"></i></button>
-                <span class="time-display current-time">0:00</span>
-                <input type="range" class="progress-bar" value="0" min="0" max="100">
-                <span class="time-display total-time">0:00</span>
-            </div>
-
-            <button class="buy-btn">
-                <i class="fa-solid fa-cart-shopping"></i> Comprar Licença
-            </button>
-        </div>
-
-        <!-- CARD DO BEAT 2 -->
-        <div class="beat-card">
-            <div class="beat-header">
-                <div class="beat-cover"><i class="fa-solid fa-compact-disc"></i></div>
-                <div class="beat-info">
-                    <p class="beat-title">Beat 2 - Nome do Seu Beat</p>
-                    <div class="beat-tags">
-                        <span class="tag">Boom Bap</span>
-                        <span class="tag">90 BPM</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Player de Áudio Oculto -->
-            <audio id="audio2" src="SEU_ARQUIVO_DE_AUDIO_2.mp3"></audio>
-
-            <!-- Interface do Player Customizado -->
-            <div class="custom-player" data-audio="audio2">
-                <button class="play-btn"><i class="fa-solid fa-play"></i></button>
-                <span class="time-display current-time">0:00</span>
-                <input type="range" class="progress-bar" value="0" min="0" max="100">
-                <span class="time-display total-time">0:00</span>
-            </div>
-
-            <button class="buy-btn">
-                <i class="fa-solid fa-cart-shopping"></i> Comprar Licença
-            </button>
         </div>
 
     </div>
+</section>
 
-    <!-- --- JAVASCRIPT PARA GERENCIAR OS PLAYERS --- -->
-    <script>
-        document.querySelectorAll('.custom-player').forEach(player => {
-            const audioId = player.getAttribute('data-audio');
-            const audio = document.getElementById(audioId);
-            const playBtn = player.querySelector('.play-btn');
-            const playIcon = playBtn.querySelector('i');
-            const progressBar = player.querySelector('.progress-bar');
-            const currentTimeDisplay = player.querySelector('.current-time');
-            const totalTimeDisplay = player.querySelector('.total-time');
+<!-- ESTILOS CSS ATUALIZADOS -->
+<style>
+.secao-artistas {
+    background-color: #141923;
+    padding: 50px 20px;
+    text-align: center;
+    border-top: 2px solid #00f29a;
+    font-family: sans-serif;
+}
 
-            // Formatar segundos em formato MM:SS
-            function formatTime(seconds) {
-                if (isNaN(seconds)) return "0:00";
-                const mins = Math.floor(seconds / 60);
-                const secs = Math.floor(seconds % 60);
-                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-            }
+.secao-artistas h2 {
+    color: #00f29a;
+    font-size: 26px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
-            // Alternar Play / Pause
-            playBtn.addEventListener('click', () => {
-                // Pausar outros áudios ativos para não tocar tudo junto
-                document.querySelectorAll('audio').forEach(otherAudio => {
-                    if (otherAudio !== audio) {
-                        otherAudio.pause();
-                        const otherPlayer = document.querySelector(`[data-audio="${otherAudio.id}"]`);
-                        if (otherPlayer) otherPlayer.querySelector('.play-btn i').className = 'fa-solid fa-play';
-                    }
-                });
+.secao-artistas > p {
+    color: #a0aec0;
+    font-size: 14px;
+    margin-bottom: 35px;
+}
 
-                if (audio.paused) {
-                    audio.play();
-                    playIcon.className = 'fa-solid fa-pause';
-                } else {
-                    audio.pause();
-                    playIcon.className = 'fa-solid fa-play';
-                }
-            });
+.galeria-artistas {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
-            // Atualizar o tempo total assim que o arquivo carregar
-            audio.addEventListener('loadedmetadata', () => {
-                totalTimeDisplay.textContent = formatTime(audio.duration);
-            });
+.card-artista {
+    background: #1e2530;
+    padding: 25px;
+    border-radius: 16px;
+    width: 320px; /* Um pouco mais largo para acomodar bem as letras */
+    text-align: left; /* Alinhamento à esquerda para as letras ficarem bonitas */
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
 
-            // Atualizar barra de progresso conforme a música toca
-        
+.card-artista:hover {
+    transform: translateY(-5px);
+    border-color: #00f29a;
+}
+
+.foto-container {
+    text-align: center; /* Centraliza apenas a foto do artista no topo */
+}
+
+.foto-container img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid #00f29a;
+    object-fit: cover;
+    margin-bottom: 15px;
+    box-shadow: 0 0 15px rgba(0, 242, 154, 0.2);
+}
+
+.info-artista h3 {
+    color: #ffffff;
+    font-size: 20px;
+    margin: 5px 0 2px 0;
+    text-align: center;
+}
+
+.estilo-tag {
+    display: block;
+    color: #00f29a;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.biografia {
+    color: #cbd5e1;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    font-style: italic;
+    border-left: 2px solid rgba(0, 242, 154, 0.3);
+    padding-left: 10px;
+}
+
+/* ESTILOS DA SEÇÃO DE LETRAS DO ARTISTA */
+.container-letras {
+    margin-bottom: 25px;
+    background: #141923;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.container-letras h4 {
+    color: #ffffff;
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.item-musica {
+    margin-bottom: 8px;
+}
+
+.item-musica:last-child {
+    margin-bottom: 0;
+}
+
+/* O elemento <details> cria o efeito de abrir/fechar nativamente */
+.accordion-letra {
+    background: #1e2530;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.accordion-letra summary {
+    padding: 10px;
+    color: #00f29a;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+}
+
+.accordion-letra summary span {
+    color: #718096;
+    font-weight: normal;
+    font-size: 11px;
+    margin-left: 5px;
+}
+
+.texto-letra {
+    padding: 12px;
+    background: #111622;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    max-height: 200px;
+    overflow-y: auto; /* Adiciona barra de rolagem se a letra for gigante */
+}
+
+.texto-letra p {
+    color: #e2e8f0;
+    font-size: 12px;
+    line-height: 1.6;
+    margin: 0 0 15px 0;
+    white-space: pre-line; /* Respeita as quebras de linha do código */
+}
+
+.texto-letra p:last-child {
+    margin-bottom: 0;
+}
+
+.btn-instagram {
+    display: block;
+    background: transparent;
+    color: #00f29a;
+    border: 1px solid #00f29a;
+    padding: 10px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.btn-instagram:hover {
+    background: #00f29a;
+    color: #141923;
+    box-shadow: 0 4px 12px rgba(0, 242, 154, 0.3);
+}
+</style>
