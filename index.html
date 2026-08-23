@@ -1,389 +1,1288 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Galeria de Artistas - Novidades dos Beats</title>
+<title>Novidades dos Beats - Nossos Artistas</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<meta name="description" content="Conheça os artistas e talentos da nossa comunidade musical.">
 
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            min-height: 100%;
-        }
+<style>
 
-        body {
-            background-color: #141923;
-            color: white;
-            font-family: Arial, sans-serif;
-        }
+/* =========================
+   CONFIGURAÇÕES GERAIS
+========================= */
 
-        /* SEÇÃO DOS ARTISTAS */
-        .secao-artistas {
-            width: 100%;
-            min-height: 100vh;
-            background-color: #141923;
-            padding: 40px 15px;
-            text-align: center;
-            border-top: 2px solid #00f29a;
-        }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        .secao-artistas h2 {
-            color: #00f29a;
-            font-size: 28px;
-            margin: 0 0 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        .secao-artistas > p {
-            color: #a0aec0;
-            font-size: 15px;
-            margin: 0 auto 30px;
-            max-width: 600px;
-            line-height: 1.5;
-        }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(circle at top right, rgba(0,255,150,0.08), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(0,255,150,0.05), transparent 30%),
+        #080b10;
+    color: #ffffff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
 
-        /* GALERIA */
-        .galeria-artistas {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 420px));
-            justify-content: center;
-            gap: 25px;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+a {
+    color: inherit;
+    text-decoration: none;
+}
 
-        /* CARD */
-        .card-artista {
-            width: 100%;
-            background: #1e2530;
-            padding: 25px;
-            border-radius: 16px;
-            text-align: left;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-        }
+button {
+    font-family: inherit;
+}
 
-        /* FOTO */
-        .foto-container {
-            text-align: center;
-        }
+/* =========================
+   BARRA DO TOPO
+========================= */
 
-        .foto-container img {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            border: 3px solid #00f29a;
-            object-fit: cover;
-            margin-bottom: 12px;
-            display: inline-block;
-        }
+.top-line {
+    height: 4px;
+    background: linear-gradient(90deg, #00ff99, #00c978, #00ff99);
+}
 
-        /* NOME */
-        .info-artista h3 {
-            color: #ffffff;
-            font-size: 21px;
-            margin: 5px 0;
-            text-align: center;
-        }
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(8, 11, 16, 0.94);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
 
-        /* ESTILO MUSICAL */
-        .estilo-tag {
-            display: block;
-            color: #00f29a;
-            font-size: 11px;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 18px;
-            text-align: center;
-        }
+.navbar {
+    width: 94%;
+    max-width: 1200px;
+    margin: auto;
+    min-height: 75px;
 
-        /* BIOGRAFIA */
-        .biografia {
-            color: #cbd5e1;
-            font-size: 14px;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            font-style: italic;
-            border-left: 2px solid rgba(0, 242, 154, 0.5);
-            padding-left: 12px;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
 
-        /* LETRAS */
-        .container-letras {
-            margin-bottom: 20px;
-            background: #141923;
-            padding: 14px;
-            border-radius: 8px;
-        }
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 
-        .container-letras h4 {
-            color: #ffffff;
-            font-size: 14px;
-            margin: 0 0 12px;
-            text-transform: uppercase;
-        }
+    font-size: 20px;
+    font-weight: 900;
+    color: #00ff99;
+}
 
-        .item-musica {
-            margin-bottom: 8px;
-        }
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
 
-        .item-musica:last-child {
-            margin-bottom: 0;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-        .accordion-letra {
-            background: #1e2530;
-            border-radius: 6px;
-            overflow: hidden;
-        }
+    background: linear-gradient(135deg, #00ff99, #00a866);
+    color: #07100c;
+    font-size: 20px;
+}
 
-        .accordion-letra summary {
-            padding: 12px;
-            color: #00f29a;
-            font-size: 13px;
-            font-weight: bold;
-            cursor: pointer;
-            list-style: none;
-        }
+.menu {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
 
-        .accordion-letra summary::-webkit-details-marker {
-            display: none;
-        }
+.menu a {
+    color: #bfc5cf;
+    font-weight: bold;
+    transition: 0.3s;
+}
 
-        .accordion-letra summary::after {
-            content: "+";
-            float: right;
-            font-size: 18px;
-        }
+.menu a:hover,
+.menu a.active {
+    color: #00ff99;
+}
 
-        .accordion-letra[open] summary::after {
-            content: "−";
-        }
+.menu-btn {
+    display: none;
+    border: 1px solid rgba(0,255,153,0.3);
+    background: #111720;
+    color: #00ff99;
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    font-size: 22px;
+}
 
-        /* TEXTO DA LETRA */
-        .texto-letra {
-            padding: 12px;
-            background: #111622;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            max-height: 200px;
-            overflow-y: auto;
-        }
+/* =========================
+   HERO
+========================= */
 
-        .texto-letra p {
-            color: #e2e8f0;
-            font-size: 13px;
-            line-height: 1.7;
-            margin: 0;
-            white-space: pre-line;
-        }
+.hero {
+    width: 94%;
+    max-width: 1200px;
+    min-height: 430px;
+    margin: 35px auto 25px;
 
-        /* BOTÃO INSTAGRAM */
-        .btn-instagram {
-            display: block;
-            width: 100%;
-            background: transparent;
-            color: #00f29a;
-            border: 1px solid #00f29a;
-            padding: 11px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: bold;
-            text-decoration: none;
-            text-align: center;
-            transition: 0.3s;
-        }
+    position: relative;
+    overflow: hidden;
 
-        .btn-instagram:hover {
-            background: #00f29a;
-            color: #141923;
-        }
+    border-radius: 30px;
+    border: 1px solid rgba(0,255,153,0.18);
 
-        /* CELULAR */
-        @media (max-width: 600px) {
+    background:
+        linear-gradient(90deg,
+        rgba(5,9,13,0.98) 0%,
+        rgba(5,9,13,0.88) 42%,
+        rgba(5,9,13,0.35) 100%),
+        url("https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=1600&q=85")
+        center/cover;
+}
 
-            .secao-artistas {
-                padding: 30px 12px;
-            }
+.hero-content {
+    min-height: 430px;
+    padding: 55px;
 
-            .secao-artistas h2 {
-                font-size: 24px;
-            }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
 
-            .secao-artistas > p {
-                font-size: 14px;
-                margin-bottom: 25px;
-            }
+.hero-small {
+    color: #00ff99;
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
 
-            .galeria-artistas {
-                grid-template-columns: 1fr;
-                gap: 18px;
-            }
+.hero h1 {
+    font-size: clamp(42px, 8vw, 82px);
+    line-height: 0.95;
+    text-transform: uppercase;
+    max-width: 650px;
+}
 
-            .card-artista {
-                max-width: 100%;
-                padding: 20px;
-                border-radius: 14px;
-            }
+.hero h1 span {
+    color: #00ff99;
+}
 
-            .foto-container img {
-                width: 100px;
-                height: 100px;
-            }
+.hero p {
+    color: #c4cad3;
+    font-size: 18px;
+    max-width: 520px;
+    margin: 25px 0;
+}
 
-            .info-artista h3 {
-                font-size: 19px;
-            }
+.hero-buttons {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
 
-            .biografia {
-                font-size: 13px;
-            }
-        }
-    </style>
+.btn {
+    border: none;
+    border-radius: 14px;
+    padding: 14px 23px;
+    font-size: 15px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-green {
+    background: #00e889;
+    color: #04110a;
+    box-shadow: 0 8px 30px rgba(0,255,153,0.2);
+}
+
+.btn-green:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(0,255,153,0.35);
+}
+
+.btn-dark {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.14);
+    color: white;
+}
+
+.btn-dark:hover {
+    border-color: #00ff99;
+    color: #00ff99;
+}
+
+/* =========================
+   CONTEÚDO
+========================= */
+
+.container {
+    width: 94%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.section {
+    margin: 70px auto;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.section-title h2 {
+    font-size: 30px;
+}
+
+.section-title h2::before {
+    content: "";
+    display: inline-block;
+    width: 5px;
+    height: 28px;
+    background: #00ff99;
+    border-radius: 10px;
+    margin-right: 12px;
+    vertical-align: -4px;
+}
+
+.section-title a {
+    color: #00ff99;
+    font-weight: bold;
+}
+
+/* =========================
+   ARTISTA PRINCIPAL
+========================= */
+
+.artist-card {
+    position: relative;
+    overflow: hidden;
+
+    background: linear-gradient(145deg, #151b25, #0d1219);
+
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 28px;
+
+    padding: 35px;
+
+    box-shadow: 0 20px 70px rgba(0,0,0,0.35);
+}
+
+.artist-top {
+    display: grid;
+    grid-template-columns: 210px 1fr auto;
+    gap: 30px;
+    align-items: center;
+}
+
+.artist-photo {
+    width: 210px;
+    height: 210px;
+    object-fit: cover;
+
+    border-radius: 50%;
+    border: 6px solid #00ed91;
+
+    box-shadow:
+        0 0 0 7px rgba(0,255,153,0.08),
+        0 0 40px rgba(0,255,153,0.15);
+}
+
+.artist-info h3 {
+    font-size: 34px;
+    margin-bottom: 3px;
+}
+
+.genre {
+    color: #00ff99;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.artist-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 18px;
+    color: #b7bec8;
+}
+
+.artist-meta span {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.artist-meta strong {
+    color: #00ff99;
+}
+
+.listen-btn {
+    white-space: nowrap;
+    padding: 15px 25px;
+    border-radius: 50px;
+
+    border: 1px solid #00ff99;
+    background: rgba(0,255,153,0.08);
+    color: #00ff99;
+
+    font-weight: 900;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.listen-btn:hover {
+    background: #00ff99;
+    color: #06100a;
+    transform: scale(1.04);
+}
+
+.socials {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.social {
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255,255,255,0.14);
+    color: #d7dce3;
+
+    transition: 0.3s;
+}
+
+.social:hover {
+    border-color: #00ff99;
+    color: #00ff99;
+    transform: translateY(-3px);
+}
+
+.biography {
+    margin-top: 35px;
+    padding: 25px 30px;
+
+    border-left: 4px solid #00ff99;
+    background: rgba(0,255,153,0.035);
+
+    color: #c6ccd4;
+    font-size: 17px;
+    font-style: italic;
+}
+
+/* =========================
+   ESTATÍSTICAS
+========================= */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.stat {
+    padding: 18px;
+    border-radius: 18px;
+    background: #10161e;
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+.stat strong {
+    display: block;
+    color: #00ff99;
+    font-size: 25px;
+}
+
+.stat small {
+    color: #8f98a6;
+}
+
+/* =========================
+   LETRAS
+========================= */
+
+.lyrics-box {
+    background: #0f141c;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 22px;
+    overflow: hidden;
+}
+
+.lyric-item {
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.lyric-item:last-child {
+    border-bottom: none;
+}
+
+.lyric-title {
+    width: 100%;
+    padding: 22px;
+
+    border: none;
+    background: #151c26;
+    color: white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    text-align: left;
+    cursor: pointer;
+
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.lyric-title span:first-child {
+    color: #00ff99;
+}
+
+.plus {
+    font-size: 25px;
+    color: #00ff99;
+}
+
+.lyric-content {
+    display: none;
+    padding: 25px 30px;
+    color: #c8ced6;
+    background: #0c1118;
+}
+
+.lyric-content.open {
+    display: block;
+}
+
+.lyric-content p {
+    margin-bottom: 16px;
+}
+
+/* =========================
+   ARTISTAS
+========================= */
+
+.artists-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.artist-small {
+    background: linear-gradient(145deg, #151b24, #0d1218);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 22px;
+    padding: 25px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.artist-small:hover {
+    transform: translateY(-7px);
+    border-color: rgba(0,255,153,0.4);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+.artist-small img {
+    width: 115px;
+    height: 115px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #00e889;
+    margin-bottom: 15px;
+}
+
+.artist-small h3 {
+    margin-bottom: 3px;
+}
+
+.artist-small p {
+    color: #00ff99;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* =========================
+   COMUNIDADE
+========================= */
+
+.community {
+    padding: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+
+    border-radius: 25px;
+    border: 1px solid rgba(0,255,153,0.2);
+
+    background:
+        linear-gradient(135deg,
+        rgba(0,255,153,0.08),
+        rgba(255,255,255,0.02));
+}
+
+.community h2 {
+    margin-bottom: 8px;
+}
+
+.community p {
+    color: #aeb6c1;
+}
+
+.community-icon {
+    font-size: 55px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    margin-top: 80px;
+    padding: 45px 20px 30px;
+
+    border-top: 1px solid rgba(255,255,255,0.08);
+    background: #06090d;
+
+    text-align: center;
+}
+
+.footer-logo {
+    color: #00ff99;
+    font-size: 25px;
+    font-weight: 900;
+}
+
+footer p {
+    color: #78818d;
+    margin: 10px auto 20px;
+    max-width: 500px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.footer-links a:hover {
+    color: #00ff99;
+}
+
+.copyright {
+    margin-top: 25px;
+    font-size: 13px;
+}
+
+/* =========================
+   ANIMAÇÃO
+========================= */
+
+.fade {
+    animation: fadeUp 0.8s ease both;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   TELEMÓVEL
+========================= */
+
+@media (max-width: 800px) {
+
+    .navbar {
+        min-height: 65px;
+    }
+
+    .menu {
+        display: none;
+
+        position: absolute;
+        top: 65px;
+        left: 0;
+        right: 0;
+
+        padding: 20px;
+
+        background: #0b1016;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .menu.show {
+        display: flex;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .hero {
+        margin-top: 20px;
+        min-height: 500px;
+    }
+
+    .hero-content {
+        min-height: 500px;
+        padding: 30px 25px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .artist-top {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .artist-photo {
+        margin: auto;
+    }
+
+    .artist-info h3 {
+        font-size: 29px;
+    }
+
+    .artist-meta {
+        justify-content: center;
+    }
+
+    .socials {
+        justify-content: center;
+    }
+
+    .listen-btn {
+        justify-self: center;
+        margin: auto;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .artists-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .community {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* =========================
+   TELEMÓVEIS PEQUENOS
+========================= */
+
+@media (max-width: 480px) {
+
+    .container,
+    .hero {
+        width: 94%;
+    }
+
+    .hero {
+        border-radius: 22px;
+    }
+
+    .hero-content {
+        padding: 25px 20px;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .artist-card {
+        padding: 22px 17px;
+        border-radius: 22px;
+    }
+
+    .artist-photo {
+        width: 175px;
+        height: 175px;
+    }
+
+    .artist-info h3 {
+        font-size: 26px;
+    }
+
+    .biography {
+        padding: 20px;
+        font-size: 15px;
+    }
+
+    .section {
+        margin: 50px auto;
+    }
+
+    .section-title h2 {
+        font-size: 23px;
+    }
+
+    .community {
+        padding: 25px 18px;
+    }
+}
+
+</style>
 </head>
 
 <body>
 
-    <section class="secao-artistas">
+<div class="top-line"></div>
 
-        <h2>Nossos Artistas</h2>
+<!-- =========================
+     MENU
+========================= -->
 
-        <p>
-            Conheça os talentos que fazem parte da nossa comunidade.
-        </p>
+<header>
 
-        <div class="galeria-artistas">
+<nav class="navbar">
 
-            <!-- ARTISTA 1 -->
-            <article class="card-artista">
+<a href="#inicio" class="logo">
+    <span class="logo-icon">♪</span>
+    <span>Novidades<br>dos Beats</span>
+</a>
 
-                <div class="foto-container">
+<button class="menu-btn" onclick="toggleMenu()">☰</button>
 
-                    <!-- Troque este endereço pela foto do artista -->
-                    <img
-                        src="https://picsum.photos/300/300?random=1"
-                        alt="Foto do Artista"
-                    >
+<div class="menu" id="menu">
 
-                </div>
+<a href="#inicio" class="active">Início</a>
+<a href="#artista">Artista</a>
+<a href="#artistas">Artistas</a>
+<a href="#letras">Letras</a>
+<a href="#contacto">Contacto</a>
 
-                <div class="info-artista">
+</div>
 
-                    <h3>Nome do Artista</h3>
+</nav>
 
-                </div>
+</header>
 
-                <span class="estilo-tag">
-                    Hip-Hop / Rap
-                </span>
 
-                <div class="biografia">
+<!-- =========================
+     HERO
+========================= -->
 
-                    "Breve biografia do artista, descrevendo
-                    o seu estilo, influências e trajetória
-                    no mundo da música."
+<main id="inicio">
 
-                </div>
+<section class="hero fade">
 
-                <div class="container-letras">
+<div class="hero-content">
 
-                    <h4>Letras em Destaque</h4>
+<div class="hero-small">
+    🎵 TALENTOS DA NOSSA COMUNIDADE
+</div>
 
-                    <!-- MÚSICA 1 -->
-                    <div class="item-musica">
+<h1>
+    NOSSOS<br>
+    <span>ARTISTAS</span>
+</h1>
 
-                        <details class="accordion-letra">
+<p>
+    Descubra novos talentos, conheça artistas
+    e acompanhe a música que está a movimentar
+    a nossa comunidade.
+</p>
 
-                            <summary>
-                                Nome da Música 1
-                            </summary>
+<div class="hero-buttons">
 
-                            <div class="texto-letra">
+<a href="#artista" class="btn btn-green">
+    🎤 Conhecer artistas
+</a>
 
-                                <p>
+<a href="#letras" class="btn btn-dark">
+    ♪ Ver letras
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     ARTISTA PRINCIPAL
+========================= -->
+
+<section class="section container" id="artista">
+
+<div class="section-title">
+
+<h2>Artista em destaque</h2>
+
+<a href="#artistas">
+    Ver todos →
+</a>
+
+</div>
+
+
+<div class="artist-card fade">
+
+<div class="artist-top">
+
+<img
+class="artist-photo"
+src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=500&q=85"
+alt="Foto do artista"
+>
+
+<div class="artist-info">
+
+<h3>Nome do Artista</h3>
+
+<div class="genre">
+    HIP-HOP / RAP
+</div>
+
+<div class="artist-meta">
+
+<span>📍 <strong>Moçambique</strong></span>
+
+<span>📅 Desde <strong>2018</strong></span>
+
+<span>🎧 <strong>15.2K</strong> ouvintes</span>
+
+</div>
+
+<div class="socials">
+
+<a class="social" href="#" aria-label="Instagram">◎</a>
+
+<a class="social" href="#" aria-label="YouTube">▶</a>
+
+<a class="social" href="#" aria-label="Facebook">f</a>
+
+<a class="social" href="#" aria-label="Spotify">●</a>
+
+</div>
+
+</div>
+
+
+<div>
+
+<button
+class="listen-btn"
+onclick="playMusic()"
+>
+▶ Ouvir Agora
+</button>
+
+</div>
+
+</div>
+
+
+<div class="biography">
+
+<strong>“</strong>
+
+Breve biografia do artista, descrevendo o seu
+estilo, influências e trajetória no mundo da
+música. Fale sobre suas conquistas, projetos
+e o que torna este artista único.
+
+</div>
+
+
+<div class="stats">
+
+<div class="stat">
+<strong>15.2K</strong>
+<small>Ouvintes</small>
+</div>
+
+<div class="stat">
+<strong>24</strong>
+<small>Músicas lançadas</small>
+</div>
+
+<div class="stat">
+<strong>8</strong>
+<small>Anos de carreira</small>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     LETRAS
+========================= -->
+
+<section class="section container" id="letras">
+
+<div class="section-title">
+
+<h2>Letras em destaque</h2>
+
+<a href="#">
+    Ver todas →
+</a>
+
+</div>
+
+
+<div class="lyrics-box">
+
+
+<div class="lyric-item">
+
+<button
+class="lyric-title"
+onclick="toggleLyrics(this)"
+>
+
+<span>🎵 Nome da Música 1</span>
+
+<span class="plus">+</span>
+
+</button>
+
+<div class="lyric-content">
+
+<p>
 Verso inicial da música...
+</p>
 
+<p>
 Refrão marcante aqui...
+</p>
 
+<p>
 Linha final da estrofe.
-                                </p>
+</p>
 
-                            </div>
+</div>
 
-                        </details>
-
-                    </div>
-
-                    <!-- MÚSICA 2 -->
-                    <div class="item-musica">
-
-                        <details class="accordion-letra">
-
-                            <summary>
-                                Nome da Música 2
-                            </summary>
-
-                            <div class="texto-letra">
-
-                                <p>
-Letra da segunda música...
-
-Disposta linha por linha...
-
-Linha final da música.
-                                </p>
-
-                            </div>
-
-                        </details>
-
-                    </div>
-
-                </div>
-
-                <!-- COLOQUE O INSTAGRAM DO ARTISTA AQUI -->
-                <a
-                    href="#"
-                    class="btn-instagram"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Ver Instagram
-                </a>
-
-            </article>
+</div>
 
 
-            <!--
-            ==================================================
-            PARA ADICIONAR OUTRO ARTISTA:
+<div class="lyric-item">
 
-            Copie todo o <article> acima
-            e cole aqui.
+<button
+class="lyric-title"
+onclick="toggleLyrics(this)"
+>
 
-            Depois altere:
-            - Foto
-            - Nome
-            - Estilo musical
-            - Biografia
-            - Nomes das músicas
-            - Letras
-            - Link do Instagram
-            ==================================================
-            -->
+<span>🎵 Nome da Música 2</span>
 
-        </div>
+<span class="plus">+</span>
 
-    </section>
+</button>
+
+<div class="lyric-content">
+
+<p>
+Aqui podes colocar o primeiro verso
+da segunda música.
+</p>
+
+<p>
+Aqui entra o refrão da música.
+</p>
+
+<p>
+E aqui podes colocar o restante da letra.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="lyric-item">
+
+<button
+class="lyric-title"
+onclick="toggleLyrics(this)"
+>
+
+<span>🎵 Nome da Música 3</span>
+
+<span class="plus">+</span>
+
+</button>
+
+<div class="lyric-content">
+
+<p>
+Verso da terceira música...
+</p>
+
+<p>
+Refrão da terceira música...
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     OUTROS ARTISTAS
+========================= -->
+
+<section class="section container" id="artistas">
+
+<div class="section-title">
+
+<h2>Mais artistas</h2>
+
+<a href="#">
+    Ver todos →
+</a>
+
+</div>
+
+
+<div class="artists-grid">
+
+
+<div class="artist-small">
+
+<img
+src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=300&q=80"
+alt="Artista"
+>
+
+<h3>Artista 01</h3>
+
+<p>HIP-HOP / RAP</p>
+
+</div>
+
+
+<div class="artist-small">
+
+<img
+src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=300&q=80"
+alt="Artista"
+>
+
+<h3>Artista 02</h3>
+
+<p>AFROBEATS</p>
+
+</div>
+
+
+<div class="artist-small">
+
+<img
+src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80"
+alt="Artista"
+>
+
+<h3>Artista 03</h3>
+
+<p>R&B / SOUL</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     COMUNIDADE
+========================= -->
+
+<section class="section container">
+
+<div class="community">
+
+<div class="community-icon">
+    🎤
+</div>
+
+<div>
+
+<h2>Faça parte da comunidade</h2>
+
+<p>
+Apoie os artistas locais e ajude a
+fortalecer a nossa cena musical.
+</p>
+
+</div>
+
+<a
+href="#contacto"
+class="btn btn-green"
+>
+Siga-nos nas redes →
+</a>
+
+</div>
+
+</section>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer id="contacto">
+
+<div class="footer-logo">
+    🎵 NOVEDADES DOS BEATS
+</div>
+
+<p>
+    Música, artistas, letras e novidades
+    da nossa comunidade.
+</p>
+
+<div class="footer-links">
+
+<a href="#inicio">Início</a>
+
+<a href="#artista">Artistas</a>
+
+<a href="#letras">Letras</a>
+
+<a href="#">Instagram</a>
+
+<a href="#">YouTube</a>
+
+</div>
+
+<div class="copyright">
+
+© 2026 Novidades dos Beats.
+Todos os direitos reservados.
+
+</div>
+
+</footer>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+/* MENU DO TELEMÓVEL */
+
+function toggleMenu() {
+
+    const menu = document.getElementById("menu");
+
+    menu.classList.toggle("show");
+
+}
+
+
+/* FECHAR MENU AO CLICAR */
+
+document.querySelectorAll(".menu a").forEach(function(link) {
+
+    link.addEventListener("click", function() {
+
+        document.getElementById("menu").classList.remove("show");
+
+    });
+
+});
+
+
+/* LETRAS */
+
+function toggleLyrics(button) {
+
+    const content = button.nextElementSibling;
+    const symbol = button.querySelector(".plus");
+
+    content.classList.toggle("open");
+
+    if (content.classList.contains("open")) {
+
+        symbol.textContent = "−";
+
+    } else {
+
+        symbol.textContent = "+";
+
+    }
+
+}
+
+
+/* BOTÃO OUVIR */
+
+function playMusic() {
+
+    alert(
+        "🎵 O player de música será adicionado aqui. " +
+        "Depois podemos ligar este botão ao teu ficheiro MP3."
+    );
+
+}
+
+</script>
 
 </body>
     </html>
