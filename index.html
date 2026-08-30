@@ -6,400 +6,124 @@
     <title>Novidades dos Beats</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg: #000;
-            --card: #121212;
-            --text: #FFFFFF;
-            --text-gray: #b3b3b3;
-            --green: #1ed760;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             font-family: 'Poppins', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            padding-bottom: 50px;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
+            background: #000;
+            color: #fff;
+            margin: 0;
             padding: 20px;
         }
 
-        header {
-            text-align: center;
-            padding: 40px 20px;
-        }
+        .container { max-width: 800px; margin: 0 auto; text-align: center; }
 
-        header h1 {
-            font-size: 2.5rem;
+        h1 {
+            color: #1ed760;
+            font-size: 2.2rem;
             font-weight: 800;
-            color: var(--green);
             margin-bottom: 10px;
         }
 
-        header p {
-            color: var(--text-gray);
-            font-size: 1rem;
-            max-width: 500px;
-            margin: 0 auto;
-        }
+        p { color: #b3b3b3; line-height: 1.6; }
 
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: 600;
+        h2 {
+            color: #1ed760;
             margin: 40px 0 20px;
-            text-align: center;
+            font-size: 1.5rem;
         }
 
-        /* GALERIA */
+        /* GALERIA CORRIGIDA */
         .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            display: flex;
+            justify-content: center;
             gap: 15px;
+            flex-wrap: wrap;
+            margin: 20px 0;
         }
 
         .gallery-item {
-            background: var(--card);
+            background: #121212;
             border-radius: 10px;
-            overflow: hidden;
-            text-align: center;
+            padding: 10px;
+            width: 160px;
         }
 
         .gallery-item img {
             width: 100%;
-            height: 150px;
+            height: 140px;
+            border-radius: 8px;
             object-fit: cover;
-            display: block;
-        }
-
-        .gallery-item span {
-            display: block;
-            padding: 10px;
-            font-size: 0.9rem;
-            color: var(--text-gray);
         }
 
         /* FILTROS */
-        .filters {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
+        .filters { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 20px 0; }
         .filter-btn {
             background: #282828;
-            color: var(--text);
+            color: white;
             border: none;
             padding: 8px 16px;
             border-radius: 20px;
-            cursor: pointer;
             font-weight: 600;
-            transition: 0.2s;
-        }
-
-        .filter-btn:hover, .filter-btn.active {
-            background: var(--green);
-            color: #000;
         }
 
         /* CARD DO BEAT */
         .beat-card {
-            background: var(--card);
+            background: #121212;
             padding: 25px;
             border-radius: 12px;
-            text-align: center;
-            margin-bottom: 20px;
+            margin-top: 30px;
         }
 
-        .beat-card h2 { font-size: 1.5rem; margin-bottom: 5px; }
-        .beat-card p { color: var(--text-gray); margin-bottom: 20px; }
-
-        /* BOTÃO DE DOWNLOAD NOVO */
+        /* BOTÃO NOVO */
         .btn-download {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--green);
+            display: inline-block;
+            background: #1ed760;
             color: #000;
             font-weight: 800;
-            padding: 14px 30px;
+            padding: 14px 32px;
             border-radius: 50px;
             text-decoration: none;
-            font-size: 1rem;
-            transition: all 0.2s ease;
+            margin-top: 10px;
+            transition: 0.2s;
         }
-
-        .btn-download:hover {
-            transform: scale(1.05);
-            background: #1fdf64;
-        }
+        .btn-download:hover { transform: scale(1.05); }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>🎵 Novidades dos Beats</h1>
-            <p>Descobre novas músicas agressivas de Trap e melodias marcantes. Começou a produzir no seu quarto e hoje colabora com vários artistas independentes.</p>
-        </header>
+        <h1>🎵 Novidades dos Beats</h1>
+        <p>Descobre novas músicas agressivas de Trap e melodias marcantes. Começou a produzir no seu quarto e hoje colabora com vários artistas independentes.</p>
 
-        <h2 class="section-title">Galeria de Fotos</h2>
+        <h2>Galeria de Fotos</h2>
         <div class="gallery">
             <div class="gallery-item">
-                <!-- TROCA O SRC PELA TUA IMAGEM REAL -->
-                <img src="https://via.placeholder.com/300/121212/b3b3b3?text=Estudio" alt="No Estúdio">
-                <span>No Estúdio</span>
+                <img src="https://via.placeholder.com/160/121212/b3b3b3?text=Estudio" alt="No Estúdio">
+                <p>No Estúdio</p>
             </div>
             <div class="gallery-item">
-                <img src="https://via.placeholder.com/300/121212/b3b3b3?text=Live+Set" alt="Live Set">
-                <span>Live Set</span>
+                <img src="https://via.placeholder.com/160/121212/b3b3b3?text=Live" alt="Live Set">
+                <p>Live Set</p>
             </div>
             <div class="gallery-item">
-                <img src="https://via.placeholder.com/300/121212/b3b3b3?text=Backstage" alt="Backstage">
-                <span>Backstage</span>
+                <img src="https://via.placeholder.com/160/121212/b3b3b3?text=Back" alt="Backstage">
+                <p>Backstage</p>
             </div>
         </div>
 
-        <h2 class="section-title">🎧 As melhores novidades</h2>
-        <p style="text-align: center; color: var(--text-gray); margin-bottom: 20px;">Pesquisa e encontra facilmente a tua música favorita.</p>
+        <h2>🎧 As melhores novidades</h2>
+        <p>Pesquisa e encontra facilmente a tua música favorita.</p>
 
         <div class="filters">
-            <button class="filter-btn active">Todos</button>
+            <button class="filter-btn">Todos</button>
             <button class="filter-btn">🎵 Músicas</button>
             <button class="filter-btn">🔥 Beats</button>
             <button class="filter-btn">🎤 Artistas</button>
         </div>
 
         <div class="beat-card">
-            <h2>Meu Novo Beat</h2>
+            <h3>Meu Novo Beat</h3>
             <p>DJ Maestro</p>
-            <a href="./beats/beat-do-maestro.mp3" download class="btn-download">
-                ⬇️ Baixar Beat
-            </a>
+            <a href="./beats/beat.mp3" download class="btn-download">⬇️ Baixar Beat</a>
         </div>
     </div>
 </body>
-                    </html>at">
-
-            <div class="cover">
-                🎹
-            </div>
-
-            <h2>
-                Piano Beat
-            </h2>
-
-            <div class="artist">
-                Maestro Beats
-            </div>
-
-            <span class="type">
-                Beat
-            </span>
-
-            <a
-                href="pianobeat.mp3"
-                class="download"
-                download>
-                ⬇️ Baixar Beat
-            </a>
-
-        </div>
-
-
-    </div>
-
-
-    <!-- SEM RESULTADOS -->
-
-    <div
-        class="no-results"
-        id="noResults">
-
-        <div class="emoji">
-            🔍
-        </div>
-
-        <h2>
-            Nenhum resultado
-        </h2>
-
-        <p>
-            Não encontramos nenhuma música,
-            artista ou beat com essa pesquisa.
-        </p>
-
-    </div>
-
-</main>
-
-
-<!-- =========================
-     RODAPÉ
-========================= -->
-
-<footer>
-
-    <strong>Novidades dos Beats</strong>
-
-    <br>
-
-    Música • Beats • Artistas
-
-    <br>
-
-    © 2026 Todos os direitos reservados.
-
-</footer>
-
-
-<script>
-
-    const searchInput =
-        document.getElementById("searchInput");
-
-    const cards =
-        document.querySelectorAll(".music-card");
-
-    const noResults =
-        document.getElementById("noResults");
-
-    const categoryButtons =
-        document.querySelectorAll(".category");
-
-
-    let selectedCategory = "todos";
-
-
-    /* =========================
-       PESQUISA
-    ========================= */
-
-    function filterMusic() {
-
-        const search =
-            searchInput.value
-            .toLowerCase()
-            .trim();
-
-        let found = 0;
-
-
-        cards.forEach(function(card) {
-
-            const name =
-                card.dataset.name.toLowerCase();
-
-            const artist =
-                card.dataset.artist.toLowerCase();
-
-            const type =
-                card.dataset.type.toLowerCase();
-
-
-            const completeText =
-                name + " " +
-                artist + " " +
-                type;
-
-
-            const matchesSearch =
-                completeText.includes(search);
-
-
-            let matchesCategory = true;
-
-
-            if (selectedCategory !== "todos") {
-
-                matchesCategory =
-                    type === selectedCategory;
-
-            }
-
-
-            if (
-                matchesSearch &&
-                matchesCategory
-            ) {
-
-                card.style.display = "";
-
-                found++;
-
-            } else {
-
-                card.style.display = "none";
-
-            }
-
-        });
-
-
-        if (found === 0) {
-
-            noResults.style.display = "block";
-
-        } else {
-
-            noResults.style.display = "none";
-
-        }
-
-    }
-
-
-    /* =========================
-       DIGITAR NA PESQUISA
-    ========================= */
-
-    searchInput.addEventListener(
-        "input",
-        filterMusic
-    );
-
-
-    /* =========================
-       CATEGORIAS
-    ========================= */
-
-    categoryButtons.forEach(function(button) {
-
-        button.addEventListener(
-            "click",
-            function() {
-
-                categoryButtons.forEach(
-                    function(btn) {
-
-                        btn.classList.remove(
-                            "active"
-                        );
-
-                    }
-                );
-
-
-                this.classList.add("active");
-
-
-                selectedCategory =
-                    this.dataset.category;
-
-
-                filterMusic();
-
-            }
-        );
-
-    });
-
-</script>
-
-</body>
-        </html>
+            </html>
