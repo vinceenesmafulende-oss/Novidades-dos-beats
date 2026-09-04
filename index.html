@@ -4,13 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Novidades dos Beats</title>
+<title>Novidades dos Beats - Artistas</title>
 
 <style>
-
-/* =====================================================
-   CONFIGURAÇÕES GERAIS
-===================================================== */
 
 *{
     margin:0;
@@ -24,644 +20,1140 @@ html{
 
 body{
     font-family:Arial,Helvetica,sans-serif;
-    background:#000;
+    background:#050505;
     color:#fff;
-    overflow-x:hidden;
+    min-height:100vh;
 }
 
-button,
-input{
-    font-family:inherit;
-}
-
-
-/* =====================================================
-   CABEÇALHO
-===================================================== */
+/* ================= HEADER ================= */
 
 header{
-    width:100%;
-    padding:55px 20px 45px;
-    text-align:center;
-
-    background:
-        radial-gradient(
-            circle at top,
-            rgba(30,215,96,.20),
-            transparent 45%
-        ),
-        #000;
-
-    border-bottom:1px solid #1d1d1d;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(5,5,5,.96);
+    border-bottom:1px solid #202020;
+    padding:14px 5%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
 }
 
 .logo{
-    font-size:38px;
-    font-weight:900;
-    color:#1ed760;
-    margin-bottom:12px;
-
-    text-shadow:
-        0 0 15px rgba(30,215,96,.35);
-}
-
-.subtitle{
-    color:#999;
-    font-size:16px;
-    margin-bottom:32px;
-}
-
-
-/* =====================================================
-   PESQUISA
-===================================================== */
-
-.search-box{
-    position:relative;
-    width:100%;
-    max-width:760px;
-    margin:auto;
-}
-
-.search-box input{
-    width:100%;
-    height:62px;
-
-    padding:0 65px 0 25px;
-
-    border-radius:35px;
-    border:2px solid #252525;
-
-    background:#111;
-    color:#fff;
-
-    font-size:16px;
-    outline:none;
-
-    transition:.3s;
-}
-
-.search-box input::placeholder{
-    color:#666;
-}
-
-.search-box input:focus{
-    border-color:#1ed760;
-
-    box-shadow:
-        0 0 30px rgba(30,215,96,.15);
-}
-
-.search-icon{
-    position:absolute;
-    right:23px;
-    top:50%;
-
-    transform:translateY(-50%);
-
-    font-size:23px;
-    pointer-events:none;
-}
-
-
-/* =====================================================
-   MENU PRINCIPAL
-===================================================== */
-
-.main-menu{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:12px;
-    padding:18px 20px;
-    background:#080808;
-    border-bottom:1px solid #1d1d1d;
-}
-
-.menu-link{
-    color:#aaa;
-    text-decoration:none;
-    font-size:14px;
+    font-size:22px;
     font-weight:bold;
-    padding:11px 18px;
+    color:#1ed760;
+    white-space:nowrap;
+}
+
+nav{
+    display:flex;
+    gap:20px;
+}
+
+nav a{
+    color:#ddd;
+    text-decoration:none;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+nav a:hover{
+    color:#1ed760;
+}
+
+/* ================= SEARCH ================= */
+
+.search{
+    flex:1;
+    max-width:430px;
+}
+
+.search input{
+    width:100%;
+    background:#181818;
+    border:1px solid #303030;
     border-radius:25px;
-    transition:.3s;
+    padding:12px 18px;
+    color:#fff;
+    outline:none;
 }
 
-.menu-link:hover,
-.menu-link.active{
-    color:#000;
-    background:#1ed760;
+.search input:focus{
+    border-color:#1ed760;
 }
 
-
-/* =====================================================
-   CONTEÚDO
-===================================================== */
+/* ================= MAIN ================= */
 
 main{
-    width:100%;
-    max-width:1250px;
+    width:90%;
+    max-width:1200px;
     margin:auto;
-    padding:45px 20px 70px;
 }
 
-
-/* =====================================================
-   BOAS-VINDAS
-===================================================== */
-
-.welcome{
-    text-align:center;
-    margin-bottom:30px;
+.section{
+    padding:45px 0;
 }
 
-.welcome h1{
-    font-size:32px;
-    margin-bottom:10px;
-}
-
-.welcome h1 span{
-    color:#1ed760;
-}
-
-.welcome p{
-    color:#777;
-}
-
-
-/* =====================================================
-   CATEGORIAS
-===================================================== */
-
-.categories{
+.section-title{
     display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:12px;
-    margin-bottom:40px;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
 }
 
-.category{
-    border:1px solid #292929;
-
-    background:#101010;
-    color:#bbb;
-
-    padding:12px 21px;
-
-    border-radius:30px;
-
-    cursor:pointer;
-
-    font-size:14px;
-    font-weight:bold;
-
-    transition:.3s;
+.section-title h2{
+    font-size:28px;
 }
 
-.category:hover{
-    border-color:#1ed760;
-    color:#fff;
-    transform:translateY(-2px);
-}
+/* ================= HERO ================= */
 
-.category.active{
-    background:#1ed760;
-    color:#000;
-    border-color:#1ed760;
-
-    box-shadow:
-        0 8px 25px rgba(30,215,96,.15);
-}
-
-
-/* =====================================================
-   GRID DE MÚSICAS
-===================================================== */
-
-.music-grid{
-    display:grid;
-
-    grid-template-columns:
-        repeat(auto-fit,minmax(260px,1fr));
-
-    gap:25px;
-}
-
-
-/* =====================================================
-   CARD DE MÚSICA
-===================================================== */
-
-.music-card{
-    position:relative;
-
-    background:
-        linear-gradient(
-            145deg,
-            #111,
-            #070707
-        );
-
-    border:1px solid #222;
-
-    border-radius:24px;
-
-    padding:18px;
-
-    overflow:hidden;
-
-    transition:.35s;
-}
-
-.music-card:hover{
-    transform:translateY(-8px);
-
-    border-color:#1ed760;
-
-    box-shadow:
-        0 20px 45px rgba(0,0,0,.7);
-}
-
-
-/* =====================================================
-   CAPA
-===================================================== */
-
-.cover{
-    width:100%;
-    aspect-ratio:1/1;
-
-    border-radius:18px;
-
-    overflow:hidden;
-
-    margin-bottom:18px;
-
+.hero{
+    margin-top:30px;
+    min-height:300px;
+    border-radius:22px;
+    padding:45px;
     display:flex;
     align-items:center;
-    justify-content:center;
-
     background:
-        linear-gradient(
-            135deg,
-            #1ed760,
-            #064c25
-        );
-
-    font-size:70px;
-
-    position:relative;
+        linear-gradient(90deg,rgba(0,0,0,.9),rgba(0,0,0,.3)),
+        url("hero.jpg") center/cover;
 }
 
-.cover::after{
-    content:"▶";
-
-    position:absolute;
-
-    width:55px;
-    height:55px;
-
-    border-radius:50%;
-
-    background:rgba(0,0,0,.75);
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    font-size:20px;
-
-    opacity:0;
-
-    transform:scale(.7);
-
-    transition:.3s;
+.hero-content{
+    max-width:600px;
 }
 
-.music-card:hover .cover::after{
-    opacity:1;
-    transform:scale(1);
-}
-
-.cover img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-
-/* =====================================================
-   INFORMAÇÕES
-===================================================== */
-
-.music-card h2{
-    font-size:20px;
-    margin-bottom:7px;
-}
-
-.artist{
-    color:#1ed760;
-
-    font-size:14px;
-    font-weight:bold;
-
-    margin-bottom:12px;
-}
-
-.type{
-    display:inline-block;
-
-    background:#1b1b1b;
-
-    color:#999;
-
-    padding:6px 12px;
-
-    border-radius:20px;
-
-    font-size:11px;
-    font-weight:bold;
-
+.hero h1{
+    font-size:46px;
     margin-bottom:15px;
 }
 
-
-/* =====================================================
-   PLAYER
-===================================================== */
-
-audio{
-    width:100%;
-    height:42px;
-    margin-bottom:13px;
+.hero p{
+    color:#ccc;
+    font-size:18px;
+    line-height:1.6;
 }
 
-
-/* =====================================================
-   DOWNLOAD
-===================================================== */
-
-.download{
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    gap:8px;
-
-    width:100%;
-
-    padding:13px;
-
-    border-radius:30px;
-
+.btn{
+    display:inline-block;
+    margin-top:22px;
+    padding:13px 24px;
+    border:none;
+    border-radius:25px;
     background:#1ed760;
     color:#000;
-
+    font-weight:bold;
+    cursor:pointer;
     text-decoration:none;
+}
 
-    font-weight:900;
+.btn:hover{
+    transform:scale(1.03);
+}
 
-    transition:.3s;
+/* ================= ARTISTS GRID ================= */
+
+.artists-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:22px;
+}
+
+.artist-card{
+    background:#111;
+    border-radius:15px;
+    padding:18px;
+    cursor:pointer;
+    transition:.25s;
+    border:1px solid #202020;
+}
+
+.artist-card:hover{
+    transform:translateY(-5px);
+    background:#181818;
+    border-color:#1ed760;
+}
+
+.artist-card img{
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    border-radius:50%;
+    margin-bottom:15px;
+}
+
+.artist-card h3{
+    font-size:19px;
+    margin-bottom:6px;
+}
+
+.artist-card p{
+    color:#888;
+    font-size:14px;
+}
+
+/* ================= PROFILE ================= */
+
+#artistProfile{
+    display:none;
+}
+
+.profile{
+    background:#111;
+    border-radius:22px;
+    overflow:hidden;
+    border:1px solid #222;
+}
+
+.profile-cover{
+    min-height:230px;
+    background:
+        linear-gradient(0deg,#111,transparent),
+        linear-gradient(90deg,#111,transparent),
+        url("hero.jpg") center/cover;
+    display:flex;
+    align-items:end;
+    padding:35px;
+}
+
+.profile-info{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+.profile-image{
+    width:150px;
+    height:150px;
+    object-fit:cover;
+    border-radius:50%;
+    border:4px solid #1ed760;
+}
+
+.profile-text h1{
+    font-size:40px;
+    margin-bottom:8px;
+}
+
+.verified{
+    color:#1ed760;
+}
+
+.profile-text p{
+    color:#aaa;
+}
+
+.profile-body{
+    padding:30px;
+}
+
+.bio{
+    color:#ccc;
+    line-height:1.7;
+    margin-bottom:25px;
+}
+
+.stats{
+    display:flex;
+    gap:30px;
+    margin-bottom:30px;
+}
+
+.stat strong{
+    display:block;
+    font-size:22px;
+}
+
+.stat span{
+    color:#888;
+    font-size:13px;
+}
+
+/* ================= SONGS ================= */
+
+.song-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.song{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:12px;
+    border-radius:12px;
+    background:#181818;
+}
+
+.song:hover{
+    background:#222;
+}
+
+.song img{
+    width:55px;
+    height:55px;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+.song-info{
+    flex:1;
+}
+
+.song-info h4{
+    margin-bottom:5px;
+}
+
+.song-info p{
+    color:#888;
+    font-size:13px;
+}
+
+.play{
+    width:45px;
+    height:45px;
+    border:none;
+    border-radius:50%;
+    background:#1ed760;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.download{
+    background:#252525;
+    color:#fff;
+    border:none;
+    border-radius:20px;
+    padding:9px 14px;
+    cursor:pointer;
 }
 
 .download:hover{
-    background:#20e766;
-    transform:scale(1.02);
+    background:#1ed760;
+    color:#000;
 }
 
+/* ================= FORM ================= */
+
+.form-container{
+    max-width:700px;
+    margin:auto;
+    background:#111;
+    padding:30px;
+    border-radius:20px;
+    border:1px solid #222;
+}
+
+.form-group{
+    margin-bottom:18px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:bold;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+    width:100%;
+    padding:13px;
+    background:#181818;
+    color:#fff;
+    border:1px solid #333;
+    border-radius:10px;
+    outline:none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+    border-color:#1ed760;
+}
+
+textarea{
+    min-height:120px;
+    resize:vertical;
+}
+
+.help{
+    color:#888;
+    font-size:13px;
+    margin-top:7px;
+}
+
+/* ================= EMPTY ================= */
+
+.empty{
+    text-align:center;
+    padding:40px;
+    color:#888;
+}
+
+/* ================= PLAYER ================= */
+
+.player{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    z-index:2000;
+    background:#151515;
+    border-top:1px solid #333;
+    padding:10px 5%;
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.player-info{
+    flex:1;
+}
+
+.player-info strong{
+    display:block;
+}
+
+.player-info span{
+    color:#888;
+    font-size:13px;
+}
+
+audio{
+    max-width:400px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    text-align:center;
+    padding:60px 20px 100px;
+    color:#777;
+}
+
+footer strong{
+    color:#1ed760;
+}
+
+/* ================= MODAL ================= */
+
+.message{
+    position:fixed;
+    top:80px;
+    right:20px;
+    z-index:3000;
+    background:#1ed760;
+    color:#000;
+    padding:14px 20px;
+    border-radius:10px;
+    display:none;
+    font-weight:bold;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:700px){
+
+    header{
+        flex-wrap:wrap;
+    }
+
+    nav{
+        order:3;
+        width:100%;
+        justify-content:center;
+    }
+
+    .search{
+        order:2;
+        width:100%;
+        max-width:none;
+    }
+
+    .hero{
+        padding:30px 22px;
+        min-height:280px;
+    }
+
+    .hero h1{
+        font-size:34px;
+    }
+
+    .profile-cover{
+        padding:25px 20px;
+    }
+
+    .profile-info{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .profile-image{
+        width:120px;
+        height:120px;
+    }
+
+    .profile-text h1{
+        font-size:30px;
+    }
+
+    .song{
+        flex-wrap:wrap;
+    }
+
+    .download{
+        margin-left:auto;
+    }
+
+    .player{
+        flex-wrap:wrap;
+    }
+
+    audio{
+        width:100%;
+        max-width:none;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        🎧 Novidades dos Beats
+    </div>
+
+    <nav>
+        <a onclick="showHome()">Início</a>
+        <a onclick="showArtists()">Artistas</a>
+        <a onclick="showAddArtist()">Adicionar artista</a>
+    </nav>
+
+    <div class="search">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔎 Procurar artista..."
+            oninput="searchArtists()"
+        >
+    </div>
+
+</header>
+
+
+<main>
+
+<!-- ================= INÍCIO ================= -->
+
+<section id="homePage">
+
+    <div class="hero">
+
+        <div class="hero-content">
+
+            <h1>Descobre novos artistas 🎤</h1>
+
+            <p>
+                Encontra artistas, músicas e novos talentos
+                no Novidades dos Beats.
+            </p>
+
+            <button class="btn" onclick="showArtists()">
+                Explorar artistas
+            </button>
+
+        </div>
+
+    </div>
+
+    <section class="section">
+
+        <div class="section-title">
+            <h2>🔥 Artistas em destaque</h2>
+        </div>
+
+        <div class="artists-grid" id="featuredArtists"></div>
+
+    </section>
+
+</section>
+
+
+<!-- ================= ARTISTAS ================= -->
+
+<section id="artistsPage" class="section" style="display:none">
+
+    <div class="section-title">
+        <h2>🎤 Todos os artistas</h2>
+
+        <button class="btn" onclick="showAddArtist()">
+            + Adicionar artista
+        </button>
+    </div>
+
+    <div class="artists-grid" id="artistsGrid"></div>
+
+</section>
+
+
+<!-- ================= PERFIL ================= -->
+
+<section id="artistProfile" class="section">
+
+    <div class="profile">
+
+        <div class="profile-cover">
+
+            <div class="profile-info">
+
+                <img
+                    id="profileImage"
+                    class="profile-image"
+                    src=""
+                    alt="Artista"
+                >
+
+                <div class="profile-text">
+
+                    <h1>
+                        <span id="profileName"></span>
+                        <span class="verified">✓</span>
+                    </h1>
+
+                    <p id="profileGenre"></p>
+
+                    <button
+                        class="btn"
+                        id="followButton"
+                        onclick="followArtist()"
+                    >
+                        ❤️ Seguir
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="profile-body">
+
+            <p class="bio" id="profileBio"></p>
+
+            <div class="stats">
+
+                <div class="stat">
+                    <strong id="profileSongs">0</strong>
+                    <span>Músicas</span>
+                </div>
+
+                <div class="stat">
+                    <strong id="profileDownloads">0</strong>
+                    <span>Downloads</span>
+                </div>
+
+                <div class="stat">
+                    <strong id="profileFollowers">0</strong>
+                    <span>Seguidores</span>
+                </div>
+
+            </div>
+
+            <h2 style="margin-bottom:20px;">
+                🎵 Músicas
+            </h2>
+
+            <div class="song-list" id="profileSongsList"></div>
+
+            <button class="btn" onclick="showArtists()">
+                ← Voltar aos artistas
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ADICIONAR ARTISTA ================= -->
+
+<section id="addArtistPage" class="section" style="display:none">
+
+    <div class="section-title">
+        <h2>➕ Adicionar novo artista</h2>
+    </div>
+
+    <div class="form-container">
+
+        <form id="artistForm">
+
+            <div class="form-group">
+
+                <label>Nome artístico</label>
+
+                <input
+                    type="text"
+                    id="artistName"
+                    placeholder="Ex: DJ Vince"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Género musical</label>
+
+                <select id="artistGenre" required>
+
+                    <option value="">
+                        Escolha o género
+                    </option>
+
+                    <option>Amapiano</option>
+                    <option>Kizomba</option>
+                    <option>Afrobeat</option>
+                    <option>R&B</option>
+                    <option>Hip-Hop</option>
+                    <option>Gospel</option>
+                    <option>Dance</option>
+                    <option>Outro</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Foto do artista</label>
+
+                <input
+                    type="file"
+                    id="artistImage"
+                    accept="image/*"
+                    required
+                >
+
+                <div class="help">
+                    Escolha uma foto da galeria do seu telefone.
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Biografia</label>
+
+                <textarea
+                    id="artistBio"
+                    placeholder="Escreva uma pequena biografia..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Nome da primeira música</label>
+
+                <input
+                    type="text"
+                    id="songName"
+                    placeholder="Ex: Meu Amor"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Arquivo da música</label>
+
+                <input
+                    type="file"
+                    id="songFile"
+                    accept="audio/*"
+                >
+
+                <div class="help">
+                    Pode selecionar uma música do seu telefone.
+                </div>
+
+            </div>
+
+
+            <button class="btn" type="submit">
+                🎤 Cadastrar artista
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- ================= PLAYER ================= -->
+
+<div class="player">
+
+    <div class="player-info">
+
+        <strong id="playerTitle">
+            Nenhuma música selecionada
+        </strong>
+
+        <span id="playerArtist">
+            Novidades dos Beats
+        </span>
+
+    </div>
+
+    <audio id="audioPlayer" controls></audio>
+
+</div>
+
+
+<footer>
+
+    <strong>Novidades dos Beats</strong>
+
+    <br><br>
+
+    Descobre. Ouve. Partilha. Baixa.
+
+    <br><br>
+
+    © 2026 Novidades dos Beats
+
+</footer>
+
+
+<div class="message" id="message"></div>
+
+
+<script>
 
 /* =====================================================
    ARTISTAS
 ===================================================== */
 
-.artists-section{
-    margin-bottom:40px;
-}
+let artists = [
 
-.artist-profile{
-    background:
-        linear-gradient(
-            145deg,
-            #111,
-            #060606
-        );
+    {
+        id:1,
 
-    border:1px solid #242424;
+        name:"DJ Vince",
 
-    border-radius:25px;
+        genre:"Amapiano / Afrobeat",
 
-    padding:25px;
+        image:"artista.jpg",
 
-    margin-bottom:30px;
+        bio:"DJ e produtor musical apaixonado por novos sons africanos e pela divulgação de talentos.",
 
-    transition:.3s;
-}
+        followers:1250,
 
-.artist-profile:hover{
-    border-color:#1ed760;
-}
+        songs:[
+            {
+                title:"Amapiano Beat",
+                file:"beat1.mp3",
+                cover:"capa1.jpg",
+                downloads:120
+            }
+        ]
+    },
 
-.artist-header-box{
-    display:flex;
-    align-items:center;
 
-    gap:22px;
+    {
+        id:2,
 
-    margin-bottom:25px;
-}
+        name:"Silva Bregas",
 
-.artist-avatar-wrapper{
-    width:115px;
-    height:115px;
+        genre:"Kizomba / R&B",
 
-    flex-shrink:0;
+        image:"artista2.jpg",
 
-    border-radius:50%;
+        bio:"Artista moçambicano com uma sonoridade romântica e influências da música africana.",
 
-    overflow:hidden;
+        followers:870,
 
-    border:3px solid #1ed760;
+        songs:[
+            {
+                title:"Meu Amor",
+                file:"musica1.mp3",
+                cover:"capa2.jpg",
+                downloads:250
+            }
+        ]
+    },
 
-    box-shadow:
-        0 0 30px rgba(30,215,96,.15);
-}
 
-.artist-avatar{
-    width:100%;
-    height:100%;
+    {
+        id:3,
 
-    object-fit:cover;
-}
+        name:"DJ Drop",
 
-.badge-verified{
-    display:inline-block;
+        genre:"Afro House",
 
-    color:#1ed760;
+        image:"artista3.jpg",
 
-    font-size:12px;
-    font-weight:bold;
+        bio:"DJ e produtor focado em Afro House, Amapiano e sons eletrónicos africanos.",
 
-    margin-bottom:5px;
-}
+        followers:630,
 
-.artist-name{
-    font-size:30px;
-    margin-bottom:5px;
-}
+        songs:[
+            {
+                title:"African Vibes",
+                file:"musica2.mp3",
+                cover:"capa3.jpg",
+                downloads:180
+            }
+        ]
+    }
 
-.artist-genres{
-    color:#888;
-}
+];
 
-.artist-bio{
-    padding:20px;
 
-    background:#090909;
+/* =====================================================
+   CARREGAR ARTISTAS GUARDADOS
+===================================================== */
 
-    border-radius:18px;
+let savedArtists =
+    JSON.parse(localStorage.getItem("novidades_artists")) || [];
 
-    margin-bottom:25px;
-}
+artists = artists.concat(savedArtists);
 
-.artist-bio h3,
-.artist-gallery h3{
-    color:#1ed760;
-    margin-bottom:10px;
-}
 
-.artist-bio p{
-    color:#aaa;
-    line-height:1.7;
+/* =====================================================
+   ELEMENTOS
+===================================================== */
+
+const homePage =
+    document.getElementById("homePage");
+
+const artistsPage =
+    document.getElementById("artistsPage");
+
+const artistProfile =
+    document.getElementById("artistProfile");
+
+const addArtistPage =
+    document.getElementById("addArtistPage");
+
+
+/* =====================================================
+   MOSTRAR ARTISTAS
+===================================================== */
+
+function renderArtists(){
+
+    const grid =
+        document.getElementById("artistsGrid");
+
+    const featured =
+        document.getElementById("featuredArtists");
+
+    grid.innerHTML = "";
+
+    featured.innerHTML = "";
+
+
+    artists.forEach((artist,index)=>{
+
+        const card = document.createElement("div");
+
+        card.className = "artist-card";
+
+        card.innerHTML = `
+
+            <img
+                src="${artist.image}"
+                onerror="this.src='artista.jpg'"
+            >
+
+            <h3>${artist.name}</h3>
+
+            <p>${artist.genre}</p>
+
+        `;
+
+        card.onclick = function(){
+
+            openArtist(artist.id);
+
+        };
+
+
+        grid.appendChild(card);
+
+
+        /* primeiros 4 como destaque */
+
+        if(index < 4){
+
+            const featuredCard =
+                card.cloneNode(true);
+
+            featuredCard.onclick =
+                function(){
+
+                    openArtist(artist.id);
+
+                };
+
+            featured.appendChild(featuredCard);
+
+        }
+
+    });
+
 }
 
 
 /* =====================================================
-   GALERIA
+   PÁGINA INICIAL
 ===================================================== */
 
-.gallery-grid{
-    display:grid;
+function showHome(){
 
-    grid-template-columns:
-        repeat(3,1fr);
+    homePage.style.display = "block";
 
-    gap:15px;
-}
+    artistsPage.style.display = "none";
 
-.gallery-photo{
-    height:190px;
+    artistProfile.style.display = "none";
 
-    border-radius:16px;
+    addArtistPage.style.display = "none";
 
-    overflow:hidden;
+    window.scrollTo(0,0);
 
-    position:relative;
-
-    background:#111;
-}
-
-.gallery-photo img{
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-
-    transition:.4s;
-}
-
-.gallery-photo:hover img{
-    transform:scale(1.08);
-}
-
-.photo-tag{
-    position:absolute;
-
-    bottom:0;
-    left:0;
-
-    width:100%;
-
-    padding:10px;
-
-    background:
-        linear-gradient(
-            transparent,
-            rgba(0,0,0,.9)
-        );
-
-    color:#fff;
-
-    font-size:12px;
 }
 
 
 /* =====================================================
-   ÁLBUNS E PLAYLISTS
+   PÁGINA ARTISTAS
 ===================================================== */
 
-.collection-section{
-    margin:55px 0 40px;
+function showArtists(){
+
+    homePage.style.display = "none";
+
+    artistsPage.style.display = "block";
+
+    artistProfile.style.display = "none";
+
+    addArtistPage.style.display = "none";
+
+    renderArtists();
+
+    window.scrollTo(0,0);
+
 }
 
-.section-title{
-    font-size:28px;
-    margin-bottom:8px;
+
+/* =====================================================
+   ADICIONAR ARTISTA
+===================================================== */
+
+function showAddArtist(){
+
+    homePage.style.display = "none";
+
+    artistsPage.style.display = "none";
+
+    artistProfile.style.display = "none";
+
+    addArtistPage.style.display = "block";
+
+    window.scrollTo(0,0);
+
 }
 
-.section-description{
-    color:#777;
-    margin-bottom:25px;
-}
 
-.collection-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-    gap:22px;
-}
+/* =====================================================
+   ABRIR PERFIL
+===================================================== */
 
-.collection-card{
-    background:linear-gradient(145deg,#111,#070707);
-    border:1px solid #222;
-    border-radius:22px;
-    padding:18px;
-    transition:.35s;
-}
+let currentArtist = null;
 
-.collection-card:hover{
-    transform:translateY(-7px);
-    border-color:#1ed760;
-    box-shadow:0 18px 40px rgba(0,0,0,.65);
-}
+function openArtist(id){
 
-.collection-cover{
-    width:100%;
-    aspect-ratio:1/1;
-    border-radius:17px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:58px;
-    margin-bottom:16px;
-    background:linear-gradient(135deg,#1ed760,#064c25);
-}
+    const artist =
+        artists.find(a => a.id == id);
 
-.collection-card:nth-child(2) .collection-cover{
-    background:linear-gradient(135deg,#8b5cf6,#241044);
-}
+    if(!artist) return;
 
-.collection-card:nth-child(3) .collection-cover{
-    background:linear-gradient(135deg,#f97316,#5b1d05);
-}
+    currentArtist = artist;
 
-.collection-card h3{
-    font-size:19px;
-    margin-bottom:7px;
-}
 
-.collection-card p{
+    homePage.style.display = "none";
+
+    artistsPage.style.display = "none";
+
+    addArtistPage.style.display = "none";
+
+    artistProfile.style.display = "block";
+
+
+    document.getElementById("profileImage").src =
+        artist.image;
+
+    document.getElementById("profileName").textContent =
+        artist.name;
+
+    document.getElementById("profileGenre").textContent =
+        artist.genre;
+
+    document.getElementById("profileBio").textContent =
+        artist.bio;
+
+    document.getElementById("profileSongs").textContent =
+        artist.songs.length;
+
+    document.getElementById("profileFollowers").textContent =
+        artist.followers;
+
+
+    let totalDownloads = 0;
+
+    artist.songs.forEach(song => {
+
+        totalDownloads +=
+            Number(song.downloads || 0);
+
+    });
+
+
+    document.getElementById("profileDownloads").textContent =
+        totalDownloads;
+
+
+    const songsList =
+        document.getElementById("profileSongsList");
+
+    songsList.innerHTML = "";
+
+
+    artist.songs.forEach((song,index)=>{
+
+        const item =
+            document.createElement("div");
+
+  lection-card p{
     color:#888;
     font-size:14px;
     margin-bottom:16px;
