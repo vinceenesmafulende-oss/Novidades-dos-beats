@@ -1,650 +1,214 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-PT">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Novidades dos Beats - Artistas</title>
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#050505;
-    color:#fff;
-    min-height:100vh;
-}
-
-/* ================= HEADER ================= */
-
-header{
-    position:sticky;
-    top:0;
-    z-index:1000;
-    background:rgba(5,5,5,.96);
-    border-bottom:1px solid #202020;
-    padding:14px 5%;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
-}
-
-.logo{
-    font-size:22px;
-    font-weight:bold;
-    color:#1ed760;
-    white-space:nowrap;
-}
-
-nav{
-    display:flex;
-    gap:20px;
-}
-
-nav a{
-    color:#ddd;
-    text-decoration:none;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-nav a:hover{
-    color:#1ed760;
-}
-
-/* ================= SEARCH ================= */
-
-.search{
-    flex:1;
-    max-width:430px;
-}
-
-.search input{
-    width:100%;
-    background:#181818;
-    border:1px solid #303030;
-    border-radius:25px;
-    padding:12px 18px;
-    color:#fff;
-    outline:none;
-}
-
-.search input:focus{
-    border-color:#1ed760;
-}
-
-/* ================= MAIN ================= */
-
-main{
-    width:90%;
-    max-width:1200px;
-    margin:auto;
-}
-
-.section{
-    padding:45px 0;
-}
-
-.section-title{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:25px;
-}
-
-.section-title h2{
-    font-size:28px;
-}
-
-/* ================= HERO ================= */
-
-.hero{
-    margin-top:30px;
-    min-height:300px;
-    border-radius:22px;
-    padding:45px;
-    display:flex;
-    align-items:center;
-    background:
-        linear-gradient(90deg,rgba(0,0,0,.9),rgba(0,0,0,.3)),
-        url("hero.jpg") center/cover;
-}
-
-.hero-content{
-    max-width:600px;
-}
-
-.hero h1{
-    font-size:46px;
-    margin-bottom:15px;
-}
-
-.hero p{
-    color:#ccc;
-    font-size:18px;
-    line-height:1.6;
-}
-
-.btn{
-    display:inline-block;
-    margin-top:22px;
-    padding:13px 24px;
-    border:none;
-    border-radius:25px;
-    background:#1ed760;
-    color:#000;
-    font-weight:bold;
-    cursor:pointer;
-    text-decoration:none;
-}
-
-.btn:hover{
-    transform:scale(1.03);
-}
-
-/* ================= ARTISTS GRID ================= */
-
-.artists-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:22px;
-}
-
-.artist-card{
-    background:#111;
-    border-radius:15px;
-    padding:18px;
-    cursor:pointer;
-    transition:.25s;
-    border:1px solid #202020;
-}
-
-.artist-card:hover{
-    transform:translateY(-5px);
-    background:#181818;
-    border-color:#1ed760;
-}
-
-.artist-card img{
-    width:100%;
-    aspect-ratio:1/1;
-    object-fit:cover;
-    border-radius:50%;
-    margin-bottom:15px;
-}
-
-.artist-card h3{
-    font-size:19px;
-    margin-bottom:6px;
-}
-
-.artist-card p{
-    color:#888;
-    font-size:14px;
-}
-
-/* ================= PROFILE ================= */
-
-#artistProfile{
-    display:none;
-}
-
-.profile{
-    background:#111;
-    border-radius:22px;
-    overflow:hidden;
-    border:1px solid #222;
-}
-
-.profile-cover{
-    min-height:230px;
-    background:
-        linear-gradient(0deg,#111,transparent),
-        linear-gradient(90deg,#111,transparent),
-        url("hero.jpg") center/cover;
-    display:flex;
-    align-items:end;
-    padding:35px;
-}
-
-.profile-info{
-    display:flex;
-    align-items:center;
-    gap:25px;
-}
-
-.profile-image{
-    width:150px;
-    height:150px;
-    object-fit:cover;
-    border-radius:50%;
-    border:4px solid #1ed760;
-}
-
-.profile-text h1{
-    font-size:40px;
-    margin-bottom:8px;
-}
-
-.verified{
-    color:#1ed760;
-}
-
-.profile-text p{
-    color:#aaa;
-}
-
-.profile-body{
-    padding:30px;
-}
-
-.bio{
-    color:#ccc;
-    line-height:1.7;
-    margin-bottom:25px;
-}
-
-.stats{
-    display:flex;
-    gap:30px;
-    margin-bottom:30px;
-}
-
-.stat strong{
-    display:block;
-    font-size:22px;
-}
-
-.stat span{
-    color:#888;
-    font-size:13px;
-}
-
-/* ================= SONGS ================= */
-
-.song-list{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-}
-
-.song{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    padding:12px;
-    border-radius:12px;
-    background:#181818;
-}
-
-.song:hover{
-    background:#222;
-}
-
-.song img{
-    width:55px;
-    height:55px;
-    object-fit:cover;
-    border-radius:8px;
-}
-
-.song-info{
-    flex:1;
-}
-
-.song-info h4{
-    margin-bottom:5px;
-}
-
-.song-info p{
-    color:#888;
-    font-size:13px;
-}
-
-.play{
-    width:45px;
-    height:45px;
-    border:none;
-    border-radius:50%;
-    background:#1ed760;
-    cursor:pointer;
-    font-size:18px;
-}
-
-.download{
-    background:#252525;
-    color:#fff;
-    border:none;
-    border-radius:20px;
-    padding:9px 14px;
-    cursor:pointer;
-}
-
-.download:hover{
-    background:#1ed760;
-    color:#000;
-}
-
-/* ================= FORM ================= */
-
-.form-container{
-    max-width:700px;
-    margin:auto;
-    background:#111;
-    padding:30px;
-    border-radius:20px;
-    border:1px solid #222;
-}
-
-.form-group{
-    margin-bottom:18px;
-}
-
-.form-group label{
-    display:block;
-    margin-bottom:8px;
-    font-weight:bold;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select{
-    width:100%;
-    padding:13px;
-    background:#181818;
-    color:#fff;
-    border:1px solid #333;
-    border-radius:10px;
-    outline:none;
-}
-
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus{
-    border-color:#1ed760;
-}
-
-textarea{
-    min-height:120px;
-    resize:vertical;
-}
-
-.help{
-    color:#888;
-    font-size:13px;
-    margin-top:7px;
-}
-
-/* ================= EMPTY ================= */
-
-.empty{
-    text-align:center;
-    padding:40px;
-    color:#888;
-}
-
-/* ================= PLAYER ================= */
-
-.player{
-    position:fixed;
-    bottom:0;
-    left:0;
-    right:0;
-    z-index:2000;
-    background:#151515;
-    border-top:1px solid #333;
-    padding:10px 5%;
-    display:flex;
-    align-items:center;
-    gap:15px;
-}
-
-.player-info{
-    flex:1;
-}
-
-.player-info strong{
-    display:block;
-}
-
-.player-info span{
-    color:#888;
-    font-size:13px;
-}
-
-audio{
-    max-width:400px;
-}
-
-/* ================= FOOTER ================= */
-
-footer{
-    text-align:center;
-    padding:60px 20px 100px;
-    color:#777;
-}
-
-footer strong{
-    color:#1ed760;
-}
-
-/* ================= MODAL ================= */
-
-.message{
-    position:fixed;
-    top:80px;
-    right:20px;
-    z-index:3000;
-    background:#1ed760;
-    color:#000;
-    padding:14px 20px;
-    border-radius:10px;
-    display:none;
-    font-weight:bold;
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:700px){
-
-    header{
-        flex-wrap:wrap;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Novidades dos Beats</title>
+  <style>
+    /* 1. RESET E CONFIGURAÇÕES GERAIS */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000000;
+      color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      /* Espaço no fundo para o player fixo não cobrir o conteúdo ao rolar */
+      padding-bottom: 120px; 
     }
 
-    nav{
-        order:3;
-        width:100%;
-        justify-content:center;
+    /* 2. CONTAINER DE CONTEÚDO (Garante o alinhamento e o respiro nas bordas) */
+    .container {
+      padding: 0 24px;
+      box-sizing: border-box;
+      max-width: 600px; /* Mantém o visual compacto ideal para telas mobile */
+      margin: 0 auto;
     }
 
-    .search{
-        order:2;
-        width:100%;
-        max-width:none;
+    /* 3. MENU SUPERIOR */
+    header {
+      padding: 20px 0;
+    }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #00ff66; /* Tom verde Beats */
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+    nav a {
+      color: #a7a7a7; /* Páginas secundárias em cinza */
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      transition: color 0.2s;
+    }
+    nav a.active {
+      color: #ffffff; /* Página atual destacada em branco */
+    }
+    nav a:hover {
+      color: #ffffff;
     }
 
-    .hero{
-        padding:30px 22px;
-        min-height:280px;
+    /* 4. BANNER PRINCIPAL (HERO) */
+    .hero-section {
+      margin: 40px 0;
+    }
+    .hero-title {
+      font-size: 36px;
+      font-weight: 800;
+      margin: 0 0 16px 0;
+      line-height: 1.2;
+    }
+    .hero-desc {
+      color: #b3b3b3;
+      font-size: 15px;
+      line-height: 1.5;
+      margin: 0 0 24px 0;
+    }
+    .btn-explore {
+      background-color: #00ff66;
+      color: #000000;
+      border: none;
+      padding: 14px 28px;
+      font-weight: bold;
+      font-size: 15px;
+      border-radius: 50px; /* Formato pílula arredondado */
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .btn-explore:hover {
+      transform: scale(1.04); /* Pequena animação ao tocar/passar o mouse */
     }
 
-    .hero h1{
-        font-size:34px;
+    /* 5. SEÇÕES DE CONTEÚDO */
+    .section-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 40px 0 20px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .profile-cover{
-        padding:25px 20px;
+    /* 6. PLAYER DE ÁUDIO CUSTOMIZADO (Substitui o player branco padrão do navegador) */
+    .fixed-player {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #121212;
+      border-top: 1px solid #282828;
+      padding: 16px 24px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
-
-    .profile-info{
-        flex-direction:column;
-        align-items:flex-start;
+    .track-info .track-name {
+      font-size: 14px;
+      font-weight: bold;
+      margin: 0 0 4px 0;
     }
-
-    .profile-image{
-        width:120px;
-        height:120px;
+    .track-info .track-album {
+      font-size: 12px;
+      color: #b3b3b3;
+      margin: 0;
     }
-
-    .profile-text h1{
-        font-size:30px;
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
-
-    .song{
-        flex-wrap:wrap;
+    .btn-play {
+      background: #ffffff;
+      color: #000000;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-
-    .download{
-        margin-left:auto;
+    .progress-wrapper {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #b3b3b3;
+      font-size: 11px;
     }
-
-    .player{
-        flex-wrap:wrap;
+    .progress-bar {
+      flex-grow: 1;
+      background-color: #4f4f4f;
+      height: 4px;
+      border-radius: 2px;
+      position: relative;
     }
-
-    audio{
-        width:100%;
-        max-width:none;
+    .progress-current {
+      background-color: #00ff66;
+      width: 35%; /* Valor de exemplo: indica o progresso atual da faixa */
+      height: 100%;
+      border-radius: 2px;
     }
-
-}
-
-</style>
+  </style>
 </head>
-
 <body>
 
-<header>
+  <div class="container">
+    <!-- Menu Superior -->
+    <header>
+      <div class="logo-area">🎧 Novidades dos Beats</div>
+      <nav>
+        <a href="#" class="active">Início</a>
+        <a href="#">Artistas</a>
+        <a href="#">Adicionar artista</a>
+      </nav>
+    </header>
 
-    <div class="logo">
-        🎧 Novidades dos Beats
-    </div>
+    <!-- Banner Principal -->
+    <main class="hero-section">
+      <h1 class="hero-title">Descobre novos<br>artistas 🎤</h1>
+      <p class="hero-desc">Encontra artistas, músicas e novos talentos no Novidades dos Beats.</p>
+      <button class="btn-explore">Explorar artistas</button>
+    </main>
 
-    <nav>
-        <a onclick="showHome()">Início</a>
-        <a onclick="showArtists()">Artistas</a>
-        <a onclick="showAddArtist()">Adicionar artista</a>
-    </nav>
-
-    <div class="search">
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="🔎 Procurar artista..."
-            oninput="searchArtists()"
-        >
-    </div>
-
-</header>
-
-
-<main>
-
-<!-- ================= INÍCIO ================= -->
-
-<section id="homePage">
-
-    <div class="hero">
-
-        <div class="hero-content">
-
-            <h1>Descobre novos artistas 🎤</h1>
-
-            <p>
-                Encontra artistas, músicas e novos talentos
-                no Novidades dos Beats.
-            </p>
-
-            <button class="btn" onclick="showArtists()">
-                Explorar artistas
-            </button>
-
-        </div>
-
-    </div>
-
-    <section class="section">
-
-        <div class="section-title">
-            <h2>🔥 Artistas em destaque</h2>
-        </div>
-
-        <div class="artists-grid" id="featuredArtists"></div>
-
+    <!-- Seção de Destaques -->
+    <section>
+      <h2 class="section-title">🔥 Artistas em destaque</h2>
+      <!-- Espaço reservado para colocar a sua lista ou cards de artistas -->
     </section>
+  </div>
 
-</section>
-
-
-<!-- ================= ARTISTAS ================= -->
-
-<section id="artistsPage" class="section" style="display:none">
-
-    <div class="section-title">
-        <h2>🎤 Todos os artistas</h2>
-
-        <button class="btn" onclick="showAddArtist()">
-            + Adicionar artista
-        </button>
+  <!-- Player Customizado no Rodapé -->
+  <div class="fixed-player">
+    <div class="track-info">
+      <p class="track-name">Nenhuma música selecionada</p>
+      <p class="track-album">Novidades dos Beats</p>
     </div>
-
-    <div class="artists-grid" id="artistsGrid"></div>
-
-</section>
-
-
-<!-- ================= PERFIL ================= -->
-
-<section id="artistProfile" class="section">
-
-    <div class="profile">
-
-        <div class="profile-cover">
-
-            <div class="profile-info">
-
-                <img
-                    id="profileImage"
-                    class="profile-image"
-                    src=""
-                    alt="Artista"
-                >
-
-                <div class="profile-text">
-
-                    <h1>
-                        <span id="profileName"></span>
-                        <span class="verified">✓</span>
-                    </h1>
-
-                    <p id="profileGenre"></p>
-
-                    <button
-                        class="btn"
-                        id="followButton"
-                        onclick="followArtist()"
-                    >
-                        ❤️ Seguir
-                    </button>
-
-                </div>
-
-            </div>
-
+    <div class="player-controls">
+      <button class="btn-play">▶</button>
+      <div class="progress-wrapper">
+        <span>0:00</span>
+        <div class="progress-bar">
+          <div class="progress-current"></div>
         </div>
+        <span>0:00</span>
+      </div>
+    </div>
+  </div>
 
-        <div class="profile-body">
+</body>
+</html>
+class="profile-body">
 
             <p class="bio" id="profileBio"></p>
 
