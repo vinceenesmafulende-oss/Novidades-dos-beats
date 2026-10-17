@@ -1,2733 +1,504 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt">
 <head>
-   <meta name="google-site-verification" content="Jl2wunHHcNMtbirbCHIPKWfbMQi3MrYH5u_r2pWLorY" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Novidades dos Beats</title>
+<title>Novidades dos Beats | DJ Vince</title>
+
+<meta name="theme-color" content="#07150d">
 
 <style>
-
-/* =====================================================
-   RESET
-===================================================== */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    background:#000;
-    color:#fff;
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Arial,
-        sans-serif;
-
-    min-height:100vh;
-
-    padding-bottom:120px;
-}
-
-
-/* =====================================================
-   CABEÇALHO
-===================================================== */
-
-header{
-    padding:35px 20px 25px;
-
-    text-align:center;
-
-    background:
-        radial-gradient(
-            circle at top,
-            #123b25 0%,
-            #07150d 35%,
-            #000 75%
-        );
-}
-
-.logo{
-    font-size:30px;
-    font-weight:900;
-    color:#1ed760;
-
-    margin-bottom:8px;
-}
-
-.subtitle{
-    color:#aaa;
-    font-size:14px;
-    margin-bottom:25px;
-}
-
-
-/* =====================================================
-   PESQUISA
-===================================================== */
-
-.search-box{
-    position:relative;
-
-    max-width:650px;
-
-    margin:auto;
-}
-
-.search-box input{
-    width:100%;
-
-    height:55px;
-
-    border:none;
-    outline:none;
-
-    border-radius:30px;
-
-    background:#181818;
-
-    color:#fff;
-
-    padding:0 55px 0 20px;
-
-    font-size:15px;
-
-    border:1px solid #292929;
-
-    transition:.25s;
-}
-
-.search-box input:focus{
-    border-color:#1ed760;
-
-    box-shadow:
-        0 0 0 3px rgba(30,215,96,.08);
-}
-
-.search-box input::placeholder{
-    color:#777;
-}
-
-.search-icon{
-    position:absolute;
-
-    right:20px;
-    top:50%;
-
-    transform:translateY(-50%);
-
-    font-size:20px;
-}
-
-
-/* =====================================================
-   MENU
-===================================================== */
-
-.main-menu{
-    display:flex;
-
-    gap:8px;
-
-    justify-content:center;
-
-    overflow-x:auto;
-
-    padding:12px 15px;
-
-    background:#090909;
-
-    border-bottom:1px solid #1d1d1d;
-
-    scrollbar-width:none;
-}
-
-.main-menu::-webkit-scrollbar{
-    display:none;
-}
-
-.menu-link{
-    display:inline-flex;
-
-    align-items:center;
-    justify-content:center;
-
-    gap:7px;
-
-    padding:11px 15px;
-
-    border-radius:12px;
-
-    color:#999;
-
-    text-decoration:none;
-
-    font-size:14px;
-
-    font-weight:700;
-
-    white-space:nowrap;
-
-    transition:.25s;
-}
-
-.menu-link:hover{
-    background:#181818;
-    color:#fff;
-}
-
-.menu-link.active{
-    background:rgba(30,215,96,.10);
-    color:#1ed760;
-}
-
-
-/* =====================================================
-   CONTEÚDO
-===================================================== */
-
-main{
-    max-width:1100px;
-
-    margin:auto;
-
-    padding:45px 20px 70px;
-}
-
-.section{
-    display:block;
-}
-
-.welcome{
-    margin-bottom:35px;
-}
-
-.welcome h1{
-    font-size:38px;
-
-    line-height:1.15;
-
-    margin-bottom:12px;
-}
-
-.welcome h1 span{
-    color:#1ed760;
-}
-
-.welcome p{
-    color:#999;
-
-    font-size:16px;
-}
-
-
-/* =====================================================
-   CATEGORIAS
-===================================================== */
-
-.categories{
-    display:flex;
-
-    gap:10px;
-
-    overflow-x:auto;
-
-    padding-bottom:10px;
-
-    margin-bottom:35px;
-
-    scrollbar-width:none;
-}
-
-.categories::-webkit-scrollbar{
-    display:none;
-}
-
-.category{
-    padding:11px 18px;
-
-    border-radius:30px;
-
-    border:1px solid #303030;
-
-    background:#151515;
-
-    color:#aaa;
-
-    font-size:14px;
-
-    font-weight:700;
-
-    cursor:pointer;
-
-    white-space:nowrap;
-
-    transition:.25s;
-}
-
-.category:hover{
-    color:#fff;
-
-    border-color:#1ed760;
-
-    transform:translateY(-2px);
-}
-
-.category.active{
-    background:linear-gradient(
-        135deg,
-        #1ed760,
-        #00ff66
-    );
-
-    color:#000;
-
-    border-color:transparent;
-
-    box-shadow:
-        0 5px 18px rgba(30,215,96,.20);
-}
-
-
-/* =====================================================
-   TÍTULOS
-===================================================== */
-
-.section-title{
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    margin:35px 0 20px;
-}
-
-.section-title h2{
-    font-size:24px;
-}
-
-
-/* =====================================================
-   GRID DE ARTISTAS
-===================================================== */
-
-.artist-grid{
-    display:grid;
-
-    grid-template-columns:
-        repeat(auto-fill,minmax(180px,1fr));
-
-    gap:18px;
-}
-
-.artist-card{
-    background:#121212;
-
-    border:1px solid #222;
-
-    border-radius:18px;
-
-    padding:15px;
-
-    cursor:pointer;
-
-    transition:.25s;
-
-    overflow:hidden;
-}
-
-.artist-card:hover{
-    transform:translateY(-5px);
-
-    border-color:#1ed760;
-
-    box-shadow:
-        0 15px 30px rgba(0,0,0,.4);
-}
-
-.artist-card img{
-    width:100%;
-
-    aspect-ratio:1/1;
-
-    object-fit:cover;
-
-    border-radius:14px;
-
-    margin-bottom:12px;
-
-    background:#222;
-}
-
-.artist-card h3{
-    font-size:17px;
-
-    margin-bottom:5px;
-}
-
-.artist-card p{
-    color:#888;
-
-    font-size:13px;
-}
-
-
-/* =====================================================
-   MÚSICAS
-===================================================== */
-
-.song-list{
-    display:flex;
-
-    flex-direction:column;
-
-    gap:12px;
-
-    margin-bottom:30px;
-}
-
-.song-item{
-    display:flex;
-
-    align-items:center;
-
-    gap:14px;
-
-    padding:12px;
-
-    background:#121212;
-
-    border:1px solid #222;
-
-    border-radius:15px;
-
-    transition:.2s;
-}
-
-.song-item:hover{
-    background:#181818;
-
-    border-color:#333;
-}
-
-.song-cover{
-    width:60px;
-    height:60px;
-
-    object-fit:cover;
-
-    border-radius:10px;
-
-    background:#222;
-}
-
-.song-details{
-    flex:1;
-
-    min-width:0;
-}
-
-.song-details h3{
-    font-size:15px;
-
-    margin-bottom:5px;
-
-    white-space:nowrap;
-
-    overflow:hidden;
-
-    text-overflow:ellipsis;
-}
-
-.song-details p{
-    color:#888;
-
-    font-size:12px;
-}
-
-
-/* =====================================================
-   BOTÃO PLAY
-===================================================== */
-
-.play-btn{
-    width:48px;
-    height:48px;
-
-    flex-shrink:0;
-
-    border:none;
-
-    border-radius:50%;
-
-    background:#1ed760;
-
-    color:#000;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    font-size:18px;
-
-    cursor:pointer;
-
-    box-shadow:
-        0 6px 20px rgba(30,215,96,.25);
-
-    transition:.2s;
-}
-
-.play-btn:hover{
-    transform:scale(1.08);
-
-    box-shadow:
-        0 10px 28px rgba(30,215,96,.4);
-}
-
-.play-btn:active{
-    transform:scale(.92);
-}
-
-
-/* =====================================================
-   BOTÃO DOWNLOAD
-===================================================== */
-
-.download-btn{
-    display:inline-flex;
-
-    align-items:center;
-    justify-content:center;
-
-    gap:7px;
-
-    min-height:42px;
-
-    padding:0 15px;
-
-    border-radius:12px;
-
-    background:#1ed760;
-
-    color:#000;
-
-    text-decoration:none;
-
-    font-size:13px;
-
-    font-weight:800;
-
-    transition:.2s;
-}
-
-.download-btn:hover{
-    background:#00ff66;
-
-    transform:translateY(-2px);
-
-    box-shadow:
-        0 8px 20px rgba(30,215,96,.25);
-}
-
-.download-btn:active{
-    transform:scale(.95);
-}
-
-
-/* =====================================================
-   FAVORITO
-===================================================== */
-
-.favorite-btn{
-    width:42px;
-    height:42px;
-
-    border-radius:50%;
-
-    border:1px solid #333;
-
-    background:#181818;
-
-    color:#aaa;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    font-size:19px;
-
-    cursor:pointer;
-
-    transition:.2s;
-}
-
-.favorite-btn:hover{
-    color:#ff4d6d;
-
-    border-color:#ff4d6d;
-
-    transform:scale(1.08);
-}
-
-.favorite-btn.active{
-    color:#ff4d6d;
-
-    border-color:#ff4d6d;
-
-    background:rgba(255,77,109,.12);
-}
-
-
-/* =====================================================
-   BOTÃO PRINCIPAL
-===================================================== */
-
-.btn,
-.btn-explore,
-.add-artist-btn{
-    display:inline-flex;
-
-    align-items:center;
-    justify-content:center;
-
-    gap:8px;
-
-    min-height:48px;
-
-    padding:0 23px;
-
-    border:none;
-
-    border-radius:14px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #1ed760,
-            #00ff66
-        );
-
-    color:#000;
-
-    font-size:15px;
-
-    font-weight:800;
-
-    cursor:pointer;
-
-    box-shadow:
-        0 8px 25px rgba(30,215,96,.18);
-
-    transition:.2s;
-}
-
-.btn:hover,
-.btn-explore:hover,
-.add-artist-btn:hover{
-    transform:translateY(-2px);
-
-    box-shadow:
-        0 12px 30px rgba(30,215,96,.30);
-}
-
-.btn:active,
-.btn-explore:active,
-.add-artist-btn:active{
-    transform:scale(.96);
+:root {
+    --green: #1ed760;
+    --dark: #080b09;
+    --card: #141a16;
+    --text: #ffffff;
+    --muted: #a7b0aa;
 }
 
-.btn-explore::after{
-    content:"→";
-
-    font-size:20px;
+* {
+    box-sizing: border-box;
 }
-
-
-/* =====================================================
-   BOTÃO VOLTAR
-===================================================== */
-
-.back-btn{
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    padding:12px 18px;
 
-    border-radius:12px;
-
-    background:#181818;
-
-    border:1px solid #303030;
-
-    color:#fff;
-
-    font-weight:700;
-
-    cursor:pointer;
-
-    transition:.2s;
+body {
+    margin: 0;
+    background: var(--dark);
+    color: var(--text);
+    font-family: Arial, sans-serif;
 }
 
-.back-btn:hover{
-    border-color:#1ed760;
-
-    color:#1ed760;
+header {
+    padding: 25px 16px;
+    background: linear-gradient(135deg, #123b25, #07150d, #000);
+    border-bottom: 1px solid #203729;
 }
-
-
-/* =====================================================
-   PERFIL DO ARTISTA
-===================================================== */
-
-.profile-card{
-    background:
-        linear-gradient(
-            135deg,
-            #151515,
-            #090909
-        );
-
-    border:1px solid #242424;
-
-    border-radius:22px;
-
-    padding:25px;
 
-    margin-bottom:30px;
+.container {
+    max-width: 1050px;
+    margin: auto;
 }
 
-.profile-header{
-    display:flex;
-
-    align-items:center;
-
-    gap:25px;
-
-    margin-bottom:25px;
+.logo {
+    color: var(--green);
+    font-size: 27px;
+    font-weight: bold;
+    margin: 0 0 8px;
 }
-
-.profile-header img{
-    width:150px;
-    height:150px;
-
-    object-fit:cover;
-
-    border-radius:50%;
 
-    border:4px solid #1ed760;
-
-    background:#222;
+.subtitle {
+    color: #d0d8d2;
+    margin: 0 0 20px;
 }
 
-.profile-info h1{
-    font-size:32px;
-
-    margin-bottom:8px;
+.search {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #34483a;
+    border-radius: 25px;
+    background: #172019;
+    color: white;
+    font-size: 16px;
+    outline: none;
 }
-
-.profile-genre{
-    color:#1ed760;
 
-    font-weight:700;
-
-    margin-bottom:12px;
+.search:focus {
+    border-color: var(--green);
 }
 
-.bio{
-    color:#aaa;
-
-    line-height:1.7;
+nav {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 16px 0 0;
 }
-
 
-/* =====================================================
-   ESTATÍSTICAS
-===================================================== */
-
-.stats{
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:10px;
-
-    margin:25px 0;
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 9px 14px;
+    border-radius: 20px;
+    background: #1a241d;
+    white-space: nowrap;
+    font-size: 14px;
 }
-
-.stat{
-    text-align:center;
-
-    padding:18px 10px;
 
-    background:#111;
-
-    border:1px solid #242424;
-
-    border-radius:15px;
+nav a:hover {
+    background: var(--green);
+    color: #000;
 }
-
-.stat strong{
-    display:block;
 
-    font-size:22px;
-
-    color:#1ed760;
-
-    margin-bottom:5px;
+main {
+    padding: 20px 15px 100px;
 }
 
-.stat span{
-    color:#777;
-
-    font-size:12px;
+.hero {
+    padding: 25px 20px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #164a2a, #101b13);
+    margin-bottom: 25px;
 }
-
 
-/* =====================================================
-   FORMULÁRIO
-===================================================== */
-
-.form-container{
-    max-width:700px;
-
-    background:#111;
-
-    border:1px solid #242424;
-
-    border-radius:20px;
-
-    padding:25px;
+.hero h2 {
+    font-size: 28px;
+    margin: 0 0 10px;
 }
 
-.form-group{
-    margin-bottom:20px;
+.hero p {
+    color: #d1ded4;
+    line-height: 1.5;
 }
-
-.form-group label{
-    display:block;
 
-    margin-bottom:8px;
-
-    font-size:14px;
-
-    font-weight:700;
+.badge {
+    display: inline-block;
+    background: var(--green);
+    color: #061209;
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
 }
-
-.form-group input,
-.form-group select,
-.form-group textarea{
-    width:100%;
-
-    background:#181818;
-
-    border:1px solid #303030;
-
-    border-radius:12px;
-
-    padding:14px;
 
-    color:#fff;
-
-    outline:none;
-
-    font-family:inherit;
-
-    font-size:14px;
+.section-title {
+    margin: 25px 0 15px;
+    font-size: 22px;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus{
-    border-color:#1ed760;
+.status {
+    color: var(--muted);
+    text-align: center;
+    padding: 25px 10px;
+    line-height: 1.6;
 }
 
-.form-group textarea{
-    min-height:130px;
-
-    resize:vertical;
+.song-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
 }
-
-.help{
-    margin-top:7px;
-
-    color:#777;
 
-    font-size:12px;
+.song {
+    background: var(--card);
+    border: 1px solid #27342a;
+    border-radius: 15px;
+    padding: 15px;
+    display: flex;
+    gap: 13px;
+    align-items: flex-start;
 }
 
-
-/* =====================================================
-   RESULTADOS
-===================================================== */
-
-.results-info{
-    text-align:center;
-
-    color:#777;
-
-    font-size:14px;
-
-    margin-bottom:25px;
-
-    display:none;
+.cover {
+    width: 65px;
+    height: 65px;
+    min-width: 65px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #1ed760, #10371e);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 29px;
 }
-
-.results-info span{
-    color:#1ed760;
 
-    font-weight:bold;
+.song-info {
+    min-width: 0;
+    flex: 1;
 }
 
-.no-results{
-    display:none;
-
-    text-align:center;
-
-    padding:70px 20px;
-
-    color:#777;
+.song h3 {
+    font-size: 16px;
+    margin: 3px 0 7px;
+    overflow-wrap: anywhere;
 }
 
-.no-results .emoji{
-    font-size:55px;
-
-    margin-bottom:15px;
+.song small {
+    color: var(--muted);
 }
 
-.no-results h2{
-    color:#fff;
-
-    margin-bottom:8px;
+audio {
+    display: block;
+    width: 100%;
+    height: 40px;
+    margin-top: 12px;
 }
-
-
-/* =====================================================
-   PLAYER FIXO
-===================================================== */
-
-.player{
-    position:fixed;
-
-    bottom:0;
-    left:0;
-
-    width:100%;
-
-    z-index:1000;
-
-    background:
-        rgba(18,18,18,.97);
-
-    backdrop-filter:blur(15px);
 
-    border-top:1px solid #292929;
-
-    padding:12px 18px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:20px;
+.buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 10px;
 }
 
-.player-info{
-    width:230px;
-
-    min-width:0;
+.btn {
+    display: inline-block;
+    padding: 10px 13px;
+    border: none;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
 }
-
-.player-info strong{
-    display:block;
 
-    font-size:14px;
-
-    white-space:nowrap;
-
-    overflow:hidden;
-
-    text-overflow:ellipsis;
+.play-btn {
+    background: var(--green);
+    color: #061209;
 }
 
-.player-info span{
-    display:block;
-
-    color:#888;
-
-    font-size:12px;
-
-    margin-top:4px;
+.download-btn {
+    background: #29372d;
+    color: white;
 }
-
-#audioPlayer{
-    flex:1;
 
-    height:40px;
+.btn:active {
+    transform: scale(.97);
 }
 
-
-/* =====================================================
-   RODAPÉ
-===================================================== */
-
-footer{
-    text-align:center;
-
-    padding:35px 20px;
-
-    background:#000;
-
-    border-top:1px solid #1d1d1d;
-
-    color:#666;
-
-    line-height:1.8;
+footer {
+    text-align: center;
+    padding: 25px 15px;
+    border-top: 1px solid #243027;
+    color: var(--muted);
+    font-size: 13px;
 }
 
-footer strong{
-    color:#1ed760;
-
-    font-size:18px;
+footer strong {
+    color: var(--green);
 }
-
-
-/* =====================================================
-   MENSAGEM
-===================================================== */
-
-.message{
-    position:fixed;
-
-    left:50%;
-
-    bottom:130px;
 
-    transform:
-        translateX(-50%)
-        translateY(20px);
-
-    background:#1ed760;
-
-    color:#000;
-
-    padding:12px 20px;
-
-    border-radius:30px;
-
-    font-weight:700;
-
-    opacity:0;
-
-    pointer-events:none;
-
-    transition:.3s;
-
-    z-index:2000;
+.bottom-player {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 12px 15px;
+    text-align: center;
+    background: #101812;
+    border-top: 1px solid #304334;
+    z-index: 10;
+    font-size: 13px;
 }
 
-.message.show{
-    opacity:1;
-
-    transform:
-        translateX(-50%)
-        translateY(0);
+.bottom-player span {
+    color: var(--green);
+    font-weight: bold;
 }
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media(max-width:600px){
 
-    header{
-        padding:30px 15px 22px;
+@media (min-width: 650px) {
+    .song-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .logo{
-        font-size:25px;
+    .logo {
+        font-size: 34px;
     }
-
-    main{
-        padding:35px 14px 60px;
-    }
-
-    .welcome h1{
-        font-size:28px;
-    }
-
-    .artist-grid{
-        grid-template-columns:
-            repeat(2,1fr);
-
-        gap:12px;
-    }
-
-    .artist-card{
-        padding:10px;
-    }
-
-    .artist-card h3{
-        font-size:15px;
-    }
-
-    .artist-card p{
-        font-size:11px;
-    }
-
-    .profile-header{
-        flex-direction:column;
-
-        text-align:center;
-    }
-
-    .profile-header img{
-        width:130px;
-        height:130px;
-    }
-
-    .profile-info h1{
-        font-size:26px;
-    }
-
-    .stats{
-        grid-template-columns:
-            repeat(3,1fr);
-    }
-
-    .stat{
-        padding:14px 5px;
-    }
-
-    .stat strong{
-        font-size:18px;
-    }
-
-    .stat span{
-        font-size:10px;
-    }
-
-    .song-item{
-        gap:9px;
-    }
-
-    .song-cover{
-        width:50px;
-        height:50px;
-    }
-
-    .song-details h3{
-        font-size:13px;
-    }
-
-    .download-btn{
-        padding:0 10px;
-
-        font-size:11px;
-    }
-
-    .favorite-btn{
-        display:none;
-    }
-
-    .player{
-        padding:10px;
-
-        gap:10px;
-
-        flex-direction:column;
-
-        align-items:stretch;
-    }
-
-    .player-info{
-        width:100%;
-    }
-
-    #audioPlayer{
-        width:100%;
-    }
-
-    body{
-        padding-bottom:145px;
-    }
-
-    .message{
-        bottom:160px;
-    }
-
 }
-
-
-/* =====================================================
-   DESKTOP PLAYER
-===================================================== */
-
-@media(min-width:601px){
-
-    .player{
-        padding-left:30px;
-        padding-right:30px;
-    }
-
-}
-
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =====================================================
-     CABEÇALHO
-===================================================== -->
-
 <header>
+    <div class="container">
 
-    <div class="logo">
-        🎵 Novidades dos Beats
-    </div>
+        <h1 class="logo">🎵 Novidades dos Beats</h1>
 
-    <div class="subtitle">
-        Descobre músicas, beats e novos artistas
-    </div>
-
-    <div class="search-box">
-
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="🔍 Pesquisar artista, música ou beat..."
-            autocomplete="off"
-        >
-
-        <span class="search-icon">
-            🎧
-        </span>
-
-    </div>
-
-</header>
-
-
-<!-- =====================================================
-     MENU
-===================================================== -->
-
-<nav class="main-menu">
-
-    <a
-        href="#"
-        class="menu-link active"
-        onclick="showHome(); return false;">
-        🏠 Início
-    </a>
-
-    <a
-        href="#"
-        class="menu-link"
-        onclick="showMusic(); return false;">
-        🎵 Músicas
-    </a>
-
-    <a
-        href="#"
-        class="menu-link"
-        onclick="showAlbums(); return false;">
-        💿 Álbuns
-    </a>
-
-    <a
-        href="#"
-        class="menu-link"
-        onclick="showPlaylists(); return false;">
-        📂 Playlists
-    </a>
-
-    <a
-        href="#"
-        class="menu-link"
-        onclick="showArtists(); return false;">
-        🎤 Artistas
-    </a>
-
-    <a
-        href="#"
-        class="menu-link"
-        onclick="showBeats(); return false;">
-        🔥 Beats
-    </a>
-
-</nav>
-
-
-<!-- =====================================================
-     CONTEÚDO
-===================================================== -->
-
-<main>
-
-
-<!-- =====================================================
-     INÍCIO
-===================================================== -->
-
-<section
-    id="homePage"
-    class="section">
-
-    <div class="welcome">
-
-        <h1>
-            🎧 As melhores
-            <span>novidades</span>
-        </h1>
-
-        <p>
-            Ouve, descobre e baixa as tuas músicas favoritas.
+        <p class="subtitle">
+            Descobre músicas novas. Ouve, partilha e descarrega!
         </p>
 
-        <br>
+        <input
+            id="search"
+            class="search"
+            type="search"
+            placeholder="🔍 Pesquisar artista ou música..."
+            aria-label="Pesquisar músicas"
+        >
 
-        <button
-            class="btn-explore"
-            onclick="showArtists()">
-            Explorar artistas
-        </button>
-
-    </div>
-
-
-    <div class="categories">
-
-        <button
-            class="category active"
-            data-category="todos"
-            onclick="filterCategory('todos',this)">
-            🌟 Todos
-        </button>
-
-        <button
-            class="category"
-            data-category="musica"
-            onclick="filterCategory('musica',this)">
-            🎵 Músicas
-        </button>
-
-        <button
-            class="category"
-            data-category="beat"
-            onclick="filterCategory('beat',this)">
-            🔥 Beats
-        </button>
-
-        <button
-            class="category"
-            data-category="artista"
-            onclick="filterCategory('artista',this)">
-            🎤 Artistas
-        </button>
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#musicas">Músicas</a>
+            <a href="#sobre">Sobre</a>
+        </nav>
 
     </div>
+</header>
 
+<main class="container">
 
-    <div class="section-title">
+    <section class="hero" id="inicio">
+        <span class="badge">MÚSICA MOÇAMBICANA 🇲🇿</span>
 
-        <h2>
-            🔥 Artistas em destaque
-        </h2>
-
-        <button
-            class="back-btn"
-            onclick="showArtists()">
-            Ver todos →
-        </button>
-
-    </div>
-
-
-    <div
-        class="artist-grid"
-        id="featuredArtists">
-    </div>
-
-
-    <div class="section-title">
-
-        <h2>
-            🎵 Músicas recentes
-        </h2>
-
-    </div>
-
-    <div
-        class="song-list"
-        id="homeSongs">
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     ARTISTAS
-===================================================== -->
-
-<section
-    id="artistsPage"
-    class="section"
-    style="display:none">
-
-    <div class="section-title">
-
-        <h2>
-            🎤 Todos os artistas
-        </h2>
-
-        <button
-            class="add-artist-btn"
-            onclick="showAddArtist()">
-            ➕ Adicionar artista
-        </button>
-
-    </div>
-
-    <div
-        class="results-info"
-        id="resultsInfo">
-        Resultados encontrados:
-        <span id="resultsNumber">0</span>
-    </div>
-
-    <div
-        class="artist-grid"
-        id="artistsGrid">
-    </div>
-
-    <div
-        class="no-results"
-        id="noResults">
-
-        <div class="emoji">
-            😔
-        </div>
-
-        <h2>
-            Nenhum resultado
-        </h2>
+        <h2>O teu som, a tua vibe!</h2>
 
         <p>
-       
-        id:2,
+            Bem-vindo ao Novidades dos Beats.
+            Encontra aqui músicas de DJ Vince e descobre
+            novos sons para ouvires onde quiseres.
+        </p>
+    </section>
 
-        name:"Silva Bregas",
+    <section id="musicas">
 
-        genre:"Kizomba / R&B",
+        <h2 class="section-title">🎧 Todas as músicas</h2>
 
-        image:"artista2.jpg",
+        <p id="status" class="status">
+            A ligar ao Google Drive e a carregar músicas...
+        </p>
 
-        bio:"Artista moçambicano com uma sonoridade romântica e influências da música africana.",
+        <div id="songList" class="song-list"></div>
 
-        followers:870,
+    </section>
 
-        songs:[
-            {
-                title:"Meu Amor",
-                file:"musica1.mp3",
-                cover:"capa2.jpg",
-                downloads:250
-            }
-        ]
-    },
+    <section id="sobre">
+        <h2 class="section-title">Sobre o site</h2>
 
+        <p style="color:#a7b0aa;line-height:1.7">
+            Novidades dos Beats é um espaço dedicado à música.
+            Ouve as tuas músicas favoritas e descobre os sons
+            publicados por DJ Vince.
+        </p>
+    </section>
 
-    {
-        id:3,
+</main>
 
-        name:"DJ Drop",
+<footer>
+    <p>Feito com 💚 para os amantes da música.</p>
+    <p><strong>Novidades dos Beats</strong> © 2026</p>
+</footer>
 
-        genre:"Afro House",
+<div class="bottom-player">
+    🎵 <span>Novidades dos Beats</span> — A tua música, sempre contigo!
+</div>
 
-        image:"artista3.jpg",
+<script>
+const API_URL =
+"https://script.google.com/macros/s/AKfycbyo9rEUOIG35eZpOKzyVovmqEA09nFhn37BIjAR_mafcfGYRreRvPYT1yw-Yyfvi1oL/exec";
 
-        bio:"DJ e produtor focado em Afro House, Amapiano e sons eletrónicos africanos.",
+const songList = document.getElementById("songList");
+const statusBox = document.getElementById("status");
+const searchInput = document.getElementById("search");
 
-        followers:630,
+let songs = [];
 
-        songs:[
-            {
-                title:"African Vibes",
-                file:"musica2.mp3",
-                cover:"capa3.jpg",
-                downloads:180
-            }
-        ]
+function escapeHTML(value) {
+    return String(value ?? "").replace(/[&<>"']/g, function(char) {
+        return {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;"
+        }[char];
+    });
+}
+
+function getSongName(song) {
+    return song.name || song.title || "Música sem título";
+}
+
+function getSongURL(song) {
+    if (song.url) return song.url;
+
+    if (song.id) {
+        return "https://drive.google.com/uc?export=download&id="
+            + encodeURIComponent(song.id);
     }
 
-];
+    return "";
+}
 
+function getDownloadURL(song) {
+    if (song.id) {
+        return "https://drive.google.com/uc?export=download&id="
+            + encodeURIComponent(song.id);
+    }
 
-/* =====================================================
-   CARREGAR ARTISTAS GUARDADOS
-===================================================== */
+    return getSongURL(song);
+}
 
-let savedArtists =
-    JSON.parse(localStorage.getItem("novidades_artists")) || [];
+function renderSongs() {
+    const query = searchInput.value.trim().toLowerCase();
 
-artists = artists.concat(savedArtists);
+    const filtered = songs.filter(function(song) {
+        return getSongName(song).toLowerCase().includes(query);
+    });
 
+    songList.innerHTML = "";
 
-/* =====================================================
-   ELEMENTOS
-===================================================== */
+    if (filtered.length === 0) {
+        statusBox.style.display = "block";
 
-const homePage =
-    document.getElementById("homePage");
+        statusBox.textContent = songs.length
+            ? "Não encontrámos músicas com esse nome."
+            : "Ainda não existem músicas disponíveis.";
 
-const artistsPage =
-    document.getElementById("artistsPage");
+        return;
+    }
 
-const artistProfile =
-    document.getElementById("artistProfile");
+    statusBox.style.display = "none";
 
-const addArtistPage =
-    document.getElementById("addArtistPage");
+    filtered.forEach(function(song) {
+        const name = getSongName(song);
+        const audioURL = getSongURL(song);
+        const downloadURL = getDownloadURL(song);
 
-
-/* =====================================================
-   MOSTRAR ARTISTAS
-===================================================== */
-
-function renderArtists(){
-
-    const grid =
-        document.getElementById("artistsGrid");
-
-    const featured =
-        document.getElementById("featuredArtists");
-
-    grid.innerHTML = "";
-
-    featured.innerHTML = "";
-
-
-    artists.forEach((artist,index)=>{
-
-        const card = document.createElement("div");
-
-        card.className = "artist-card";
+        const card = document.createElement("article");
+        card.className = "song";
 
         card.innerHTML = `
+            <div class="cover">🎵</div>
 
-            <img
-                src="${artist.image}"
-                onerror="this.src='artista.jpg'"
-            >
+            <div class="song-info">
+                <h3>${escapeHTML(name)}</h3>
 
-            <h3>${artist.name}</h3>
+                <small>DJ Vince • Novidades dos Beats</small>
 
-            <p>${artist.genre}</p>
+                ${
+                    audioURL
+                    ? `<audio controls preload="none"
+                        src="${escapeHTML(audioURL)}">
+                        O teu navegador não suporta áudio.
+                       </audio>`
+                    : `<p style="color:#ffb0b0">
+                        Ficheiro de áudio indisponível.
+                       </p>`
+                }
 
+                <div class="buttons">
+                    ${
+                        downloadURL
+                        ? `<a class="btn download-btn"
+                            href="${escapeHTML(downloadURL)}"
+                            target="_blank"
+                            rel="noopener">
+                            ⬇ Descarregar
+                           </a>`
+                        : ""
+                    }
+
+                    ${
+                        song.view
+                        ? `<a class="btn play-btn"
+                            href="${escapeHTML(song.view)}"
+                            target="_blank"
+                            rel="noopener">
+                            Abrir no Drive
+                           </a>`
+                        : ""
+                    }
+                </div>
+            </div>
         `;
 
-        card.onclick = function(){
+        songList.appendChild(card);
+    });
+}
 
-            openArtist(artist.id);
+async function loadSongs() {
+    statusBox.style.display = "block";
+    statusBox.textContent = "A carregar músicas...";
 
-        };
+    try {
+        const response = await fetch(API_URL);
 
-
-        grid.appendChild(card);
-
-
-        /* primeiros 4 como destaque */
-
-        if(index < 4){
-
-            const featuredCard =
-                card.cloneNode(true);
-
-            featuredCard.onclick =
-                function(){
-
-                    openArtist(artist.id);
-
-                };
-
-            featured.appendChild(featuredCard);
-
+        if (!response.ok) {
+            throw new Error("Não foi possível consultar a lista.");
         }
 
-    });
+        const data = await response.json();
 
+        if (!Array.isArray(data)) {
+            throw new Error("A resposta não é uma lista de músicas.");
+        }
+
+        songs = data.filter(function(song) {
+            return getSongURL(song);
+        });
+
+        renderSongs();
+
+        if (songs.length > 0) {
+            statusBox.style.display = "none";
+        } else {
+            statusBox.textContent =
+                "A ligação funcionou, mas ainda não há músicas na lista.";
+        }
+
+    } catch (error) {
+        console.error("Erro ao carregar músicas:", error);
+
+        statusBox.innerHTML =
+            "Não foi possível carregar as músicas automaticamente.<br>" +
+            "Verifica a ligação à Internet e as permissões do Google Drive.<br>" +
+            "<button class='btn play-btn' onclick='loadSongs()'>" +
+            "Tentar novamente</button>";
+    }
 }
 
+searchInput.addEventListener("input", renderSongs);
 
-/* =====================================================
-   PÁGINA INICIAL
-===================================================== */
+loadSongs();
+</script>
 
-function showHome(){
-
-    homePage.style.display = "block";
-
-    artistsPage.style.display = "none";
-
-    artistProfile.style.display = "none";
-
-    addArtistPage.style.display = "none";
-
-    window.scrollTo(0,0);
-
-}
-
-
-/* =====================================================
-   PÁGINA ARTISTAS
-===================================================== */
-
-function showArtists(){
-
-    homePage.style.display = "none";
-
-    artistsPage.style.display = "block";
-
-    artistProfile.style.display = "none";
-
-    addArtistPage.style.display = "none";
-
-    renderArtists();
-
-    window.scrollTo(0,0);
-
-}
-
-
-/* =====================================================
-   ADICIONAR ARTISTA
-===================================================== */
-
-function showAddArtist(){
-
-    homePage.style.display = "none";
-
-    artistsPage.style.display = "none";
-
-    artistProfile.style.display = "none";
-
-    addArtistPage.style.display = "block";
-
-    window.scrollTo(0,0);
-
-}
-
-
-/* =====================================================
-   ABRIR PERFIL
-===================================================== */
-
-let currentArtist = null;
-
-function openArtist(id){
-
-    const artist =
-        artists.find(a => a.id == id);
-
-    if(!artist) return;
-
-    currentArtist = artist;
-
-
-    homePage.style.display = "none";
-
-    artistsPage.style.display = "none";
-
-    addArtistPage.style.display = "none";
-
-    artistProfile.style.display = "block";
-
-
-    document.getElementById("profileImage").src =
-        artist.image;
-
-    document.getElementById("profileName").textContent =
-        artist.name;
-
-    document.getElementById("profileGenre").textContent =
-        artist.genre;
-
-    document.getElementById("profileBio").textContent =
-        artist.bio;
-
-    document.getElementById("profileSongs").textContent =
-        artist.songs.length;
-
-    document.getElementById("profileFollowers").textContent =
-        artist.followers;
-
-
-    let totalDownloads = 0;
-
-    artist.songs.forEach(song => {
-
-        totalDownloads +=
-            Number(song.downloads || 0);
-
-    });
-
-
-    document.getElementById("profileDownloads").textContent =
-        totalDownloads;
-
-
-    const songsList =
-        document.getElementById("profileSongsList");
-
-    songsList.innerHTML = "";
-
-
-    artist.songs.forEach((song,index)=>{
-
-        const item =
-            document.createElement("div");
-
-  lection-card p{
-    color:#888;
-    font-size:14px;
-    margin-bottom:16px;
-}
-
-.collection-button{
-    display:block;
-    text-align:center;
-    padding:11px;
-    border-radius:25px;
-    background:#1b1b1b;
-    color:#fff;
-    text-decoration:none;
-    font-weight:bold;
-    transition:.3s;
-}
-
-.collection-button:hover{
-    background:#1ed760;
-    color:#000;
-}
-
-
-/* =====================================================
-   RESULTADOS DA PESQUISA
-===================================================== */
-
-.results-info{
-    text-align:center;
-
-    color:#777;
-
-    font-size:14px;
-
-    margin-bottom:25px;
-
-    display:none;
-}
-
-.results-info span{
-    color:#1ed760;
-    font-weight:bold;
-}
-
-
-/* =====================================================
-   SEM RESULTADOS
-===================================================== */
-
-.no-results{
-    display:none;
-
-    text-align:center;
-
-    padding:70px 20px;
-
-    color:#777;
-}
-
-.no-results .emoji{
-    font-size:55px;
-    margin-bottom:15px;
-}
-
-.no-results h2{
-    color:#fff;
-    margin-bottom:8px;
-}
-
-
-/* =====================================================
-   RODAPÉ
-===================================================== */
-
-footer{
-    text-align:center;
-
-    padding:35px 20px;
-
-    background:#000;
-
-    border-top:1px solid #1d1d1d;
-
-    color:#666;
-
-    line-height:1.8;
-}
-
-footer strong{
-    color:#1ed760;
-    font-size:18px;
-}
-
-
-/* =====================================================
-   CELULAR
-===================================================== */
-
-@media(max-width:600px){
-
-    header{
-        padding:40px 15px 35px;
-    }
-
-    .logo{
-        font-size:27px;
-    }
-
-    .subtitle{
-        font-size:14px;
-    }
-
-    .search-box input{
-        height:56px;
-        font-size:14px;
-    }
-
-    .main-menu{
-        justify-content:flex-start;
-        overflow-x:auto;
-        flex-wrap:nowrap;
-        padding:14px;
-    }
-
-    .menu-link{
-        white-space:nowrap;
-    }
-
-    main{
-        padding:35px 14px 55px;
-    }
-
-    .welcome h1{
-        font-size:25px;
-    }
-
-    .music-grid{
-        grid-template-columns:1fr;
-    }
-
-    .music-card{
-        padding:16px;
-    }
-
-    .artist-header-box{
-        flex-direction:column;
-        text-align:center;
-    }
-
-    .artist-name{
-        font-size:25px;
-    }
-
-    .gallery-grid{
-        grid-template-columns:1fr;
-    }
-
-    .gallery-photo{
-        height:230px;
-    }
-
-    .section-title{
-        font-size:24px;
-    }
-
-}
-
-</style>
-</head>
-
-
-<body>
-
-
-<!-- =====================================================
-     CABEÇALHO
-===================================================== -->
-
-<header>
-
-    <div class="logo">
-        🎵 Novidades dos Beats
-    </div>
-
-    <div class="subtitle">
-        Descobre músicas, beats e novos artistas
-    </div>
-
-    <div class="search-box">
-
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="🔍 Pesquisar artista, música ou beat..."
-            autocomplete="off"
-        >
-
-        <span class="search-icon">
-            🎧
-        </span>
-
-    </div>
-
-</header>
-
-
-<!-- =====================================================
-     MENU PRINCIPAL
-===================================================== -->
-
-<nav class="main-menu">
-
-    <a href="#inicio" class="menu-link active">
-        🏠 Início
-    </a>
-
-    <a href="#musicas" class="menu-link">
-        🎵 Músicas
-    </a>
-
-    <a href="#albuns" class="menu-link">
-        💿 Álbuns
-    </a>
-
-    <a href="#playlists" class="menu-link">
-        📂 Playlists
-    </a>
-
-    <a href="#artistas" class="menu-link">
-        🎤 Artistas
-    </a>
-
-    <a href="#beats" class="menu-link">
-        🔥 Beats
-    </a>
-
-</nav>
-
-
-<!-- =====================================================
-     CONTEÚDO
-===================================================== -->
-
-<main id="inicio">
-
-
-    <div class="welcome">
-
-        <h1>
-            🎧 As melhores
-            <span>novidades</span>
-        </h1>
-
-        <p>
-            Ouve, descobre e baixa as tuas músicas favoritas.
-        </p>
-
-    </div>
-
-
-    <!-- =================================================
-         CATEGORIAS
-    ================================================== -->
-
-    <div class="categories">
-
-        <button
-            class="category active"
-            data-category="todos">
-            🌟 Todos
-        </button>
-
-        <button
-            class="category"
-            data-category="musica">
-            🎵 Músicas
-        </button>
-
-        <button
-            class="category"
-            data-category="beat">
-            🔥 Beats
-        </button>
-
-        <button
-            class="category"
-            data-category="artista">
-            🎤 Artistas
-        </button>
-
-    </div>
-
-
-    <!-- =================================================
-         INFORMAÇÃO DOS RESULTADOS
-    ================================================== -->
-
-    <div
-        class="results-info"
-        id="resultsInfo">
-
-        Resultados encontrados:
-        <span id="resultsNumber">0</span>
-
-    </div>
-
-
-    <!-- =================================================
-         ARTISTAS
-    ================================================== -->
-
-    <section
-        id="artists"
-        class="artists-section">
-
-
-        <div
-            class="artist-profile"
-            data-title="DJ Drop"
-            data-tipo="artista">
-
-            <div class="artist-header-box">
-
-                <div class="artist-avatar-wrapper">
-
-                    <img
-                        src="artista.jpg"
-                        alt="DJ Drop"
-                        class="artist-avatar"
-                    >
-
-                </div>
-
-                <div>
-
-                    <span class="badge-verified">
-                        ✓ ARTISTA VERIFICADO
-                    </span>
-
-                    <h2 class="artist-name">
-                        DJ Drop
-                    </h2>
-
-                    <p class="artist-genres">
-                        Trap • Hip-Hop • Drill
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="artist-bio">
-
-                <h3>
-                    📖 Biografia
-                </h3>
-
-                <p>
-                    Com mais de 5 anos de experiência
-                    na cena underground, DJ Drop destaca-se
-                    pelos seus beats agressivos de Trap e
-                    melodias marcantes. Começou a produzir
-                    no seu quarto e hoje colabora com vários
-                    artistas independentes.
-                </p>
-
-            </div>
-
-
-            <div class="artist-gallery">
-
-                <h3>
-                    📸 Galeria
-                </h3>
-
-                <div class="gallery-grid">
-
-
-                    <div class="gallery-photo">
-
-                        <img
-                            src="foto1.jpg"
-                            alt="No Estúdio"
-                        >
-
-                        <span class="photo-tag">
-                            No Estúdio
-                        </span>
-
-                    </div>
-
-
-                    <div class="gallery-photo">
-
-                        <img
-                            src="foto2.jpg"
-                            alt="Live Set"
-                        >
-
-                        <span class="photo-tag">
-                            Live Set
-                        </span>
-
-                    </div>
-
-
-                    <div class="gallery-photo">
-
-                        <img
-                            src="foto3.jpg"
-                            alt="Backstage"
-                        >
-
-                        <span class="photo-tag">
-                            Backstage
-                        </span>
-
-                    </div>
-
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =================================================
-         ÁLBUNS
-    ================================================== -->
-
-    <section
-        class="collection-section"
-        id="albuns">
-
-        <h2 class="section-title">
-            💿 Álbuns em destaque
-        </h2>
-
-        <p class="section-description">
-            Conhece os projetos mais recentes dos nossos artistas.
-        </p>
-
-        <div class="collection-grid">
-
-            <article class="collection-card">
-
-                <div class="collection-cover">
-                    🎧
-                </div>
-
-                <h3>
-                    Noites de Trap
-                </h3>
-
-                <p>
-                    DJ Drop • 12 faixas
-                </p>
-
-                <a href="#musicas" class="collection-button">
-                    ▶ Ouvir álbum
-                </a>
-
-            </article>
-
-            <article class="collection-card">
-
-                <div class="collection-cover">
-                    🌌
-                </div>
-
-                <h3>
-                    Sons da Madrugada
-                </h3>
-
-                <p>
-                    Silva Beats • 10 faixas
-                </p>
-
-                <a href="#musicas" class="collection-button">
-                    ▶ Ouvir álbum
-                </a>
-
-            </article>
-
-            <article class="collection-card">
-
-                <div class="collection-cover">
-                    🔥
-                </div>
-
-                <h3>
-                    Afro Vibes
-                </h3>
-
-                <p>
-                    DJ Vince • 8 faixas
-                </p>
-
-                <a href="#musicas" class="collection-button">
-                    ▶ Ouvir álbum
-                </a>
-
-            </article>
-
-        </div>
-
-    </section>
-
-
-    <!-- =================================================
-         PLAYLISTS
-    ================================================== -->
-
-    <section
-        class="collection-section"
-        id="playlists">
-
-        <h2 class="section-title">
-            📂 Playlists
-        </h2>
-
-        <p class="section-description">
-            Escolhe uma playlist       type="text"
-            id="searchInput"
-            placeholder="🔍 Pesquisar artista, música ou beat..."
-            autocomplete="off"
-        >
-
-        <span class="search-icon">
-            🎧
-        </span>
-
-    </div>
-
-</header>
-
-
-<!-- =====================================================
-     CONTEÚDO PRINCIPAL
-===================================================== -->
-
-<main>
-
-
-    <div class="welcome">
-
-        <h1>
-            🎧 As melhores
-            <span>novidades</span>
-        </h1>
-
-        <p>
-            Ouve, descobre e baixa as tuas músicas favoritas.
-        </p>
-
-    </div>
-
-
-    <!-- =================================================
-         CATEGORIAS
-    ================================================== -->
-
-    <div class="categories">
-
-        <button
-            class="category active"
-            data-category="todos">
-            🌟 Todos
-        </button>
-
-        <button
-            class="category"
-            data-category="musica">
-            🎵 Músicas
-        </button>
-
-        <button
-            class="category"
-            data-category="beat">
-            🔥 Beats
-        </button>
-
-        <button
-            class="category"
-            data-category="artista">
-            🎤 Artistas
-        </button>
-
-    </div>
-
-
-    <!-- =================================================
-         PERFIL DO ARTISTA
-    ================================================== -->
-
-    <section
-        id="artistsContainer"
-        class="artists-section">
-
-        <div
-            class="artist-profile"
-            data-title="DJ Drop"
-            data-tipo="artista">
-
-            <div class="artist-header-box">
-
-                <div class="artist-avatar-wrapper">
-
-                    <!-- COLOCA A FOTO DO ARTISTA AQUI -->
-
-                    <img
-                        src="artista.jpg"
-                        alt="DJ Drop"
-                        class="artist-avatar">
-
-                </div>
-
-                <div>
-
-                    <span class="badge-verified">
-                        ✓ ARTISTA VERIFICADO
-                    </span>
-
-                    <h2 class="artist-name">
-                        DJ Drop
-                    </h2>
-
-                    <p class="artist-genres">
-                        Trap • Hip-Hop • Drill
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="artist-bio">
-
-                <h3>
-                    📖 Biografia
-                </h3>
-
-                <p>
-                    Com mais de 5 anos de experiência
-                    na cena underground, DJ Drop destaca-se
-                    pelos seus beats agressivos de Trap e
-                    melodias marcantes. Começou a produzir
-                    no seu quarto e hoje colabora com vários
-                    artistas independentes.
-                </p>
-
-            </div>
-
-
-            <div class="artist-gallery">
-
-                <h3>
-                    📸 Galeria
-                </h3>
-
-                <div class="gallery-grid">
-
-                    <div class="gallery-photo">
-
-                        <img
-                            src="foto1.jpg"
-                            alt="No Estúdio">
-
-                        <span class="photo-tag">
-                            No Estúdio
-                        </span>
-
-                    </div>
-
-
-                    <div class="gallery-photo">
-
-                        <img
-                            src="foto2.jpg"
-                            alt="Live Set">
-
-                        <span class="photo-tag">
-                            Live Set
-                        </span>
-
-                    </div>
-
-
-                    <div class="gallery-photo">
-
-                        <img
-                            src="foto3.jpg"
-                            alt="Backstage">
-
-                        <span class="photo-tag">
-                            Backstage
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =================================================
-         MÚSICAS E BEATS
-    ================================================== -->
-
-    <div
-        class="music-grid"
-        id="musicGrid">
-
-
-        <!-- ================================
-             MÚSICA 1
-        ================================= -->
-
-        <div
-            class="music-card"
-            data-name="Meu Novo Beat"
-            data-artist="DJ Maestro"
-            data-type="beat">
-
-            <div class="cover">
-                🎧
-            </div>
-
-            <h2>
-                Meu Novo Beat
-            </h2>
-
-            <div class="artist">
-                DJ Maestro
-            </div>
-
-            <span class="type">
-                BEAT
-            </span>
-
-            <audio controls>
-
-                <source
-                    src="beat1.mp3"
-                    type="audio/mpeg">
-
-            </audio>
-
-            <a
-                href="beat1.mp3"
-                class="download"
-                download>
-
-                ⬇️ Baixar Beat
-
-            </a>
-
-        </div>
-
-
-        <!-- ================================
-             MÚSICA 2
-        ================================= -->
-
-        <div
-            class="music-card"
-            data-name="Amor da Minha Vida"
-            data-artist="Silva Beats"
-            data-type="musica">
-
-            <div class="cover">
-                🎵
-            </div>
-
-            <h2>
-                Amor da Minha Vida
-            </h2>
-
-            <div class="artist">
-                Silva Beats
-            </div>
-
-            <span class="type">
-                MÚSICA
-            </span>
-
-            <audio controls>
-
-                <source
-                    src="amor.mp3"
-                    type="audio/mpeg">
-
-            </audio>
-
-            <a
-                href="amor.mp3"
-                class="download"
-                download>
-
-                ⬇️ Baixar Música
-
-            </a>
-
-        </div>
-
-
-        <!-- ================================
-             MÚSICA 3
-        ================================= -->
-
-        <div
-            class="music-card"
-            data-name="Afro Beat 2026"
-            data-artist="DJ Vince"
-            data-type="beat">
-
-            <div class="cover">
-                🔥
-            </div>
-
-            <h2>
-                Afro Beat 2026
-            </h2>
-
-            <div class="artist">
-                DJ Vince
-            </div>
-
-            <span class="type">
-                BEAT
-            </span>
-
-            <audio controls>
-
-                <source
-                    src="afrobeat.mp3"
-                    type="audio/mpeg">
-
-            </audio>
-
-            <a
-                href="afrobeat.mp3"
-                class="download"
-                download>
-
-                ⬇️ Baixar Beat
-
-            </a>
-
-        </div>
-
-
-        <!-- ================================
-             MÚSICA 4
-        ================================= -->
-
-        <div
-            class="music-card"
-            data-name="Minha Cidade"
-            data-artist="Maestro Music"
-            data-type="musica">
-
-            <div class="cover">
-                🎤
-            </div>
-
-            <h2>
-                Minha Cidade
-            </h2>
-
-            <div class="artist">
-                Maestro Music
-            </div>
-
-            <span class="type">
-                MÚSICA
-            </span>
-
-            <audio controls>
-
-                <source
-                    src="minhacidade.mp3"
-                    type="audio/mpeg">
-
-            </audio>
-
-            <a
-                href="minhacidade.mp3"
-                class="download"
-                download>
-
-                ⬇️ Baixar Música
-
-            </a>
-
-        </div>
-
-
-        <!-- ================================
-             MÚSICA 5
-        ================================= -->
-
-        <div
-            class="music-card"
-            data-name="Dance Tonight"
-            data-artist="Young Star"
-            data-type="musica">
-
-            <div class="cover">
-                💃
-            </div>
-
-            <h2>
-                Dance Tonight
-            </h2>
-
-            <div class="artist">
-                Young Star
-            </div>
-
-            <span class="type">
-                MÚSICA
-            </span>
-
-            <audio controls>
-
-                <source
-                    src="dance.mp3"
-                    type="audio/mpeg">
-
-            </audio>
-
-            <a
-                href="dance.mp3"
-                class="download"
-                download>
-
-                ⬇️ Baixar Música
-
-            </a>
-
-        </div>
-
-
-        <!-- ================================
-             MÚSICA 6
-        ================================= -->
-
-        <div
-            class="music-card"
-            data-name="Piano Beat"
-            data-artist="Maestro Beats"
-            data-type="beat">
-
-            <div class="cover">
-                🎹
-            </div>
-
-            <h2>
-                Piano Beat
-            </h2>
-
-            <div class="artist">
-                Maestro Beats
-            </div>
-
-            <span class="type">
-                BEAT
-            </span>
-
-            <audio controls>
-
-                <source
-                    src="pianobeat.mp3"
-                    type="audio/mpeg">
-
-            </audio>
-
-            <a
-                href="pianobeat.mp3"
-                class="download"
-                download>
-
-                ⬇️ Baixar Beat
-
-            </a>
-
-        </div>
-
-
-    </div>
-
-
-    <!-- =================================================
-         SEM RESULTADOS
-    ================================================== -->
-
-    <div
-        class="no-results"
-        id="noResults">
-
-        <div class="emoji">
-            🔍
-        </div>
-
-        <h2>
-            Nenhum resultado
-        </h2>
-
-        <p>
-            N
+</body>
+   </html>
