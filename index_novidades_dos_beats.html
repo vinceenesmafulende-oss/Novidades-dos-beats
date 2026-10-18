@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07110b">
+<title>Novidades dos Beats | DJ Vince</title>
+<style>
+:root{--green:#1ed760;--green2:#16a34a;--bg:#070a08;--panel:#101712;--card:#141c16;--line:#26362b;--muted:#a8b4aa;--white:#f6faf7}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:15px}
+body{margin:0;background:radial-gradient(ellipse at top left,#102b1a 0,transparent 36%),var(--bg);color:var(--white);font-family:Arial,Helvetica,sans-serif;padding-bottom:112px}
+button,input,a{font:inherit}
+button{cursor:pointer}
+.container{width:min(1100px,100% - 28px);margin:auto}
+header{padding:25px 0 18px;background:linear-gradient(120deg,rgba(15,61,32,.88),rgba(7,10,8,.96) 70%);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:11px}
+.brand-icon{width:47px;height:47px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--green),#08752e);font-size:25px;box-shadow:0 7px 24px #1ed7602b}
+.logo{margin:0;color:var(--green);font-size:clamp(23px,5vw,34px);letter-spacing:-.7px}
+.subtitle{margin:8px 0 20px;color:#c7d3ca;line-height:1.5}
+.search-wrap{position:relative}
+.search-icon{position:absolute;left:15px;top:50%;transform:translateY(-50%);opacity:.7}
+.search{width:100%;padding:15px 16px 15px 44px;border:1px solid #33483a;border-radius:30px;background:#111b14;color:white;outline:none}
+.search:focus{border-color:var(--green);box-shadow:0 0 0 3px #1ed76020}
+nav{display:flex;gap:9px;overflow:auto;padding-top:15px}
+nav a{white-space:nowrap;text-decoration:none;color:#e9f1eb;background:#1a281e;border:1px solid #293a2e;border-radius:24px;padding:9px 15px;font-size:14px}
+nav a:hover{background:var(--green);color:#061209}
+main{padding-top:22px}
+.hero{position:relative;overflow:hidden;border:1px solid #285a36;border-radius:22px;padding:26px 22px;background:linear-gradient(115deg,#164a2a,#102417 60%,#0d1710);margin-bottom:25px}
+.hero:after{content:"♫";position:absolute;right:17px;bottom:-55px;font-size:190px;font-weight:bold;color:#ffffff0a;pointer-events:none}
+.badge{display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#07140b;padding:7px 11px;border-radius:20px;font-size:11px;font-weight:800;letter-spacing:.4px}
+.hero h2{font-size:clamp(27px,6vw,40px);line-height:1.08;margin:14px 0 10px;max-width:600px}
+.hero p{color:#d1ded4;line-height:1.65;max-width:600px;margin:0}
+.section-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:27px 0 14px}
+.section-heading h2{font-size:21px;margin:0}
+.count{color:var(--muted);font-size:13px}
+.status{color:var(--muted);text-align:center;padding:18px 10px;line-height:1.6}
+.featured-player{display:grid;grid-template-columns:145px minmax(0,1fr);gap:19px;align-items:center;padding:19px;border:1px solid #2b4532;border-radius:20px;background:linear-gradient(135deg,#17251b,#0d120e);box-shadow:0 12px 35px #0003;margin-bottom:27px}
+.album-art{aspect-ratio:1/1;width:100%;border-radius:15px;display:grid;place-items:center;overflow:hidden;background:linear-gradient(145deg,#1ed760,#0a4422 72%,#081b0e);font-size:55px;box-shadow:0 9px 26px #0005}
+.album-art img,.cover img,.mini-cover img{width:100%;height:100%;object-fit:cover}
+.player-kicker{color:var(--green);font-size:11px;font-weight:bold;text-transform:uppercase;letter-spacing:1px}
+.track-title{font-size:clamp(20px,4vw,29px);margin:7px 0 5px;overflow-wrap:anywhere}
+.track-artist{color:var(--muted);font-size:14px}
+.player-controls{display:flex;align-items:center;gap:11px;margin-top:16px}
+.icon-btn{border:0;background:#26372a;color:#f4fff6;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-size:17px}
+.icon-btn:hover{background:#354b39}
+.icon-btn.main-play{width:48px;height:48px;background:var(--green);color:#07130a;font-size:21px}
+.icon-btn.active{color:var(--green);outline:1px solid var(--green)}
+.progress-row{display:flex;align-items:center;gap:9px;margin-top:13px;color:#aebbb1;font-size:11px;font-variant-numeric:tabular-nums}
+input[type=range]{accent-color:var(--green);cursor:pointer;min-width:0}
+#progress{width:100%;height:5px}
+.volume-row{display:flex;align-items:center;gap:8px;margin-top:10px;color:var(--muted);font-size:13px}
+#volume{width:100px;max-width:35%}
+.player-message{color:#91a297;font-size:12px;margin:9px 0 0;line-height:1.4}
+.song-list{display:grid;grid-template-columns:1fr;gap:12px}
+.song{display:flex;align-items:center;gap:13px;padding:12px;border:1px solid #26352a;border-radius:15px;background:linear-gradient(120deg,#151e17,#101611);min-width:0;transition:border-color .2s,transform .2s}
+.song:hover{border-color:#3c7049;transform:translateY(-1px)}
+.song.playing{border-color:var(--green);background:#14251a}
+.cover{flex:0 0 66px;width:66px;height:66px;border-radius:11px;display:grid;place-items:center;overflow:hidden;background:linear-gradient(145deg,#1ed760,#0b4623);font-size:29px}
+.song-info{min-width:0;flex:1}
+.song h3{font-size:15px;margin:0 0 6px;overflow-wrap:anywhere}
+.song small{color:var(--muted);font-size:12px}
+.song-actions{display:flex;align-items:center;gap:7px;margin-top:10px;flex-wrap:wrap}
+.btn{border:0;border-radius:20px;padding:9px 12px;text-decoration:none;font-size:12px;font-weight:bold;display:inline-flex;align-items:center;justify-content:center;gap:5px}
+.play-btn{background:var(--green);color:#07130a}
+.download-btn{background:#29392d;color:#f4fff6}
+.btn:active,.icon-btn:active{transform:scale(.96)}
+.empty{grid-column:1/-1;text-align:center;border:1px dashed #34483a;border-radius:15px;padding:25px;color:var(--muted)}
+.about{color:var(--muted);line-height:1.75;margin-bottom:25px}
+footer{text-align:center;padding:22px 15px;border-top:1px solid #243027;color:var(--muted);font-size:12px;line-height:1.6}
+footer strong{color:var(--green)}
+.bottom-player{position:fixed;z-index:50;left:0;right:0;bottom:0;background:rgba(12,18,13,.97);backdrop-filter:blur(15px);border-top:1px solid #344a38;padding:10px max(12px,env(safe-area-inset-left)) calc(10px + env(safe-area-inset-bottom));box-shadow:0 -8px 30px #0005}
+.bottom-inner{max-width:1100px;margin:auto;display:flex;align-items:center;gap:10px}
+.mini-cover{width:47px;height:47px;flex:0 0 47px;border-radius:9px;background:linear-gradient(135deg,#1ed760,#0b4623);display:grid;place-items:center;overflow:hidden;font-size:22px}
+.mini-info{min-width:0;flex:1}
+.mini-title{font-size:13px;font-weight:bold;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mini-artist{font-size:11px;color:var(--muted);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mini-controls{display:flex;align-items:center;gap:5px}
+.mini-controls button{border:0;background:transparent;color:white;font-size:19px;padding:6px}
+.mini-controls .mini-play{color:var(--green);font-size:24px}
+.mini-progress{position:absolute;top:-1px;left:0;right:0;height:2px;background:#27352b}
+#miniProgressFill{height:100%;width:0;background:var(--green)}
+@media(min-width:650px){.song-list{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding:32px}.featured-player{grid-template-columns:190px minmax(0,1fr);padding:24px}.cover{width:72px;height:72px;flex-basis:72px}}
+@media(max-width:390px){.featured-player{grid-template-columns:92px minmax(0,1fr);gap:12px;padding:12px}.album-art{border-radius:12px;font-size:38px}.player-controls{gap:6px}.icon-btn{width:34px;height:34px}.icon-btn.main-play{width:43px;height:43px}.song{gap:10px;padding:10px}.cover{width:55px;height:55px;flex-basis:55px}.bottom-inner{gap:7px}.mini-cover{width:39px;height:39px;flex-basis:39px}.mini-controls{gap:0}}
+</style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="brand"><div class="brand-icon">♫</div><h1 class="logo">Novidades dos Beats</h1></div>
+    <p class="subtitle">Descobre músicas novas. Ouve, partilha e descarrega!</p>
+    <div class="search-wrap"><span class="search-icon">🔍</span><input id="search" class="search" type="search" placeholder="Pesquisar música ou artista..." aria-label="Pesquisar músicas e artistas"></div>
+    <nav><a href="#inicio">Início</a><a href="#musicas">Músicas</a><a href="#sobre">Sobre</a></nav>
+  </div>
+</header>
+
+<main class="container" id="inicio">
+  <section class="hero">
+    <span class="badge">🇲🇿 MÚSICA MOÇAMBICANA</span>
+    <h2>O teu som.<br>A tua vibe. 💚</h2>
+    <p>Bem-vindo ao Novidades dos Beats! Descobre os sons de DJ Vince, ouve as tuas músicas favoritas e leva a tua vibe contigo.</p>
+  </section>
+
+  <section aria-label="Leitor de música">
+    <div class="section-heading"><h2>🎧 A tocar agora</h2><span class="count">O teu player</span></div>
+    <div class="featured-player">
+      <div class="album-art" id="bigCover">🎵</div>
+      <div class="featured-info">
+        <div class="player-kicker">NOVO SOM • DJ VINCE</div>
+        <h2 class="track-title" id="currentTitle">Escolhe uma música</h2>
+        <div class="track-artist" id="currentArtist">Novidades dos Beats</div>
+        <div class="player-controls">
+          <button class="icon-btn" id="shuffleBtn" aria-label="Reprodução aleatória" title="Aleatório">🔀</button>
+          <button class="icon-btn" id="prevBtn" aria-label="Música anterior" title="Anterior">⏮</button>
+          <button class="icon-btn main-play" id="mainPlayBtn" aria-label="Reproduzir">▶</button>
+          <button class="icon-btn" id="nextBtn" aria-label="Música seguinte" title="Seguinte">⏭</button>
+          <button class="icon-btn" id="repeatBtn" aria-label="Repetir música" title="Repetir">🔁</button>
+        </div>
+        <div class="progress-row"><span id="currentTime">0:00</span><input id="progress" type="range" min="0" max="1000" value="0" aria-label="Progresso da música"><span id="duration">0:00</span></div>
+        <div class="volume-row"><span>🔊</span><input id="volume" type="range" min="0" max="1" step="0.05" value="0.85" aria-label="Volume"></div>
+        <p class="player-message" id="playerMessage">Seleciona uma música na lista para começar a ouvir.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="musicas">
+    <div class="section-heading"><h2>🔥 Todas as músicas</h2><span class="count" id="songCount">A carregar…</span></div>
+    <p id="status" class="status">A carregar músicas...</p>
+    <div id="songList" class="song-list"></div>
+  </section>
+  <section id="sobre">
+    <div class="section-heading"><h2>💚 Sobre o site</h2></div>
+    <p class="about">Novidades dos Beats é um espaço dedicado à música moçambicana, aos artistas e aos novos sons. Descobre, ouve e partilha a música de DJ Vince.</p>
+  </section>
+</main>
+
+<footer>Feito com 💚 para os amantes da música.<br><strong>Novidades dos Beats</strong> © 2026</footer>
+
+<div class="bottom-player" aria-label="Player fixo">
+  <div class="mini-progress"><div id="miniProgressFill"></div></div>
+  <div class="bottom-inner">
+    <div class="mini-cover" id="miniCover">🎵</div>
+    <div class="mini-info"><div class="mini-title" id="miniTitle">Novidades dos Beats</div><div class="mini-artist" id="miniArtist">A tua música, sempre contigo!</div></div>
+    <div class="mini-controls"><button id="miniPrev" aria-label="Anterior">⏮</button><button id="miniPlay" class="mini-play" aria-label="Reproduzir">▶</button><button id="miniNext" aria-label="Seguinte">⏭</button></div>
+  </div>
+</div>
+
+<audio id="audio" preload="metadata" crossorigin="anonymous"></audio>
+<script>
+const API_URL = "https://script.google.com/macros/s/AKfycbyo9rEUOIG35eZpOKzyVovmqEA09nFhn37BIjAR_mafcfGYRreRvPYT1yw-Yyfvi1oL/exec";
+const $ = id => document.getElementById(id);
+const songList = $("songList"), statusBox = $("status"), searchInput = $("search"), audio = $("audio");
+let songs = [], currentIndex = -1, shuffle = false, repeat = false;
+
+function escapeHTML(value){return String(value ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function getSongName(song){return song.name || song.title || song.filename || "Música sem título";}
+function getArtist(song){return song.artist || song.artista || song.author || "DJ Vince";}
+function getSongURL(song){
+  if(song.url) return song.url;
+  if(song.audioUrl) return song.audioUrl;
+  if(song.id) return "https://drive.google.com/uc?export=download&id="+encodeURIComponent(song.id);
+  return "";
+}
+function getDownloadURL(song){
+  if(song.downloadUrl) return song.downloadUrl;
+  if(song.id) return "https://drive.google.com/uc?export=download&id="+encodeURIComponent(song.id);
+  return getSongURL(song);
+}
+function getCover(song){return song.cover || song.image || song.thumbnail || song.photo || "";}
+function safeCoverMarkup(song, cls){
+  const cover=getCover(song);
+  return cover ? `<img src="${escapeHTML(cover)}" alt="Capa de ${escapeHTML(getSongName(song))}" onerror="this.parentElement.textContent='🎵'">` : "🎵";
+}
+function formatTime(seconds){
+  if(!Number.isFinite(seconds)||seconds<0)return "0:00";
+  const m=Math.floor(seconds/60),s=Math.floor(seconds%60);
+  return m+":"+String(s).padStart(2,"0");
+}
+function updatePlayButtons(){
+  const playing=!audio.paused;
+  $("mainPlayBtn").textContent=playing?"❚❚":"▶";
+  $("miniPlay").textContent=playing?"❚❚":"▶";
+  $("mainPlayBtn").setAttribute("aria-label",playing?"Pausar":"Reproduzir");
+  $("miniPlay").setAttribute("aria-label",playing?"Pausar":"Reproduzir");
+  document.querySelectorAll(".song").forEach((card,i)=>{
+    const btn=card.querySelector(".card-play");
+    if(btn)btn.textContent=(i===currentIndex&&!audio.paused)?"❚❚":"▶";
+    card.classList.toggle("playing",i===currentIndex);
+  });
+}
+function updateTrackLabels(song){
+  const name=getSongName(song),artist=getArtist(song);
+  $("currentTitle").textContent=name;
+  $("currentArtist").textContent=artist+" • Novidades dos Beats";
+  $("miniTitle").textContent=name;
+  $("miniArtist").textContent=artist;
+  $("bigCover").innerHTML=safeCoverMarkup(song,"album-art");
+  $("miniCover").innerHTML=safeCoverMarkup(song,"mini-cover");
+  $("playerMessage").textContent="A ouvir: "+name;
+}
+function playSong(index, autoplay=true){
+  if(!songs.length)return;
+  index=Math.max(0,Math.min(index,songs.length-1));
+  const song=songs[index],url=getSongURL(song);
+  if(!url){$("playerMessage").textContent="Não foi encontrado o ficheiro de áudio desta música.";return;}
+  currentIndex=index;updateTrackLabels(song);renderSongs();
+  if(audio.src!==new URL(url,location.href).href){audio.src=url;audio.load();}
+  if(autoplay){
+    audio.play().then(()=>{$("playerMessage").textContent="A tocar agora";updatePlayButtons();})
+    .catch(()=>{$("playerMessage").textContent="Não foi possível reproduzir. Verifica a ligação e as permissões do ficheiro no Google Drive.";updatePlayButtons();});
+  }else{updatePlayButtons();}
+}
+function togglePlay(){
+  if(currentIndex<0){if(songs.length)playSong(0,true);else $("playerMessage").textContent="Ainda não há músicas carregadas.";return;}
+  if(audio.paused)audio.play().then(updatePlayButtons).catch(()=>{$("playerMessage").textContent="Não foi possível reproduzir este ficheiro.";});
+  else audio.pause();
+  updatePlayButtons();
+}
+function nextSong(){
+  if(!songs.length)return;
+  let next;
+  if(shuffle&&songs.length>1){do{next=Math.floor(Math.random()*songs.length)}while(next===currentIndex);}
+  else next=(currentIndex+1)%songs.length;
+  playSong(next,true);
+}
+function previousSong(){
+  if(!songs.length)return;
+  if(audio.currentTime>3){audio.currentTime=0;return;}
+  playSong((currentIndex-1+songs.length)%songs.length,true);
+}
+function renderSongs(){
+  const q=searchInput.value.trim().toLowerCase();
+  const filtered=songs.map((song,index)=>({song,index})).filter(({song})=>(getSongName(song)+" "+getArtist(song)).toLowerCase().includes(q));
+  songList.innerHTML="";
+  $("songCount").textContent=songs.length+" música"+(songs.length===1?"":"s");
+  if(!filtered.length){
+    const empty=document.createElement("div");empty.className="empty";
+    empty.textContent=songs.length?"Não encontrámos músicas com essa pesquisa.":"Ainda não existem músicas disponíveis.";
+    songList.appendChild(empty);return;
+  }
+  filtered.forEach(({song,index})=>{
+    const card=document.createElement("article");card.className="song"+(index===currentIndex?" playing":"");
+    const name=getSongName(song),artist=getArtist(song),downloadURL=getDownloadURL(song);
+    card.innerHTML=`<div class="cover">${safeCoverMarkup(song,"cover")}</div>
+      <div class="song-info"><h3>${escapeHTML(name)}</h3><small>${escapeHTML(artist)} • Novidades dos Beats</small>
+      <div class="song-actions"><button class="btn play-btn card-play" type="button">${index===currentIndex&&!audio.paused?"❚❚":"▶"} ${index===currentIndex&&!audio.paused?"A tocar":"Ouvir"}</button>
+      ${downloadURL?`<a class="btn download-btn" href="${escapeHTML(downloadURL)}" target="_blank" rel="noopener">⬇ Descarregar</a>`:""}
+      ${song.view?`<a class="btn download-btn" href="${escapeHTML(song.view)}" target="_blank" rel="noopener">Abrir no Drive</a>`:""}</div></div>`;
+    card.querySelector(".card-play").addEventListener("click",()=>{if(index===currentIndex&&!audio.paused)audio.pause();else playSong(index,true);});
+    songList.appendChild(card);
+  });
+  updatePlayButtons();
+}
+async function loadSongs(){
+  statusBox.style.display="block";statusBox.textContent="A carregar músicas do Google Drive...";
+  try{
+    const response=await fetch(API_URL);
+    if(!response.ok)throw new Error("Não foi possível consultar a lista.");
+    const data=await response.json();
+    if(!Array.isArray(data))throw new Error("A resposta não é uma lista de músicas.");
+    songs=data.filter(song=>getSongURL(song));
+    renderSongs();
+    statusBox.style.display=songs.length?"none":"block";
+    if(!songs.length)statusBox.textContent="A ligação funcionou, mas ainda não há músicas na lista.";
+    if(songs.length&&currentIndex<0){
+      $("currentTitle").textContent="Escolhe uma música";
+      $("currentArtist").textContent=songs.length+" músicas disponíveis";
+    }
+  }catch(error){
+    console.error("Erro ao carregar músicas:",error);
+    statusBox.innerHTML="Não foi possível carregar as músicas automaticamente.<br>Verifica a Internet e as permissões do Google Drive.<br><button class='btn play-btn' id='retryBtn'>Tentar novamente</button>";
+    $("retryBtn").addEventListener("click",loadSongs);
+    $("songCount").textContent="Lista indisponível";
+  }
+}
+$("mainPlayBtn").addEventListener("click",togglePlay);
+$("miniPlay").addEventListener("click",togglePlay);
+$("nextBtn").addEventListener("click",nextSong);$("miniNext").addEventListener("click",nextSong);
+$("prevBtn").addEventListener("click",previousSong);$("miniPrev").addEventListener("click",previousSong);
+$("shuffleBtn").addEventListener("click",()=>{shuffle=!shuffle;$("shuffleBtn").classList.toggle("active",shuffle);$("playerMessage").textContent=shuffle?"Reprodução aleatória ativada":"Reprodução aleatória desativada";});
+$("repeatBtn").addEventListener("click",()=>{repeat=!repeat;audio.loop=repeat;$("repeatBtn").classList.toggle("active",repeat);$("playerMessage").textContent=repeat?"Repetição ativada":"Repetição desativada";});
+$("progress").addEventListener("input",()=>{if(Number.isFinite(audio.duration)&&audio.duration>0)audio.currentTime=(Number($("progress").value)/1000)*audio.duration;});
+$("volume").addEventListener("input",()=>audio.volume=Number($("volume").value));
+audio.volume=.85;
+audio.addEventListener("timeupdate",()=>{
+  $("currentTime").textContent=formatTime(audio.currentTime);
+  $("duration").textContent=formatTime(audio.duration);
+  if(Number.isFinite(audio.duration)&&audio.duration>0){
+    const p=audio.currentTime/audio.duration*1000;$("progress").value=p;
+    $("miniProgressFill").style.width=(p/10)+"%";
+  }
+});
+audio.addEventListener("loadedmetadata",()=>{$("duration").textContent=formatTime(audio.duration);});
+audio.addEventListener("play",updatePlayButtons);
+audio.addEventListener("pause",updatePlayButtons);
+audio.addEventListener("ended",()=>{if(!repeat)nextSong();});
+audio.addEventListener("error",()=>{if(currentIndex>=0)$("playerMessage").textContent="Erro ao abrir o áudio. Confirma se o ficheiro do Drive está acessível e num formato suportado.";});
+searchInput.addEventListener("input",renderSongs);
+loadSongs();
+</script>
+</body>
+</html>
