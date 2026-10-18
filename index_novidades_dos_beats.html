@@ -152,9 +152,8 @@ const $ = id => document.getElementById(id);
 const songList = $("songList"), statusBox = $("status"), searchInput = $("search"), audio = $("audio");
 let songs = [], currentIndex = -1, shuffle = false, repeat = false;
 
-function escapeHTML(value){return String(value ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 function getSongName(song){
-  return song.nome || song.name || song.title || song.filename || "Música sem título";
+return song.nome || song.name || song.title || song.filename || "Música sem título";
 }
   if(song.url) return song.url;
   if(song.audioUrl) return song.audioUrl;
