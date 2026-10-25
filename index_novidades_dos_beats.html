@@ -250,28 +250,22 @@ function renderSongs(){
   });
   updatePlayButtons();
 }
-async function loadSongs(){
-  statusBox.style.display="block";statusBox.textContent="A carregar músicas do Google Drive...";
-  try{
-    const response=await fetch(API_URL);
-    if(!response.ok)throw new Error("Não foi possível consultar a lista.");
-    const data=await response.json();
-    if(!Array.isArray(data))throw new Error("A resposta não é uma lista de músicas.");
-    songs=data.filter(song=>getSongURL(song));
-    renderSongs();
-    statusBox.style.display=songs.length?"none":"block";
-    if(!songs.length)statusBox.textContent="A ligação funcionou, mas ainda não há músicas na lista.";
-    if(songs.length&&currentIndex<0){
-      $("currentTitle").textContent="Escolhe uma música";
-      $("currentArtist").textContent=songs.length+" músicas disponíveis";
-    }
-  }catch(error){
-    console.error("Erro ao carregar músicas:",error);
-    statusBox.innerHTML="Não foi possível carregar as músicas automaticamente.<br>Verifica a Internet e as permissões do Google Drive.<br><button class='btn play-btn' id='retryBtn'>Tentar novamente</button>";
-    $("retryBtn").addEventListener("click",loadSongs);
-    $("songCount").textContent="Lista indisponível";
-  }
+function getSongName(song){
+  return song.nome || song.name || song.title || song.filename || "Música sem título";
 }
+
+function getSongURL(song){
+  if(song.url) return song.url;
+  if(song.audioUrl) return song.audioUrl;
+  if(song.id) return "https://drive.google.com/uc?export=download&id="+encodeURIComponent(song.id);
+  return "";
+}
+
+function getDownloadURL(song){
+  if(song.downloadUrl) return song.downloadUrl;
+  if(song.id) return "https://drive.google.com/uc?export=download&id="+encodeURIComponent(song.id);
+  return getSongURL(song);
+  }
 $("mainPlayBtn").addEventListener("click",togglePlay);
 $("miniPlay").addEventListener("click",togglePlay);
 $("nextBtn").addEventListener("click",nextSong);$("miniNext").addEventListener("click",nextSong);
