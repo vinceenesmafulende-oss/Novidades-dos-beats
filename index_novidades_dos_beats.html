@@ -253,13 +253,45 @@ function renderSongs(){
 function getSongName(song){
   return song.nome || song.name || song.title || song.filename || "Música sem título";
 }
+async function loadSongs(){
+  statusBox.style.display = "block";
+  statusBox.textContent = "A carregar músicas do Google Drive...";
 
-function getSongURL(song){
-  if(song.url) return song.url;
-  if(song.audioUrl) return song.audioUrl;
-  if(song.id) return "https://drive.google.com/uc?export=download&id="+encodeURIComponent(song.id);
-  return "";
-}
+  try {
+    const response = await fetch(API_URL);
+
+    if (!response.ok) {
+      throw new Error("Erro HTTP: " + response.status);
+    }
+
+    const data = await response.json();
+
+    if (!Array.isArray(data)) {
+      throw new Error("A API não devolveu uma lista.");
+    }
+
+    songs = data.filter(song => getSongURL(song));
+
+    renderSongs();
+
+    statusBox.style.display = "none";
+
+    if (songs.length > 0 && currentIndex < 0) {
+      $("currentTitle").textContent = "Escolhe uma música";
+      $("currentArtist").textContent =
+        songs.length + " músicas disponíveis";
+    }
+
+    console.log("Músicas carregadas:", songs.length);
+
+  } catch (error) {
+    console.error("Erro ao carregar músicas:", error);
+
+    statusBox.style.display = "block";
+    statusBox.textContent =
+      "Erro ao carregar músicas. Verifica a ligação à Internet e tenta novamente.";
+  }
+  
 
 function getDownloadURL(song){
   if(song.downloadUrl) return song.downloadUrl;
