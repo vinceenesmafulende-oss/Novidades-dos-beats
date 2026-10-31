@@ -314,7 +314,7 @@ function renderSongs(){
       "Erro ao carregar músicas. Verifica a ligação à Internet e tenta novamente.";
   }
   
-
+  }
 function getDownloadURL(song){
   if(song.downloadUrl) return song.downloadUrl;
   if(song.id) return "https://drive.google.com/uc?export=download&id="+encodeURIComponent(song.id);
