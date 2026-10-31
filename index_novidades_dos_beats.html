@@ -250,12 +250,9 @@ function renderSongs(){
   });
   updatePlayButtons();
 }
-function getSongName(song){
+  function getSongName(song){
   return song.nome || song.name || song.title || song.filename || "Música sem título";
-}
-async function loadSongs(){
-  statusBox.style.display = "block";
-  statusBox.textContent = "A carregar músicas do Google Drive...";
+  }
 
   try {
     const response = await fetch(API_URL);
