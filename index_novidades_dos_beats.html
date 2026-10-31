@@ -147,139 +147,394 @@ footer strong{color:var(--green)}
 
 <audio id="audio" preload="metadata" crossorigin="anonymous"></audio>
 <script>
+const <script>
+
 const API_URL = "https://script.google.com/macros/s/AKfycbyo9rEUOIG35eZpOKzyVovmqEA09nFhn37BIjAR_mafcfGYRreRvPYT1yw-Yyfvi1oL/exec";
+
 const $ = id => document.getElementById(id);
-const songList = $("songList"), statusBox = $("status"), searchInput = $("search"), audio = $("audio");
-let songs = [], currentIndex = -1, shuffle = false, repeat = false;
 
-function getSongName(song){
-return song.nome || song.name || song.title || song.filename || "Música sem título";
+const songList = $("songList");
+const statusBox = $("status");
+const searchInput = $("search");
+const audio = $("audio");
+
+let songs = [];
+let currentIndex = -1;
+let shuffle = false;
+let repeat = false;
+
+
+// NOME DA MÚSICA
+function getSongName(song) {
+  return song.nome || song.name || song.title || song.filename || "Música sem título";
 }
 
-function getSongURL(song){
-if(song.url) return song.url;
-if(song.audioUrl) return song.audioUrl;
-if(song.id) return "https://drive.google.com/uc?export=download&id="+encodeURIComponent(song.id);
-return "";
-}
-  
-<script>
-const API_URL = "https://script.google.com/macros/s/AKfycbyo9rEUOIG35eZpOKzyVovmqEA09nFhn37BIjAR_mafcfGYRreRvPYT1yw-Yyfvi1oL/exec";
-const $ = id => document.getElementById(id);
-const songList = $("songList"), statusBox = $("status"), searchInput = $("search"), audio = $("audio");
-let songs = [], currentIndex = -1, shuffle = false, repeat = false;
 
-function getSongName(song){
-return song.nome || song.name || song.title || song.filename || "Música sem título";
+// NOME DO ARTISTA
+function getArtist(song) {
+  return song.artista || song.artist || song.autor || "DJ Vince";
 }
 
-function getSongURL(song){
-if(song.url) return song.url;
-if(song.audioUrl) return song.audioUrl;
-if(song.id) return "https://drive.google.com/uc?export=download&id="+encodeURIComponent(song.id);
-return "";
+
+// SEGURANÇA HTML
+function escapeHTML(text) {
+  return String(text ?? "").replace(/[&<>"']/g, char => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[char]);
 }
 
-function getDownloadURL(song){
-if(song.downloadUrl) return song.downloadUrl;
-if(song.id) return "https://drive.google.com/uc?export=download&id="+encodeURIComponent(song.id);
-return getSongURL(song);
+
+// LINK DA MÚSICA
+function getSongURL(song) {
+
+  if (song.url) return song.url;
+
+  if (song.audioUrl) return song.audioUrl;
+
+  if (song.id) {
+    return "https://drive.google.com/uc?export=download&id=" +
+      encodeURIComponent(song.id);
   }
-function getDownloadURL(song){
-  if(song.downloadUrl) return song.downloadUrl;
-  if(song.id) return "https://drive.google.com/uc?export=download&id="+encodeURIComponent(song.id);
+
+  return "";
+}
+
+
+// LINK DE DOWNLOAD
+function getDownloadURL(song) {
+
+  if (song.downloadUrl) return song.downloadUrl;
+
+  if (song.id) {
+    return "https://drive.google.com/uc?export=download&id=" +
+      encodeURIComponent(song.id);
+  }
+
   return getSongURL(song);
 }
-function getCover(song){return song.cover || song.image || song.thumbnail || song.photo || "";}
-function safeCoverMarkup(song, cls){
-  const cover=getCover(song);
-  return cover ? `<img src="${escapeHTML(cover)}" alt="Capa de ${escapeHTML(getSongName(song))}" onerror="this.parentElement.textContent='🎵'">` : "🎵";
+
+
+// CAPA DA MÚSICA
+function getCover(song) {
+  return song.cover || song.image || song.thumbnail || song.photo || "";
 }
-function formatTime(seconds){
-  if(!Number.isFinite(seconds)||seconds<0)return "0:00";
-  const m=Math.floor(seconds/60),s=Math.floor(seconds%60);
-  return m+":"+String(s).padStart(2,"0");
+
+
+function safeCoverMarkup(song) {
+
+  const cover = getCover(song);
+
+  return cover
+    ? `<img src="${escapeHTML(cover)}" alt="Capa" onerror="this.parentElement.textContent='🎵'">`
+    : "🎵";
 }
-function updatePlayButtons(){
-  const playing=!audio.paused;
-  $("mainPlayBtn").textContent=playing?"❚❚":"▶";
-  $("miniPlay").textContent=playing?"❚❚":"▶";
-  $("mainPlayBtn").setAttribute("aria-label",playing?"Pausar":"Reproduzir");
-  $("miniPlay").setAttribute("aria-label",playing?"Pausar":"Reproduzir");
-  document.querySelectorAll(".song").forEach((card,i)=>{
-    const btn=card.querySelector(".card-play");
-    if(btn)btn.textContent=(i===currentIndex&&!audio.paused)?"❚❚":"▶";
-    card.classList.toggle("playing",i===currentIndex);
-  });
-}
-function updateTrackLabels(song){
-  const name=getSongName(song),artist=getArtist(song);
-  $("currentTitle").textContent=name;
-  $("currentArtist").textContent=artist+" • Novidades dos Beats";
-  $("miniTitle").textContent=name;
-  $("miniArtist").textContent=artist;
-  $("bigCover").innerHTML=safeCoverMarkup(song,"album-art");
-  $("miniCover").innerHTML=safeCoverMarkup(song,"mini-cover");
-  $("playerMessage").textContent="A ouvir: "+name;
-}
-function playSong(index, autoplay=true){
-  if(!songs.length)return;
-  index=Math.max(0,Math.min(index,songs.length-1));
-  const song=songs[index],url=getSongURL(song);
-  if(!url){$("playerMessage").textContent="Não foi encontrado o ficheiro de áudio desta música.";return;}
-  currentIndex=index;updateTrackLabels(song);renderSongs();
-  if(audio.src!==new URL(url,location.href).href){audio.src=url;audio.load();}
-  if(autoplay){
-    audio.play().then(()=>{$("playerMessage").textContent="A tocar agora";updatePlayButtons();})
-    .catch(()=>{$("playerMessage").textContent="Não foi possível reproduzir. Verifica a ligação e as permissões do ficheiro no Google Drive.";updatePlayButtons();});
-  }else{updatePlayButtons();}
-}
-function togglePlay(){
-  if(currentIndex<0){if(songs.length)playSong(0,true);else $("playerMessage").textContent="Ainda não há músicas carregadas.";return;}
-  if(audio.paused)audio.play().then(updatePlayButtons).catch(()=>{$("playerMessage").textContent="Não foi possível reproduzir este ficheiro.";});
-  else audio.pause();
-  updatePlayButtons();
-}
-function nextSong(){
-  if(!songs.length)return;
-  let next;
-  if(shuffle&&songs.length>1){do{next=Math.floor(Math.random()*songs.length)}while(next===currentIndex);}
-  else next=(currentIndex+1)%songs.length;
-  playSong(next,true);
-}
-function previousSong(){
-  if(!songs.length)return;
-  if(audio.currentTime>3){audio.currentTime=0;return;}
-  playSong((currentIndex-1+songs.length)%songs.length,true);
-}
-function renderSongs(){
-  const q=searchInput.value.trim().toLowerCase();
-  const filtered=songs.map((song,index)=>({song,index})).filter(({song})=>(getSongName(song)+" "+getArtist(song)).toLowerCase().includes(q));
-  songList.innerHTML="";
-  $("songCount").textContent=songs.length+" música"+(songs.length===1?"":"s");
-  if(!filtered.length){
-    const empty=document.createElement("div");empty.className="empty";
-    empty.textContent=songs.length?"Não encontrámos músicas com essa pesquisa.":"Ainda não existem músicas disponíveis.";
-    songList.appendChild(empty);return;
-  }
-  filtered.forEach(({song,index})=>{
-    const card=document.createElement("article");card.className="song"+(index===currentIndex?" playing":"");
-    const name=getSongName(song),artist=getArtist(song),downloadURL=getDownloadURL(song);
-    card.innerHTML=`<div class="cover">${safeCoverMarkup(song,"cover")}</div>
-      <div class="song-info"><h3>${escapeHTML(name)}</h3><small>${escapeHTML(artist)} • Novidades dos Beats</small>
-      <div class="song-actions"><button class="btn play-btn card-play" type="button">${index===currentIndex&&!audio.paused?"❚❚":"▶"} ${index===currentIndex&&!audio.paused?"A tocar":"Ouvir"}</button>
-      ${downloadURL?`<a class="btn download-btn" href="${escapeHTML(downloadURL)}" target="_blank" rel="noopener">⬇ Descarregar</a>`:""}
-      ${song.view?`<a class="btn download-btn" href="${escapeHTML(song.view)}" target="_blank" rel="noopener">Abrir no Drive</a>`:""}</div></div>`;
-    card.querySelector(".card-play").addEventListener("click",()=>{if(index===currentIndex&&!audio.paused)audio.pause();else playSong(index,true);});
-    songList.appendChild(card);
-  });
-  updatePlayButtons();
-}
-  function getSongName(song){
-  return song.nome || song.name || song.title || song.filename || "Música sem título";
+
+
+// TEMPO
+function formatTime(seconds) {
+
+  if (!Number.isFinite(seconds) || seconds < 0) {
+    return "0:00";
   }
 
+  const m = Math.floor(seconds / 60);
+  const s = Math.floor(seconds % 60);
+
+  return m + ":" + String(s).padStart(2, "0");
+}
+
+
+// ATUALIZAR BOTÕES
+function updatePlayButtons() {
+
+  const playing = !audio.paused;
+
+  $("mainPlayBtn").textContent = playing ? "❚❚" : "▶";
+  $("miniPlay").textContent = playing ? "❚❚" : "▶";
+
+  document.querySelectorAll(".song").forEach(card => {
+
+    const btn = card.querySelector(".card-play");
+
+    const index = Number(card.dataset.index);
+
+    if (btn) {
+      btn.textContent =
+        index === currentIndex && playing ? "❚❚ A tocar" : "▶ Ouvir";
+    }
+
+    card.classList.toggle(
+      "playing",
+      index === currentIndex
+    );
+
+  });
+}
+
+
+// ATUALIZAR INFORMAÇÕES
+function updateTrackLabels(song) {
+
+  const name = getSongName(song);
+  const artist = getArtist(song);
+
+  $("currentTitle").textContent = name;
+  $("currentArtist").textContent = artist;
+
+  $("miniTitle").textContent = name;
+  $("miniArtist").textContent = artist;
+
+  $("bigCover").innerHTML = safeCoverMarkup(song);
+  $("miniCover").innerHTML = safeCoverMarkup(song);
+
+  $("playerMessage").textContent = "A ouvir: " + name;
+}
+
+
+// REPRODUZIR MÚSICA
+function playSong(index, autoplay = true) {
+
+  if (!songs.length) return;
+
+  index = Math.max(0, Math.min(index, songs.length - 1));
+
+  const song = songs[index];
+  const url = getSongURL(song);
+
+  if (!url) return;
+
+  currentIndex = index;
+
+  updateTrackLabels(song);
+
+  renderSongs();
+
+  if (audio.src !== new URL(url, location.href).href) {
+
+    audio.src = url;
+    audio.load();
+
+  }
+
+  if (autoplay) {
+
+    audio.play()
+      .then(() => {
+        $("playerMessage").textContent = "A tocar agora";
+        updatePlayButtons();
+      })
+      .catch(error => {
+
+        console.error(error);
+
+        $("playerMessage").textContent =
+          "Não foi possível reproduzir esta música. Verifica o acesso ao Google Drive.";
+
+        updatePlayButtons();
+
+      });
+
+  } else {
+
+    updatePlayButtons();
+
+  }
+
+}
+
+
+// PAUSAR E REPRODUZIR
+function togglePlay() {
+
+  if (currentIndex < 0) {
+
+    if (songs.length) {
+      playSong(0);
+    }
+
+    return;
+  }
+
+  if (audio.paused) {
+
+    audio.play().catch(() => {
+      $("playerMessage").textContent =
+        "Não foi possível reproduzir esta música.";
+    });
+
+  } else {
+
+    audio.pause();
+
+  }
+
+  updatePlayButtons();
+
+}
+
+
+// PRÓXIMA MÚSICA
+function nextSong() {
+
+  if (!songs.length) return;
+
+  let next;
+
+  if (shuffle && songs.length > 1) {
+
+    do {
+      next = Math.floor(Math.random() * songs.length);
+    } while (next === currentIndex);
+
+  } else {
+
+    next = (currentIndex + 1) % songs.length;
+
+  }
+
+  playSong(next);
+
+}
+
+
+// MÚSICA ANTERIOR
+function previousSong() {
+
+  if (!songs.length) return;
+
+  if (audio.currentTime > 3) {
+
+    audio.currentTime = 0;
+    return;
+
+  }
+
+  playSong(
+    (currentIndex - 1 + songs.length) % songs.length
+  );
+
+}
+
+
+// MOSTRAR MÚSICAS
+function renderSongs() {
+
+  const q = searchInput.value.trim().toLowerCase();
+
+  const filtered = songs
+    .map((song, index) => ({ song, index }))
+    .filter(({ song }) =>
+      (getSongName(song) + " " + getArtist(song))
+        .toLowerCase()
+        .includes(q)
+    );
+
+  songList.innerHTML = "";
+
+  $("songCount").textContent =
+    songs.length + " músicas";
+
+  if (!filtered.length) {
+
+    const empty = document.createElement("div");
+
+    empty.className = "empty";
+
+    empty.textContent = songs.length
+      ? "Não encontrámos músicas com essa pesquisa."
+      : "Ainda não existem músicas disponíveis.";
+
+    songList.appendChild(empty);
+
+    return;
+
+  }
+
+  filtered.forEach(({ song, index }) => {
+
+    const card = document.createElement("article");
+
+    card.className = "song";
+    card.dataset.index = index;
+
+    const name = getSongName(song);
+    const artist = getArtist(song);
+    const downloadURL = getDownloadURL(song);
+
+    card.innerHTML = `
+      <div class="cover">
+        ${safeCoverMarkup(song)}
+      </div>
+
+      <div class="song-info">
+
+        <h3>${escapeHTML(name)}</h3>
+
+        <small>${escapeHTML(artist)} • Novidades dos Beats</small>
+
+        <div class="song-actions">
+
+          <button class="btn play-btn card-play" type="button">
+            ▶ Ouvir
+          </button>
+
+          ${downloadURL ? `
+            <a class="btn download-btn"
+               href="${escapeHTML(downloadURL)}"
+               target="_blank"
+               rel="noopener">
+               ⬇ Descarregar
+            </a>
+          ` : ""}
+
+          ${song.view ? `
+            <a class="btn download-btn"
+               href="${escapeHTML(song.view)}"
+               target="_blank"
+               rel="noopener">
+               Abrir no Drive
+            </a>
+          ` : ""}
+
+        </div>
+
+      </div>
+    `;
+
+    card.querySelector(".card-play")
+      .addEventListener("click", () => {
+
+        if (index === currentIndex && !audio.paused) {
+          audio.pause();
+        } else {
+          playSong(index);
+        }
+
+      });
+
+    songList.appendChild(card);
+
+  });
+
+  updatePlayButtons();
+
+}
+
+
+// CARREGAR MÚSICAS AUTOMATICAMENTE
+async function loadSongs() {
+
+  statusBox.style.display = "block";
+
+  statusBox.textContent =
+    "A carregar músicas do Google Drive...";
+
   try {
+
     const response = await fetch(API_URL);
 
     if (!response.ok) {
@@ -292,58 +547,149 @@ function renderSongs(){
       throw new Error("A API não devolveu uma lista.");
     }
 
-    songs = data.filter(song => getSongURL(song));
+    songs = data.filter(song =>
+      song && typeof song === "object" && getSongURL(song)
+    );
 
     renderSongs();
 
     statusBox.style.display = "none";
 
     if (songs.length > 0 && currentIndex < 0) {
+
       $("currentTitle").textContent = "Escolhe uma música";
+
       $("currentArtist").textContent =
         songs.length + " músicas disponíveis";
+
     }
 
     console.log("Músicas carregadas:", songs.length);
 
   } catch (error) {
+
     console.error("Erro ao carregar músicas:", error);
 
     statusBox.style.display = "block";
+
     statusBox.textContent =
       "Erro ao carregar músicas. Verifica a ligação à Internet e tenta novamente.";
+
   }
-  
-  }
-function getDownloadURL(song){
-  if(song.downloadUrl) return song.downloadUrl;
-  if(song.id) return "https://drive.google.com/uc?export=download&id="+encodeURIComponent(song.id);
-  return getSongURL(song);
-  }
-$("mainPlayBtn").addEventListener("click",togglePlay);
-$("miniPlay").addEventListener("click",togglePlay);
-$("nextBtn").addEventListener("click",nextSong);$("miniNext").addEventListener("click",nextSong);
-$("prevBtn").addEventListener("click",previousSong);$("miniPrev").addEventListener("click",previousSong);
-$("shuffleBtn").addEventListener("click",()=>{shuffle=!shuffle;$("shuffleBtn").classList.toggle("active",shuffle);$("playerMessage").textContent=shuffle?"Reprodução aleatória ativada":"Reprodução aleatória desativada";});
-$("repeatBtn").addEventListener("click",()=>{repeat=!repeat;audio.loop=repeat;$("repeatBtn").classList.toggle("active",repeat);$("playerMessage").textContent=repeat?"Repetição ativada":"Repetição desativada";});
-$("progress").addEventListener("input",()=>{if(Number.isFinite(audio.duration)&&audio.duration>0)audio.currentTime=(Number($("progress").value)/1000)*audio.duration;});
-$("volume").addEventListener("input",()=>audio.volume=Number($("volume").value));
-audio.volume=.85;
-audio.addEventListener("timeupdate",()=>{
-  $("currentTime").textContent=formatTime(audio.currentTime);
-  $("duration").textContent=formatTime(audio.duration);
-  if(Number.isFinite(audio.duration)&&audio.duration>0){
-    const p=audio.currentTime/audio.duration*1000;$("progress").value=p;
-    $("miniProgressFill").style.width=(p/10)+"%";
-  }
+
+}
+
+
+// CONTROLOS DO PLAYER
+
+$("mainPlayBtn").addEventListener("click", togglePlay);
+
+$("miniPlay").addEventListener("click", togglePlay);
+
+$("nextBtn").addEventListener("click", nextSong);
+
+$("miniNext").addEventListener("click", nextSong);
+
+$("prevBtn").addEventListener("click", previousSong);
+
+$("miniPrev").addEventListener("click", previousSong);
+
+
+// ALEATÓRIO
+$("shuffleBtn").addEventListener("click", () => {
+
+  shuffle = !shuffle;
+
+  $("shuffleBtn").classList.toggle("active", shuffle);
+
 });
-audio.addEventListener("loadedmetadata",()=>{$("duration").textContent=formatTime(audio.duration);});
-audio.addEventListener("play",updatePlayButtons);
-audio.addEventListener("pause",updatePlayButtons);
-audio.addEventListener("ended",()=>{if(!repeat)nextSong();});
-audio.addEventListener("error",()=>{if(currentIndex>=0)$("playerMessage").textContent="Erro ao abrir o áudio. Confirma se o ficheiro do Drive está acessível e num formato suportado.";});
-searchInput.addEventListener("input",renderSongs);
+
+
+// REPETIR
+$("repeatBtn").addEventListener("click", () => {
+
+  repeat = !repeat;
+
+  audio.loop = repeat;
+
+  $("repeatBtn").classList.toggle("active", repeat);
+
+});
+
+
+// PESQUISA
+searchInput.addEventListener("input", renderSongs);
+
+
+// VOLUME
+$("volume").addEventListener("input", () => {
+
+  audio.volume = Number($("volume").value);
+
+});
+
+audio.volume = 0.85;
+
+
+// PROGRESSO
+audio.addEventListener("timeupdate", () => {
+
+  if (audio.duration) {
+
+    $("progress").value =
+      (audio.currentTime / audio.duration) * 1000;
+
+    $("miniProgressFill").style.width =
+      (audio.currentTime / audio.duration) * 100 + "%";
+
+  }
+
+  $("currentTime").textContent =
+    formatTime(audio.currentTime);
+
+});
+
+
+audio.addEventListener("loadedmetadata", () => {
+
+  $("duration").textContent =
+    formatTime(audio.duration);
+
+});
+
+
+$("progress").addEventListener("input", () => {
+
+  if (audio.duration) {
+
+    audio.currentTime =
+      (Number($("progress").value) / 1000) * audio.duration;
+
+  }
+
+});
+
+
+// QUANDO A MÚSICA TERMINAR
+audio.addEventListener("ended", () => {
+
+  if (!repeat) {
+    nextSong();
+  }
+
+});
+
+
+// ATUALIZAR ESTADO DO PLAYER
+audio.addEventListener("play", updatePlayButtons);
+
+audio.addEventListener("pause", updatePlayButtons);
+
+
+// INICIAR SITE
 loadSongs();
+
 </script>
+
 </body>
 </html>
