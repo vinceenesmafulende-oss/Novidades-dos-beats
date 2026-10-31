@@ -155,11 +155,19 @@ let songs = [], currentIndex = -1, shuffle = false, repeat = false;
 function getSongName(song){
 return song.nome || song.name || song.title || song.filename || "Música sem título";
 }
-  if(song.url) return song.url;
-  if(song.audioUrl) return song.audioUrl;
-  if(song.id) return "https://drive.google.com/uc?export=download&id="+encodeURIComponent(song.id);
-  return "";
+
+function getSongURL(song){
+if(song.url) return song.url;
+if(song.audioUrl) return song.audioUrl;
+if(song.id) return "https://drive.google.com/uc?export=download&id="+encodeURIComponent(song.id);
+return "";
 }
+
+function getDownloadURL(song){
+if(song.downloadUrl) return song.downloadUrl;
+if(song.id) return "https://drive.google.com/uc?export=download&id="+encodeURIComponent(song.id);
+return getSongURL(song);
+  }
 function getDownloadURL(song){
   if(song.downloadUrl) return song.downloadUrl;
   if(song.id) return "https://drive.google.com/uc?export=download&id="+encodeURIComponent(song.id);
