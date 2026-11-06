@@ -578,15 +578,14 @@ console.log("Músicas carregadas:", songs);
 
 } catch (error) {
 
-console.error(error);
+console.error("Erro:", error);
 
-statusBox.textContent =
-  "Erro: " + error.message;
+statusBox.style.display = "block";
+statusBox.textContent = "Erro ao carregar músicas. Tenta novamente.";
 
 }
 
   }
-
 
 // CONTROLOS DO PLAYER
 
