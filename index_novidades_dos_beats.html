@@ -543,7 +543,22 @@ const data = await response.json();
 if (!Array.isArray(data)) {
   throw new Error("A API não devolveu uma lista.");
 }
+songs = data.filter(song => getSongURL(song));
 
+renderSongs();
+
+statusBox.style.display = "none";
+
+} catch (error) {
+
+console.error("Erro:", error);
+
+statusBox.style.display = "block";
+statusBox.textContent = "Erro ao carregar músicas. Tenta novamente.";
+
+}
+
+  }
 songs = data.filter(song =>
   song && song.id && song.nome
 );
