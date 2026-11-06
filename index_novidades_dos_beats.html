@@ -522,68 +522,41 @@ function renderSongs() {
 
   updatePlayButtons();
 
-}
+  }async function loadSongs() {
 
+  statusBox.style.display = "block";
+  statusBox.textContent = "A carregar músicas...";
 
-async function loadSongs() {
+  try {
 
-statusBox.style.display = "block";
-statusBox.textContent = "A carregar músicas...";
+    const response = await fetch(API_URL);
 
-try {
+    if (!response.ok) {
+      throw new Error("Erro HTTP: " + response.status);
+    }
 
-const response = await fetch(API_URL);
+    const data = await response.json();
 
-if (!response.ok) {
-  throw new Error("Erro HTTP: " + response.status);
-}
+    if (!Array.isArray(data)) {
+      throw new Error("A API não devolveu uma lista.");
+    }
 
-const data = await response.json();
+    songs = data.filter(song => getSongURL(song));
 
-if (!Array.isArray(data)) {
-  throw new Error("A API não devolveu uma lista.");
-}
-songs = data.filter(song => getSongURL(song));
+    renderSongs();
 
-renderSongs();
+    console.log("Músicas carregadas:", songs);
 
-statusBox.style.display = "none";
+    statusBox.style.display = "none";
 
-} catch (error) {
+  } catch (error) {
 
-console.error("Erro:", error);
+    console.error("Erro:", error);
 
-statusBox.style.display = "block";
-statusBox.textContent = "Erro ao carregar músicas. Tenta novamente.";
-
-}
+    statusBox.style.display = "block";
+    statusBox.textContent = "Erro ao carregar músicas. Tenta novamente.";
 
   }
-songs = data.filter(song =>
-  song && song.id && song.nome
-);
-
-renderSongs();
-
-statusBox.textContent =
-  songs.length + " músicas carregadas com sucesso!";
-
-if (songs.length > 0 && currentIndex === -1) {
-  $("currentTitle").textContent = "Escolhe uma música";
-  $("currentArtist").textContent =
-    songs.length + " músicas disponíveis";
-}
-
-console.log("Músicas carregadas:", songs);
-
-} catch (error) {
-
-console.error("Erro:", error);
-
-statusBox.style.display = "block";
-statusBox.textContent = "Erro ao carregar músicas. Tenta novamente.";
-
-}
 
   }
 
