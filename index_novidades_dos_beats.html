@@ -507,7 +507,6 @@ function renderSongs() {
 
     card.querySelector(".card-play")
       .addEventListener("click", () => {
-
         if (index === currentIndex && !audio.paused) {
           audio.pause();
         } else {
@@ -516,6 +515,52 @@ function renderSongs() {
 
       });
 
+    songList.appendChild(card);
+
+  });
+
+  updatePlayButtons();
+
+}
+
+// CARREGAR MÚSICAS
+async function loadSongs() {
+
+  statusBox.style.display = "block";
+  statusBox.textContent = "A carregar músicas...";
+
+  try {
+
+    const response = await fetch(API_URL);
+
+    if (!response.ok) {
+      throw new Error("Erro HTTP: " + response.status);
+    }
+
+    const data = await response.json();
+
+    if (!Array.isArray(data)) {
+      throw new Error("A API não devolveu uma lista.");
+    }
+
+    songs = data.filter(song => getSongURL(song));
+
+    renderSongs();
+
+    console.log("Músicas carregadas:", songs);
+
+    statusBox.style.display = "none";
+
+  } catch (error) {
+
+    console.error("Erro:", error);
+
+    statusBox.style.display = "block";
+    statusBox.textContent = "Erro ao carregar músicas. Tenta novamente.";
+
+  }
+
+}
     songList.appendChild(card);
 
   });
