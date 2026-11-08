@@ -1,244 +1,164 @@
+
 <!DOCTYPE html>
 <html lang="pt">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#07110b">
 <title>Novidades dos Beats | DJ Vince</title>
 <style>
-:root{--bg:#070b08;--panel:#111914;--panel2:#17231b;--green:#1ed760;--green2:#16a34a;--text:#f4fff6;--muted:#a7b5aa;--line:#26352b}
-*{box-sizing:border-box}
-body{margin:0;background:radial-gradient(circle at 50% -10%,#174327 0,#0a140d 36%,var(--bg) 72%);color:var(--text);font-family:Arial,Helvetica,sans-serif;padding-bottom:112px}
-header{padding:22px 16px 18px;position:relative;overflow:hidden}
+:root{--bg:#070b08;--green:#1ed760;--text:#f4fff6;--muted:#a7b5aa;--line:#26352b}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:radial-gradient(circle at 50% -10%,#174327 0,#0a140d 36%,var(--bg) 72%);color:var(--text);font-family:system-ui,-apple-system,Arial,Helvetica,sans-serif;padding-bottom:118px}
+header{padding:22px 16px 10px}
 .brand{display:flex;align-items:center;gap:11px}
-.logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#27ed73,#087b39);display:grid;place-items:center;font-size:23px;box-shadow:0 8px 25px #1ed76033}
-.brand small{display:block;color:var(--green);font-weight:700;letter-spacing:2px;font-size:10px}
+.logo{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,#27ed73,#087b39);display:grid;place-items:center;font-size:23px;flex:0 0 46px}
+.brand small{display:block;color:var(--green);font-weight:800;letter-spacing:2px;font-size:10px}
 .brand strong{font-size:17px}
-.hero{padding:26px 2px 12px}
+.hero{padding:22px 2px 8px}
 .tag{color:var(--green);font-size:11px;font-weight:800;letter-spacing:2px}
-h1{font-size:clamp(29px,8vw,42px);line-height:1.05;margin:10px 0}
-.hero p{color:var(--muted);line-height:1.5;margin:0;max-width:340px}
+h1{font-size:clamp(30px,8vw,44px);line-height:1.02;margin:10px 0}
+.hero p{color:var(--muted);line-height:1.55;margin:0;max-width:360px;font-size:14px}
 main{padding:0 15px}
-.search{display:flex;align-items:center;gap:10px;background:#111a14;border:1px solid var(--line);border-radius:15px;padding:0 14px;margin:13px 0 19px}
+.search{display:flex;align-items:center;gap:10px;background:#111a14;border:1px solid var(--line);border-radius:15px;padding:0 14px;margin:16px 0 8px}
 .search span{font-size:18px;color:var(--muted)}
-.search input{width:100%;padding:15px 0;background:transparent;border:0;outline:0;color:white;font-size:14px}
-.section-head{display:flex;align-items:center;justify-content:space-between;margin:20px 2px 12px}
+.search input{width:100%;padding:15px 0;background:transparent;border:0;outline:0;color:white;font-size:15px}
+.section-head{display:flex;align-items:center;justify-content:space-between;margin:22px 2px 12px}
 .section-head h2{font-size:18px;margin:0}
-.count{font-size:12px;color:var(--muted)}
-.filters{display:flex;gap:8px;overflow:auto;padding-bottom:4px}
-.filter{border:1px solid var(--line);background:#101812;color:#dce9df;border-radius:30px;padding:9px 15px;white-space:nowrap;font-size:12px}
-.filter.active{background:var(--green);border-color:var(--green);color:#05210e;font-weight:700}
-.status{display:none;margin:14px 0;padding:13px;border:1px solid var(--line);background:#101812;border-radius:12px;color:var(--muted);font-size:13px;line-height:1.5}
+.count{font-size:12px;color:var(--muted);background:#101812;border:1px solid var(--line);padding:5px 10px;border-radius:20px}
+.filters{display:flex;gap:8px;overflow:auto;padding-bottom:4px;scrollbar-width:none}
+.filters::-webkit-scrollbar{display:none}
+.filter{border:1px solid var(--line);background:#101812;color:#dce9df;border-radius:30px;padding:9px 15px;white-space:nowrap;font-size:12px;cursor:pointer}
+.filter.active{background:var(--green);border-color:var(--green);color:#05210e;font-weight:800}
+.status{display:none;margin:14px 0;padding:14px;border:1px solid var(--line);background:#101812;border-radius:12px;color:var(--muted);font-size:13px;line-height:1.55}
+.status b{color:white}
+.retry{margin-top:10px;background:var(--green);border:0;color:#05210e;font-weight:800;padding:10px 16px;border-radius:10px;cursor:pointer}
+.top-list{display:grid;gap:10px}
+.top-item{display:flex;align-items:center;gap:12px;padding:11px;background:linear-gradient(120deg,#1a2a1e,#101712);border:1px solid #2a3d2e;border-radius:15px;cursor:pointer}
+.rank{width:32px;height:32px;flex:0 0 32px;border-radius:50%;background:var(--green);color:#05210e;display:grid;place-items:center;font-weight:900;font-size:14px}
+.rank.r1{background:#ffd60a}.rank.r2{background:#c0c0c0}.rank.r3{background:#ff9f43}
 .song-list{display:grid;gap:10px;margin-top:13px}
 .song{display:flex;align-items:center;gap:12px;padding:11px;background:linear-gradient(120deg,#152019,#101712);border:1px solid #1e2b22;border-radius:15px;min-width:0}
+.song.playing{border-color:var(--green)}
 .cover{width:57px;height:57px;flex:0 0 57px;border-radius:11px;background:linear-gradient(135deg,#174d2a,#0a1b10);display:grid;place-items:center;font-size:24px;overflow:hidden}
 .cover img{width:100%;height:100%;object-fit:cover}
 .song-info{min-width:0;flex:1}
 .song-info strong{display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .song-info small{display:block;color:var(--muted);font-size:12px;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.song-actions{display:flex;align-items:center;gap:7px}
-.icon-btn{width:38px;height:38px;border:0;border-radius:50%;background:#22352a;color:white;font-size:16px;display:grid;place-items:center;text-decoration:none}
-.icon-btn.play{background:var(--green);color:#06210e;font-weight:bold}
+.plays{color:var(--green);font-size:11px;font-weight:800}
+.song-actions{display:flex;align-items:center;gap:5px}
+.icon-btn{width:36px;height:36px;border:0;border-radius:50%;background:#22352a;color:white;font-size:15px;display:grid;place-items:center;text-decoration:none;cursor:pointer}
+.icon-btn.play{background:var(--green);color:#06210e;font-weight:bold;width:38px;height:38px}
+.icon-btn.fav.active{background:#ff2d55;color:white}
+.icon-btn.share{background:#25d366;color:#05210e}
 .empty{padding:28px 18px;text-align:center;border:1px dashed #34483a;border-radius:16px;color:var(--muted);line-height:1.6;font-size:13px}
-footer{padding:25px 15px;text-align:center;color:#718076;font-size:11px}
-.player{position:fixed;z-index:5;bottom:0;left:0;right:0;background:#101812f5;border-top:1px solid #2b3b30;padding:11px 14px calc(11px + env(safe-area-inset-bottom));backdrop-filter:blur(16px)}
+footer{padding:25px 15px;text-align:center;color:#718076;font-size:11px;line-height:1.6}
+.player{position:fixed;z-index:10;bottom:0;left:0;right:0;background:#101812f5;border-top:1px solid #2b3b30;padding:11px 14px calc(11px + env(safe-area-inset-bottom));backdrop-filter:blur(16px)}
 .player-top{display:flex;align-items:center;gap:10px}
-.player-cover{width:43px;height:43px;border-radius:9px;background:#1b3825;display:grid;place-items:center;flex:0 0 43px}
+.player-cover{width:43px;height:43px;border-radius:9px;background:#1b3825;display:grid;place-items:center;flex:0 0 43px;overflow:hidden;font-size:20px}
+.player-cover img{width:100%;height:100%;object-fit:cover}
 .player-meta{min-width:0;flex:1}
 .player-meta strong{display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.player-meta small{display:block;color:var(--muted);font-size:11px;margin-top:4px}
-.controls{display:flex;align-items:center;gap:13px}
-.controls button{background:none;border:0;color:white;font-size:19px;padding:5px}
-.controls .main-play{width:39px;height:39px;border-radius:50%;background:var(--green);color:#05210e;font-size:17px}
+.player-meta small{display:block;color:var(--muted);font-size:11px;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.controls{display:flex;align-items:center;gap:7px}
+.controls button{background:none;border:0;color:white;font-size:19px;padding:5px;cursor:pointer}
+.controls .main-play{width:39px;height:39px;border-radius:50%;background:var(--green);color:#05210e;font-size:17px;flex:0 0 39px}
+.controls .fav-btn.active{color:#ff2d55}
+.controls .share-btn{color:#25d366;font-size:18px}
+.controls .repeat-btn{font-size:17px;color:#93a397}
+.controls .repeat-btn.active{color:var(--green)}
 .progress-row{display:flex;align-items:center;gap:9px;margin-top:8px;color:#93a397;font-size:10px}
-input[type=range]{accent-color:var(--green);width:100%;height:3px}
+input[type=range]{accent-color:var(--green);width:100%;height:3px;cursor:pointer}
 @media(min-width:700px){main,header,footer{max-width:720px;margin-left:auto;margin-right:auto}.song-list{grid-template-columns:1fr 1fr}.player{padding-left:max(14px,calc((100vw - 720px)/2));padding-right:max(14px,calc((100vw - 720px)/2))}}
 </style>
 </head>
 <body>
 <header>
-  <div class="brand"><div class="logo">♫</div><div><small>DJ VINCE APRESENTA</small><strong>Novidades dos Beats</strong></div></div>
-  <div class="hero"><div class="tag">🇲🇿 MÚSICA MOÇAMBICANA</div><h1>O teu som.<br>A tua vibe.</h1><p>Descobre músicas, ouve os teus artistas favoritos e leva os teus sons contigo.</p></div>
+<div class="brand"><div class="logo">♫</div><div><small>DJ VINCE APRESENTA</small><strong>Novidades dos Beats</strong></div></div>
+<div class="hero"><div class="tag">🇲🇿 MÚSICA MOÇAMBICANA</div><h1>O teu som.<br>A tua vibe.</h1><p>Descobre músicas, ouve os teus artistas favoritos e leva os teus sons contigo.</p></div>
 </header>
-
 <main>
-  <div class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Pesquisar artista ou música..."></div>
-  <div class="section-head"><h2>Explorar músicas</h2><span class="count" id="songCount">0 músicas</span></div>
-  <div class="filters">
-    <button class="filter active" data-filter="Todas">Todas</button>
-    <button class="filter" data-filter="Música">Músicas</button>
-    <button class="filter" data-filter="Beat">Beats</button>
-  </div>
-  <div class="status" id="statusBox" role="status"></div>
-  <div class="song-list" id="songList"></div>
-</main>
-<footer>© <span id="year"></span> Novidades dos Beats · DJ Vince</footer>
-
-<div class="player">
-  <div class="player-top">
-    <div class="player-cover">♫</div>
-    <div class="player-meta"><strong id="playerTitle">Escolhe uma música</strong><small id="playerArtist">DJ Vince · Novidades dos Beats</small></div>
-    <div class="controls">
-      <button id="prevBtn" aria-label="Anterior">⏮</button>
-      <button class="main-play" id="playBtn" aria-label="Reproduzir">▶</button>
-      <button id="nextBtn" aria-label="Seguinte">⏭</button>
-    </div>
-  </div>
-  <div class="progress-row"><span id="currentTime">0:00</span><input id="progress" type="range" min="0" max="100" value="0"><span id="duration">0:00</span></div>
+<div class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Pesquisar artista ou música..." autocomplete="off"></div>
+<div class="section-head"><h2>🔥 Top 5 Mais Tocadas</h2><span class="count" id="topCount">0 plays</span></div>
+<div class="top-list" id="topList"><div class="empty">Carrega uma música para veres o Top aqui.</div></div>
+<div class="section-head"><h2>Explorar músicas</h2><span class="count" id="songCount">0 músicas</span></div>
+<div class="filters">
+<button class="filter active" data-filter="Todas">Todas</button>
+<button class="filter" data-filter="Música">Músicas</button>
+<button class="filter" data-filter="Beat">Beats</button>
+<button class="filter" data-filter="Favoritos">❤️ Favoritos</button>
 </div>
-
+<div class="status" id="statusBox"></div>
+<div class="song-list" id="songList"></div>
+</main>
+<footer>© <span id="year"></span> Novidades dos Beats · DJ Vince<br>Feito com ❤️ em Moçambique</footer>
+<div class="player">
+<div class="player-top">
+<div class="player-cover" id="playerCover">♫</div>
+<div class="player-meta"><strong id="playerTitle">Escolhe uma música</strong><small id="playerArtist">DJ Vince · Novidades dos Beats</small></div>
+<div class="controls">
+<button id="favPlayerBtn" class="fav-btn" aria-label="Favorito">♡</button>
+<button id="repeatBtn" class="repeat-btn" aria-label="Repetir">↻</button>
+<button id="sharePlayerBtn" class="share-btn" aria-label="Partilhar">↗</button>
+<button id="prevBtn" aria-label="Anterior">⏮</button>
+<button class="main-play" id="playBtn" aria-label="Reproduzir">▶</button>
+<button id="nextBtn" aria-label="Seguinte">⏭</button>
+</div>
+</div>
+<div class="progress-row"><span id="currentTime">0:00</span><input id="progress" type="range" min="0" max="100" value="0"><span id="duration">0:00</span></div>
+</div>
 <audio id="audioPlayer" preload="metadata"></audio>
-
 <script>
-/*
-  CONFIGURAÇÃO:
-  O endereço abaixo é a API Google Apps Script que já estavas a usar.
-  Se quiseres mudar a origem das músicas, altera apenas API_URL.
-*/
 const API_URL = "https://script.google.com/macros/s/AKfycbyo9rEUOIG35eZpOKzyVovmqEA09nFhn37BIjAR_mafcfGYRreRvPYT1yw-Yyfvi1oL/exec";
-
 const $ = id => document.getElementById(id);
 const audio = $("audioPlayer");
+const FAV_KEY = "djvince_favs_v1";
+const PLAYS_KEY = "djvince_plays_v1";
+const REPEAT_KEY = "djvince_repeat_v1";
 let songs = [];
 let visibleSongs = [];
-let currentIndex = -1;
+let currentVisibleIndex = -1;
 let activeFilter = "Todas";
-
-function songName(song){return song.nome || song.name || song.title || song.filename || "Música sem título";}
-function artistName(song){return song.artista || song.artist || song.author || "DJ Vince";}
-function songType(song){return (song.tipo || song.type || (String(songName(song)).toLowerCase().includes("beat") ? "Beat" : "Música"));}
-function driveId(song){
-  if(song.id) return song.id;
-  const url = song.url || song.audioUrl || song.link || "";
-  const match = String(url).match(/\/file\/d\/([^/]+)/) || String(url).match(/[?&]id=([^&]+)/);
-  return match ? match[1] : "";
-}
-function audioUrl(song){
-  const direct = song.audioUrl || song.audio_url || song.url || song.link || song.downloadUrl || song.download_url;
-  if(direct && !String(direct).includes("drive.google.com")) return direct;
-  const id = driveId(song);
-  return id ? "https://drive.google.com/uc?export=download&id="+encodeURIComponent(id) : (direct || "");
-}
-function downloadUrl(song){
-  return song.downloadUrl || song.download_url || audioUrl(song);
-}
-function coverUrl(song){return song.cover || song.capa || song.image || song.imageUrl || "";}
-function formatTime(seconds){
-  if(!Number.isFinite(seconds)) return "0:00";
-  const m=Math.floor(seconds/60), s=Math.floor(seconds%60);
-  return m+":"+String(s).padStart(2,"0");
-}
-function showStatus(message, show=true){
-  $("statusBox").textContent=message;
-  $("statusBox").style.display=show?"block":"none";
-}
-function renderSongs(){
-  const term=$("searchInput").value.trim().toLowerCase();
-  visibleSongs=songs.map((song,index)=>({...song,_index:index}))
-    .filter(song=>(activeFilter==="Todas" || songType(song).toLowerCase().includes(activeFilter.toLowerCase())))
-    .filter(song=>(songName(song)+" "+artistName(song)).toLowerCase().includes(term));
-  $("songCount").textContent=songs.length+" música"+(songs.length===1?"":"s");
-  const list=$("songList");
-  list.innerHTML="";
-  if(!visibleSongs.length){
-    list.innerHTML='<div class="empty">Ainda não há músicas para mostrar com esta pesquisa.<br>Quando a lista estiver disponível, as músicas aparecerão aqui.</div>';
-    return;
-  }
-  visibleSongs.forEach(song=>{
-    const card=document.createElement("article");
-    card.className="song";
-    const cover=coverUrl(song);
-    card.innerHTML='<div class="cover">'+(cover?'<img alt="" src="'+escapeHtml(cover)+'">':'♫')+'</div>'+
-      '<div class="song-info"><strong>'+escapeHtml(songName(song))+'</strong><small>'+escapeHtml(artistName(song))+'</small></div>'+
-      '<div class="song-actions"><button class="icon-btn play" aria-label="Reproduzir">▶</button><a class="icon-btn" aria-label="Baixar" title="Baixar" href="'+escapeHtml(downloadUrl(song))+'" download>↓</a></div>';
-    card.querySelector("button").addEventListener("click",()=>playSong(song._index));
-    list.appendChild(card);
-  });
-}
-function escapeHtml(value){
-  return String(value ?? "").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-}
-async function loadSongs(){
-
-  showStatus("A carregar músicas...");
-
-  try {
-
-    const response = await fetch(API_URL + "?t=" + Date.now());
-
-    console.log("Resposta:", response.status);
-
-    if (!response.ok) {
-      throw new Error("Erro HTTP: " + response.status);
-    }
-
-    const data = await response.json();
-
-    console.log("Dados recebidos:", data);
-
-    if (!Array.isArray(data)) {
-      throw new Error("A API não devolveu uma lista.");
-    }
-
-    songs = data.filter(song => audioUrl(song));
-
-    renderSongs();
-
-    showStatus(
-      songs.length + " músicas carregadas com sucesso!",
-      false
-    );
-
-  } catch (error) {
-
-    console.error("ERRO:", error);
-
-    showStatus("Erro: " + error.message);
-
-  }
-
-  }
-function playSong(index){
-  const song=songs[index];
-  if(!song) return;
-  const src=audioUrl(song);
-  if(!src){showStatus("Esta música ainda não tem um link de áudio válido.");return;}
-  currentIndex=index;
-  audio.src=src;
-  $("playerTitle").textContent=songName(song);
-  $("playerArtist").textContent=artistName(song);
-  $("playBtn").textContent="Ⅱ";
-  audio.play().catch(error=>{
-    console.error("Erro ao reproduzir:",error);
-    $("playBtn").textContent="▶";
-    showStatus("O navegador não conseguiu reproduzir este ficheiro. Confirma se o áudio está partilhado publicamente no Google Drive e se o link permite reprodução.");
-  });
-}
-$("playBtn").addEventListener("click",()=>{
-  if(currentIndex<0){if(songs.length)playSong(0);return;}
-  if(audio.paused){audio.play().then(()=>$("playBtn").textContent="Ⅱ").catch(()=>showStatus("Não foi possível iniciar o áudio."));}
-  else{audio.pause();$("playBtn").textContent="▶";}
-});
-$("prevBtn").addEventListener("click",()=>{if(songs.length)playSong((currentIndex-1+songs.length)%songs.length);});
-$("nextBtn").addEventListener("click",()=>{if(songs.length)playSong((currentIndex+1)%songs.length);});
-audio.addEventListener("ended",()=>{if(songs.length)playSong((currentIndex+1)%songs.length);});
-audio.addEventListener("play",()=>$("playBtn").textContent="Ⅱ");
-audio.addEventListener("pause",()=>$("playBtn").textContent="▶");
-audio.addEventListener("loadedmetadata",()=>$("duration").textContent=formatTime(audio.duration));
-audio.addEventListener("timeupdate",()=>{
-  $("currentTime").textContent=formatTime(audio.currentTime);
-  $("progress").value=audio.duration?(audio.currentTime/audio.duration)*100:0;
-});
-$("progress").addEventListener("input",()=>{
-  if(audio.duration)audio.currentTime=(Number($("progress").value)/100)*audio.duration;
-});
-$("searchInput").addEventListener("input",renderSongs);
-document.querySelectorAll(".filter").forEach(button=>button.addEventListener("click",()=>{
-  document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));
-  button.classList.add("active");activeFilter=button.dataset.filter;renderSongs();
-}));
-$("year").textContent=new Date().getFullYear();
-loadSongs();
-</script>
-</body>
-</html>
+let favorites = [];
+let plays = {};
+let repeatMode = "off";
+let isLoading = false;
+function loadJSON(key, fallback){ try{ const v = JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback)); return v ?? fallback; }catch(e){ return fallback; } }
+favorites = loadJSON(FAV_KEY, []); if(!Array.isArray(favorites)) favorites = [];
+plays = loadJSON(PLAYS_KEY, {}); if(typeof plays !== "object" || plays === null) plays = {};
+repeatMode = localStorage.getItem(REPEAT_KEY) || "off"; if(!["off","all","one"].includes(repeatMode)) repeatMode = "off";
+function saveFavs(){ try{ localStorage.setItem(FAV_KEY, JSON.stringify(favorites)); }catch(e){} }
+function savePlays(){ try{ localStorage.setItem(PLAYS_KEY, JSON.stringify(plays)); }catch(e){} }
+function saveRepeat(){ try{ localStorage.setItem(REPEAT_KEY, repeatMode); }catch(e){} }
+function escapeHtml(v){ return String(v ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+function songName(s){ return s.nome || s.name || s.title || s.filename || "Música sem título"; }
+function artistName(s){ return s.artista || s.artist || s.author || "DJ Vince"; }
+function songType(s){ const t = (s.tipo || s.type || "").toString().trim().toLowerCase(); if(t === "beat" || t === "beats") return "Beat"; return "Música"; }
+function songKey(s){ return (audioUrl(s) + "|" + songName(s)).toLowerCase(); }
+function isFav(s){ return favorites.includes(songKey(s)); }
+function getPlays(s){ return plays[songKey(s)] || 0; }
+function addPlay(s){ const k = songKey(s); plays[k] = (plays[k] || 0) + 1; savePlays(); }
+function toggleFav(s){ const k = songKey(s); const i = favorites.indexOf(k); if(i >= 0) favorites.splice(i,1); else favorites.push(k); saveFavs(); renderAll(); updatePlayerFav(); }
+function driveId(song){ const url = song.url || song.audioUrl || song.audio_url || song.link || ""; const m1 = String(url).match(/\/file\/d\/([^/]+)/); if(m1) return m1[1]; const m2 = String(url).match(/[?&]id=([^&]+)/); if(m2) return m2[1]; if(song.id && String(song.id).length > 10 && !String(song.id).includes(" ")) return song.id; return ""; }
+function audioUrl(song){ const direct = song.audioUrl || song.audio_url || song.url || song.link || song.downloadUrl || song.download_url || ""; if(direct && !String(direct).includes("drive.google.com")) return direct; const id = driveId(song); if(id) return "https://drive.google.com/uc?export=view&id=" + encodeURIComponent(id); return direct || ""; }
+function downloadUrl(song){ const direct = song.downloadUrl || song.download_url || song.url || song.link || ""; if(direct && !String(direct).includes("drive.google.com")) return direct; const id = driveId(song); if(id) return "https://drive.google.com/uc?export=download&id=" + encodeURIComponent(id); return audioUrl(song); }
+function coverUrl(song){ return song.cover || song.capa || song.image || song.imageUrl || song.thumbnail || ""; }
+function formatTime(sec){ if(!Number.isFinite(sec) || sec < 0) return "0:00"; const m = Math.floor(sec/60), s = Math.floor(sec%60); return m + ":" + String(s).padStart(2,"0"); }
+function formatPlays(n){ if(n >= 1000) return (n/1000).toFixed(1).replace(".0","") + "k"; return String(n); }
+function showStatus(msg, show=true, isError=false){ const box = $("statusBox"); if(!show){ box.style.display="none"; return; } box.innerHTML = isError ? msg + '<br><button class="retry" id="retryBtn">Tentar de novo</button>' : msg; box.style.display="block"; const rb = $("retryBtn"); if(rb) rb.addEventListener("click", loadSongs); }
+function updateRepeatBtn(){ const btn = $("repeatBtn"); if(repeatMode === "all"){ btn.textContent="🔁"; btn.classList.add("active"); } else if(repeatMode === "one"){ btn.textContent="🔂"; btn.classList.add("active"); } else { btn.textContent="↻"; btn.classList.remove("active"); } }
+function shareSong(song){ const text = "🔥 Ouve isto: " + songName(song) + " - " + artistName(song) + "\n🎧 Novidades dos Beats | DJ Vince\n👉 " + downloadUrl(song) + "\n\nSite: " + location.href; const waUrl = "https://wa.me/?text=" + encodeURIComponent(text); if(navigator.share){ navigator.share({ title: songName(song), text: text, url: location.href }).catch(() => window.open(waUrl, "_blank")); } else window.open(waUrl, "_blank"); }
+function getFiltered(){ const term = $("searchInput").value.trim().toLowerCase(); return songs.filter(song => { if(activeFilter === "Favoritos" && !isFav(song)) return false; if(activeFilter !== "Todas" && activeFilter !== "Favoritos" && songType(song) !== activeFilter) return false; if(!term) return true; return (songName(song) + " " + artistName(song)).toLowerCase().includes(term); }); }
+function renderTop(){ const top = [...songs].filter(s => getPlays(s) > 0).sort((a,b) => getPlays(b) - getPlays(a)).slice(0,5); const total = Object.values(plays).reduce((a,b) => a + (b||0), 0); $("topCount").textContent = formatPlays(total) + " plays"; const el = $("topList"); if(!top.length){ el.innerHTML = '<div class="empty">Ainda não há Top. Carrega numa música e ela entra para o Top 5.</div>'; return; } el.innerHTML=""; top.forEach((song,i)=>{ const div=document.createElement("div"); div.className="top-item"; const cover=coverUrl(song); const rankClass=i===0?"r1":i===1?"r2":i===2?"r3":""; div.innerHTML='<div class="rank '+rankClass+'">'+(i+1)+'</div><div class="cover">'+(cover?'<img alt="" src="'+escapeHtml(cover)+'">':'♫')+'</div><div class="song-info"><strong>'+escapeHtml(songName(song))+'</strong><small>'+escapeHtml(artistName(song))+' · <span class="plays">▶ '+formatPlays(getPlays(song))+' plays</span></small></div><div class="song-actions"><button class="icon-btn play">▶</button></div>'; div.addEventListener("click",()=>{ const idx=visibleSongs.findIndex(s=>songKey(s)===songKey(song)); if(idx>=0) playSong(idx); else { activeFilter="Todas"; $("searchInput").value=""; document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b.dataset.filter==="Todas")); renderAll(); const idx2=visibleSongs.findIndex(s=>songKey(s)===songKey(song)); if(idx2>=0) playSong(idx2); } }); el.appendChild(div); }); }
+function renderSongs(){ visibleSongs=getFiltered(); $("songCount").textContent=visibleSongs.length+" música"+(visibleSongs.length===1?"":"s"); const list=$("songList"); list.innerHTML=""; if(!visibleSongs.length){ if(activeFilter==="Favoritos") list.innerHTML='<div class="empty">Ainda não tens favoritos.<br>Toca no coração ❤️ para guardar aqui.</div>'; else list.innerHTML='<div class="empty">Nenhuma música encontrada.</div>'; return; } visibleSongs.forEach((song,visIndex)=>{ const card=document.createElement("article"); card.className="song"+(visIndex===currentVisibleIndex?" playing":""); const cover=coverUrl(song); const fav=isFav(song); const p=getPlays(song); card.innerHTML='<div class="cover">'+(cover?'<img alt="" src="'+escapeHtml(cover)+'" loading="lazy">':'♫')+'</div><div class="song-info"><strong>'+escapeHtml(songName(song))+'</strong><small>'+escapeHtml(artistName(song))+' · '+escapeHtml(songType(song))+(p?' · <span class="plays">▶ '+formatPlays(p)+' plays</span>':'')+'</small></div><div class="song-actions"><button class="icon-btn fav'+(fav?' active':'')+'">'+(fav?'♥':'♡')+'</button><button class="icon-btn share">↗</button><button class="icon-btn play">'+(visIndex===currentVisibleIndex && !audio.paused?'⏸':'▶')+'</button><a class="icon-btn" href="'+escapeHtml(downloadUrl(song))+'" target="_blank" rel="noopener">↓</a></div>'; const btns=card.querySelectorAll("button"); btns[0].addEventListener("click",e=>{e.stopPropagation(); toggleFav(song);}); btns[1].addEventListener("click",e=>{e.stopPropagation(); shareSong(song);}); btns[2].addEventListener("click",()=>{ if(visIndex===currentVisibleIndex) togglePlay(); else playSong(visIndex); }); list.appendChild(card); }); }
+function renderAll(){ renderTop(); renderSongs(); }
+function updatePlayerFav(){ const current=visibleSongs[currentVisibleIndex]; if(!current){ $("favPlayerBtn").textContent="♡"; $("favPlayerBtn").classList.remove("active"); return; } const fav=isFav(current); $("favPlayerBtn").textContent=fav?"♥":"♡"; $("favPlayerBtn").classList.toggle("active",fav); }
+async function loadSongs(){ if(isLoading) return; isLoading=true; showStatus("A carregar músicas..."); try{ const controller=new AbortController(); const timeout=setTimeout(()=>controller.abort(),15000); const response=await fetch(API_URL,{method:"GET",cache:"no-store",signal:controller.signal}); clearTimeout(timeout); if(!response.ok) throw new Error("Servidor respondeu: "+response.status); const data=await response.json(); const list=Array.isArray(data)?data:(Array.isArray(data.musicas)?data.musicas:(Array.isArray(data.songs)?data.songs:null)); if(!list) throw new Error("A API não devolveu uma lista."); songs=list.filter(song=>audioUrl(song)); if(!songs.length) throw new Error("Lista vazia - verifica a tua planilha / Drive."); renderAll(); showStatus("",false); }catch(error){ console.error(error); const msg=error.name==="AbortError"?"A internet está lenta. Tenta de novo.":error.message; songs=[]; visibleSongs=[]; renderAll(); showStatus("<b>Não foi possível carregar.</b><br>"+escapeHtml(msg),true,true); } finally{ isLoading=false; } }
+function playSong(visIndex,countPlay=true){ const song=visibleSongs[visIndex]; if(!song) return; const src=audioUrl(song); if(!src){ showStatus("Esta música ainda não tem áudio válido.",true); return; } currentVisibleIndex=visIndex; if(countPlay) addPlay(song); audio.src=src; $("playerTitle").textContent=songName(song); $("playerArtist").textContent=artistName(song)+" · "+songType(song)+" · ▶ "+formatPlays(getPlays(song))+" plays"; const cover=coverUrl(song); $("playerCover").innerHTML=cover?'<img alt="" src="'+escapeHtml(cover)+'">':'♫'; $("playBtn").textContent="⏸"; updatePlayerFav(); renderAll(); audio.play().catch(()=>{ $("playBtn").textContent="▶"; showStatus("Não consegui tocar. Verifica se o ficheiro está partilhado como Público no Drive.",true); }); }
+function togglePlay(){ if(currentVisibleIndex<0){ if(visibleSongs.length) playSong(0); return; } if(audio.paused){ audio.play().then(()=>{ $("playBtn").textContent="⏸"; renderAll(); }).catch(()=>showStatus("Não foi possível iniciar o áudio.",true)); } else { audio.pause(); $("playBtn").textContent="▶"; renderAll(); } }
+$("playBtn").addEventListener("click",togglePlay);
+$("favPlayerBtn").addEventListener("click",()=>{ const s=visibleSongs[currentVisibleIndex]; if(s) toggleFav(s); });
+$("sharePlayerBtn").addEventListener("click",()=>{ const s=visibleSongs[currentVisibleIndex]; if(s) shareSong(s); else shareSong({nome:"Novidades dos Beats",artista:"DJ Vince",url:location.href}); });
+$("repeatBtn").addEventListener("click",()=>{ if(repeatMode==="off") repeatMode="all"; else if(repeatMode==="all") repeatMode="one"; else repeatMode="off"; saveRepeat(); updateRepeatBtn(); });
+$("prevBtn").addEventListener("click",()=>{ if(!visibleSongs.length) return; playSong((currentVisibleIndex-1+visibleSongs.length)%visibleSongs.length); });
+$("nextBtn").addEventListener("click",()=>{ if(!visibleSongs.length) return; playSong((currentVisib
