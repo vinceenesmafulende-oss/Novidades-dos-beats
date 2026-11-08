@@ -650,7 +650,6 @@ function getDriveId(song) {
 // ======================================
 // ENDEREÇO DA MÚSICA
 // ======================================
-
 function getSongURL(song) {
 
     const possibleURL =
@@ -664,22 +663,25 @@ function getSongURL(song) {
 
     const url = String(possibleURL).trim();
 
-    if (/^https?:\/\//i.test(url)) {
+    let id = "";
 
-        const match = url.match(
-            /\/d\/([a-zA-Z0-9_-]+)|[?&]id=([a-zA-Z0-9_-]+)/
-        );
+    const match = url.match(
+        /\/d\/([a-zA-Z0-9_-]+)|[?&]id=([a-zA-Z0-9_-]+)/
+    );
 
-        if (match) {
+    if (match) {
+        id = match[1] || match[2];
+    }
 
-            const id = match[1] || match[2];
+    if (!id && typeof getDriveId === "function") {
+        id = getDriveId(song);
+    }
 
-            return "https://drive.google.com/uc?export=download&id=" + id;
+    if (id) {
+        return "https://drive.google.com/uc?export=media&id=" + id;
+    }
 
-        }
-
-        return url;
-
+    return url;
     }
 
     const id = getDriveId(song);
