@@ -1,138 +1,1196 @@
-<!DOCTYPE html>
-<html lang="pt">
+<!DOCTYPE html><html lang="pt">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#07110b">
-<title>Novidades dos Beats | DJ Vince</title>
-<style>
-:root{--bg:#070b08;--green:#1ed760;--text:#f4fff6;--muted:#a7b5aa;--line:#26352b}
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{margin:0;background:radial-gradient(circle at 50% -10%,#174327 0,#0a140d 36%,var(--bg) 72%);color:var(--text);font-family:system-ui,-apple-system,Arial,Helvetica,sans-serif;padding-bottom:118px}
-header{padding:22px 16px 10px}
-.brand{display:flex;align-items:center;gap:11px}
-.logo{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,#27ed73,#087b39);display:grid;place-items:center;font-size:23px;flex:0 0 46px}
-.brand small{display:block;color:var(--green);font-weight:800;letter-spacing:2px;font-size:10px}
-.brand strong{font-size:17px}
-.hero{padding:22px 2px 8px}
-.tag{color:var(--green);font-size:11px;font-weight:800;letter-spacing:2px}
-h1{font-size:clamp(30px,8vw,44px);line-height:1.02;margin:10px 0}
-.hero p{color:var(--muted);line-height:1.55;margin:0;max-width:360px;font-size:14px}
-main{padding:0 15px}
-.search{display:flex;align-items:center;gap:10px;background:#111a14;border:1px solid var(--line);border-radius:15px;padding:0 14px;margin:16px 0 8px}
-.search span{font-size:18px;color:var(--muted)}
-.search input{width:100%;padding:15px 0;background:transparent;border:0;outline:0;color:white;font-size:15px}
-.section-head{display:flex;align-items:center;justify-content:space-between;margin:22px 2px 12px}
-.section-head h2{font-size:18px;margin:0}
-.count{font-size:12px;color:var(--muted);background:#101812;border:1px solid var(--line);padding:5px 10px;border-radius:20px}
-.filters{display:flex;gap:8px;overflow:auto;padding-bottom:4px;scrollbar-width:none}
-.filters::-webkit-scrollbar{display:none}
-.filter{border:1px solid var(--line);background:#101812;color:#dce9df;border-radius:30px;padding:9px 15px;white-space:nowrap;font-size:12px;cursor:pointer}
-.filter.active{background:var(--green);border-color:var(--green);color:#05210e;font-weight:800}
-.status{display:none;margin:14px 0;padding:14px;border:1px solid var(--line);background:#101812;border-radius:12px;color:var(--muted);font-size:13px;line-height:1.55}
-.status b{color:white}
-.retry{margin-top:10px;background:var(--green);border:0;color:#05210e;font-weight:800;padding:10px 16px;border-radius:10px;cursor:pointer}
-.top-list{display:grid;gap:10px}
-.top-item{display:flex;align-items:center;gap:12px;padding:11px;background:linear-gradient(120deg,#1a2a1e,#101712);border:1px solid #2a3d2e;border-radius:15px;cursor:pointer}
-.rank{width:32px;height:32px;flex:0 0 32px;border-radius:50%;background:var(--green);color:#05210e;display:grid;place-items:center;font-weight:900;font-size:14px}
-.rank.r1{background:#ffd60a}.rank.r2{background:#c0c0c0}.rank.r3{background:#ff9f43}
-.song-list{display:grid;gap:10px;margin-top:13px}
-.song{display:flex;align-items:center;gap:12px;padding:11px;background:linear-gradient(120deg,#152019,#101712);border:1px solid #1e2b22;border-radius:15px;min-width:0}
-.song.playing{border-color:var(--green)}
-.cover{width:57px;height:57px;flex:0 0 57px;border-radius:11px;background:linear-gradient(135deg,#174d2a,#0a1b10);display:grid;place-items:center;font-size:24px;overflow:hidden}
-.cover img{width:100%;height:100%;object-fit:cover}
-.song-info{min-width:0;flex:1}
-.song-info strong{display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.song-info small{display:block;color:var(--muted);font-size:12px;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.plays{color:var(--green);font-size:11px;font-weight:800}
-.song-actions{display:flex;align-items:center;gap:5px}
-.icon-btn{width:36px;height:36px;border:0;border-radius:50%;background:#22352a;color:white;font-size:15px;display:grid;place-items:center;text-decoration:none;cursor:pointer}
-.icon-btn.play{background:var(--green);color:#06210e;font-weight:bold;width:38px;height:38px}
-.icon-btn.fav.active{background:#ff2d55;color:white}
-.icon-btn.share{background:#25d366;color:#05210e}
-.empty{padding:28px 18px;text-align:center;border:1px dashed #34483a;border-radius:16px;color:var(--muted);line-height:1.6;font-size:13px}
-footer{padding:25px 15px;text-align:center;color:#718076;font-size:11px;line-height:1.6}
-.player{position:fixed;z-index:10;bottom:0;left:0;right:0;background:#101812f5;border-top:1px solid #2b3b30;padding:11px 14px calc(11px + env(safe-area-inset-bottom));backdrop-filter:blur(16px)}
-.player-top{display:flex;align-items:center;gap:10px}
-.player-cover{width:43px;height:43px;border-radius:9px;background:#1b3825;display:grid;place-items:center;flex:0 0 43px;overflow:hidden;font-size:20px}
-.player-cover img{width:100%;height:100%;object-fit:cover}
-.player-meta{min-width:0;flex:1}
-.player-meta strong{display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.player-meta small{display:block;color:var(--muted);font-size:11px;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.controls{display:flex;align-items:center;gap:7px}
-.controls button{background:none;border:0;color:white;font-size:19px;padding:5px;cursor:pointer}
-.controls .main-play{width:39px;height:39px;border-radius:50%;background:var(--green);color:#05210e;font-size:17px;flex:0 0 39px}
-.controls .fav-btn.active{color:#ff2d55}
-.controls .share-btn{color:#25d366;font-size:18px}
-.controls .repeat-btn{font-size:17px;color:#93a397}
-.controls .repeat-btn.active{color:var(--green)}
-.progress-row{display:flex;align-items:center;gap:9px;margin-top:8px;color:#93a397;font-size:10px}
-input[type=range]{accent-color:var(--green);width:100%;height:3px;cursor:pointer}
-@media(min-width:700px){main,header,footer{max-width:720px;margin-left:auto;margin-right:auto}.song-list{grid-template-columns:1fr 1fr}.player{padding-left:max(14px,calc((100vw - 720px)/2));padding-right:max(14px,calc((100vw - 720px)/2))}}
-</style>
-</head>
-<body>
-<header>
-<div class="brand"><div class="logo">♫</div><div><small>DJ VINCE APRESENTA</small><strong>Novidades dos Beats</strong></div></div>
-<div class="hero"><div class="tag">🇲🇿 MÚSICA MOÇAMBICANA</div><h1>O teu som.<br>A tua vibe.</h1><p>Descobre músicas, ouve os teus artistas favoritos e leva os teus sons contigo.</p></div>
-</header>
-<main>
-<div class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Pesquisar artista ou música..." autocomplete="off"></div>
-<div class="section-head"><h2>🔥 Top 5 Mais Tocadas</h2><span class="count" id="topCount">0 plays</span></div>
-<div class="top-list" id="topList"><div class="empty">Carrega uma música para veres o Top aqui.</div></div>
-<div class="section-head"><h2>Explorar músicas</h2><span class="count" id="songCount">0 músicas</span></div>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b09"><title>Novidades dos Beats | DJ Vince</title><style>
+
+:root {
+    --green: #1ed760;
+    --dark: #080b09;
+    --card: #141a16;
+    --text: #ffffff;
+    --muted: #a7b0aa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    padding-bottom: 110px;
+}
+
+header {
+    padding: 25px 15px;
+    text-align: center;
+    background: linear-gradient(
+        135deg,
+        #123b25,
+        #07150d,
+        #000
+    );
+}
+
+header h1 {
+    color: var(--green);
+    font-size: 24px;
+}
+
+header p {
+    color: var(--muted);
+    margin-top: 8px;
+}
+
+.container {
+    max-width: 750px;
+    margin: auto;
+    padding: 15px;
+}
+
+.hero {
+    background: linear-gradient(135deg,#123b25,#141a16);
+    padding: 25px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+}
+
+.hero h2 {
+    color: var(--green);
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: #ddd;
+    line-height: 1.5;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 15px;
+    border-radius: 30px;
+    border: 1px solid #303a32;
+    background: #141a16;
+    color: white;
+    font-size: 15px;
+    outline: none;
+    margin-bottom: 15px;
+}
+
+.filters {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+
+.filters button {
+    background: #202720;
+    color: white;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 25px;
+    white-space: nowrap;
+}
+
+.filters button.active {
+    background: var(--green);
+    color: black;
+}
+
+#status {
+    background: var(--card);
+    padding: 16px;
+    border-radius: 12px;
+    text-align: center;
+    color: var(--green);
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.song {
+    background: var(--card);
+    padding: 12px;
+    border-radius: 13px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cover {
+    width: 58px;
+    height: 58px;
+    flex-shrink: 0;
+    border-radius: 9px;
+    background: linear-gradient(135deg,#123b25,#1ed760);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-size: 25px;
+}
+
+.cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.song-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.song-info h3 {
+    font-size: 14px;
+    margin-bottom: 6px;
+    overflow-wrap: anywhere;
+}
+
+.song-info p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.song button {
+    border: none;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    background: var(--green);
+    color: black;
+    font-size: 17px;
+    flex-shrink: 0;
+}
+
+.song .favorite {
+    background: transparent;
+    color: white;
+    font-size: 22px;
+}
+
+.song .favorite.active {
+    color: var(--green);
+}
+
+.song.playing {
+    border: 1px solid var(--green);
+}
+
+/* MINI PLAYER */
+
+#miniPlayer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #151c17;
+    border-top: 1px solid #304a37;
+    padding: 10px;
+    z-index: 1000;
+}
+
+.mini-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 750px;
+    margin: auto;
+}
+
+#miniCover {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    object-fit: cover;
+    background: #123b25;
+}
+
+.mini-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.mini-info h3 {
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mini-info p {
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: 5px;
+}
+
+.mini-content button {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 23px;
+    padding: 5px;
+}
+
+#miniPlay {
+    color: var(--green);
+    font-size: 27px;
+}
+
+/* LEITOR EXPANDIDO */
+
+#fullPlayer {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background:
+        radial-gradient(
+            circle at top,
+            #16472b,
+            #101c13 40%,
+            #080b09 85%
+        );
+    display: none;
+    flex-direction: column;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+#fullPlayer.show {
+    display: flex;
+}
+
+.player-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0 25px;
+}
+
+.player-top button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 27px;
+}
+
+.player-top span {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 2px;
+}
+
+.big-cover {
+    width: min(78vw, 340px);
+    height: min(78vw, 340px);
+    margin: 15px auto 30px;
+    border-radius: 18px;
+    overflow: hidden;
+    background: linear-gradient(135deg,#123b25,#1ed760);
+    box-shadow: 0 15px 45px #0008;
+}
+
+.big-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.big-info {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.big-info h2 {
+    font-size: 22px;
+    margin-bottom: 9px;
+    overflow-wrap: anywhere;
+}
+
+.big-info p {
+    color: var(--muted);
+}
+
+.progress-area {
+    margin-bottom: 20px;
+}
+
+#progress {
+    width: 100%;
+    accent-color: var(--green);
+    cursor: pointer;
+}
+
+.times {
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: 7px;
+}
+
+.main-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+    margin: 15px 0 25px;
+}
+
+.main-controls button {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 25px;
+}
+
+.main-controls .play-big {
+    background: var(--green);
+    color: black;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    font-size: 28px;
+}
+
+.main-controls button.active {
+    color: var(--green);
+}
+
+.extra-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.extra-controls button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 21px;
+}
+
+.extra-controls input {
+    width: 120px;
+    accent-color: var(--green);
+}
+
+.download-btn {
+    text-decoration: none;
+    color: black;
+    background: var(--green);
+    padding: 12px 22px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #777;
+    font-size: 12px;
+}
+
+</style></head><body><header>
+    <h1>🎵 NOVIDADES DOS BEATS</h1>
+    <p>DJ Vince | Música Moçambicana 🇲🇿</p>
+</header><div class="container"><div class="hero">
+    <h2>O teu som. A tua vibe.</h2>
+    <p>
+        Descobre, ouve e descarrega as melhores
+        músicas e beats.
+    </p>
+</div>
+
+<input
+    type="search"
+    id="searchInput"
+    placeholder="🔍 Pesquisar música ou artista..."
+>
+
 <div class="filters">
-<button class="filter active" data-filter="Todas">Todas</button>
-<button class="filter" data-filter="Música">Músicas</button>
-<button class="filter" data-filter="Beat">Beats</button>
-<button class="filter" data-filter="Favoritos">❤️ Favoritos</button>
+    <button class="active" data-filter="Todas">Todas</button>
+    <button data-filter="Música">Músicas</button>
+    <button data-filter="Beat">Beats</button>
+    <button data-filter="Favoritos">♥ Favoritos</button>
 </div>
-<div class="status" id="statusBox"></div>
-<div class="song-list" id="songList"></div>
-</main>
-<footer>© <span id="year"></span> Novidades dos Beats · DJ Vince<br>Feito com ❤️ em Moçambique</footer>
-<div class="player">
-<div class="player-top">
-<div class="player-cover" id="playerCover">♫</div>
-<div class="player-meta"><strong id="playerTitle">Escolhe uma música</strong><small id="playerArtist">DJ Vince · Novidades dos Beats</small></div>
-<div class="controls">
-<button id="favPlayerBtn" class="fav-btn" aria-label="Favorito">♡</button>
-<button id="repeatBtn" class="repeat-btn" aria-label="Repetir">↻</button>
-<button id="sharePlayerBtn" class="share-btn" aria-label="Partilhar">↗</button>
-<button id="prevBtn" aria-label="Anterior">⏮</button>
-<button class="main-play" id="playBtn" aria-label="Reproduzir">▶</button>
-<button id="nextBtn" aria-label="Seguinte">⏭</button>
+
+<div id="status">
+    🎵 A carregar músicas automaticamente...
 </div>
+
+<div id="songList"></div>
+
+</div><footer>
+    © 2026 Novidades dos Beats | DJ Vince
+    <br><br>
+    Música Moçambicana 🇲🇿
+</footer><!-- MINI PLAYER --><div id="miniPlayer"><div class="mini-content">
+
+    <img id="miniCover"
+    src=""
+    alt="Capa">
+
+    <div class="mini-info">
+        <h3 id="miniTitle">Escolhe uma música</h3>
+        <p id="miniArtist">DJ Vince</p>
+    </div>
+
+    <button id="expandBtn">⌃</button>
+
+    <button id="miniPlay">▶</button>
+
 </div>
-<div class="progress-row"><span id="currentTime">0:00</span><input id="progress" type="range" min="0" max="100" value="0"><span id="duration">0:00</span></div>
+
+</div><!-- PLAYER COMPLETO --><div id="fullPlayer"><div class="player-top">
+
+    <button id="closePlayer">⌄</button>
+
+    <span>A REPRODUZIR</span>
+
+    <button id="playerMore">♫</button>
+
 </div>
-<audio id="audioPlayer" preload="metadata"></audio>
+
+<div class="big-cover">
+    <img id="bigCover" src="" alt="Capa da música">
+</div>
+
+<div class="big-info">
+
+    <h2 id="bigTitle">Escolhe uma música</h2>
+
+    <p id="bigArtist">DJ Vince</p>
+
+</div>
+
+<div class="progress-area">
+
+    <input
+        type="range"
+        id="progress"
+        min="0"
+        max="100"
+        value="0"
+    >
+
+    <div class="times">
+        <span id="currentTime">0:00</span>
+        <span id="duration">0:00</span>
+    </div>
+
+</div>
+
+<div class="main-controls">
+
+    <button id="shuffleBtn">🔀</button>
+
+    <button id="previousBtn">⏮</button>
+
+    <button id="bigPlay" class="play-big">▶</button>
+
+    <button id="nextBtn">⏭</button>
+
+    <button id="repeatBtn">🔁</button>
+
+</div>
+
+<div class="extra-controls">
+
+    <button id="favoriteBtn">♡</button>
+
+    <input
+        type="range"
+        id="volume"
+        min="0"
+        max="1"
+        step="0.01"
+        value="1"
+    >
+
+    <a
+        id="downloadBtn"
+        class="download-btn"
+        href="#"
+        download
+    >
+        ↓ Download
+    </a>
+
+</div>
+
+</div><audio id="audioPlayer" preload="none"></audio>
+
 <script>
-const API_URL = "https://script.google.com/macros/s/AKfycbyo9rEUOIG35eZpOKzyVovmqEA09nFhn37BIjAR_mafcfGYRreRvPYT1yw-Yyfvi1oL/exec";
+
+// ======================================
+// CONFIGURAÇÃO DA API
+// ======================================
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycbyo9rEUOIG35eZpOKzyVovmqEA09nFhn37BIjAR_mafcfGYRreRvPYT1yw-Yyfvi1oL/exec";
+
+
+// ======================================
+// ELEMENTOS
+// ======================================
+
 const $ = id => document.getElementById(id);
+
 const audio = $("audioPlayer");
-const FAV_KEY = "djvince_favs_v1";
-const PLAYS_KEY = "djvince_plays_v1";
-const REPEAT_KEY = "djvince_repeat_v1";
+
+const songList = $("songList");
+
+const statusBox = $("status");
+
+
+// ======================================
+// VARIÁVEIS
+// ======================================
+
 let songs = [];
+
 let visibleSongs = [];
-let currentVisibleIndex = -1;
+
+let currentIndex = -1;
+
 let activeFilter = "Todas";
-let favorites = [];
-let plays = {};
-let repeatMode = "off";
-let isLoading = false;
-function loadJSON(key, fallback){ try{ const v = JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback)); return v ?? fallback; }catch(e){ return fallback; } }
-favorites = loadJSON(FAV_KEY, []); if(!Array.isArray(favorites)) favorites = [];
-plays = loadJSON(PLAYS_KEY, {}); if(typeof plays !== "object" || plays === null) plays = {};
-repeatMode = localStorage.getItem(REPEAT_KEY) || "off"; if(!["off","all","one"].includes(repeatMode)) repeatMode = "off";
-function saveFavs(){ try{ localStorage.setItem(FAV_KEY, JSON.stringify(favorites)); }catch(e){} }
-function savePlays(){ try{ localStorage.setItem(PLAYS_KEY, JSON.stringify(plays)); }catch(e){} }
-function saveRepeat(){ try{ localStorage.setItem(REPEAT_KEY, repeatMode); }catch(e){} }
-function escapeHtml(v){ return String(v ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
-function songName(s){ return s.nome || s.name || s.title || s.filename || "Música sem título"; }
-function artistName(s){ return s.artista || s.artist || s.author || "DJ Vince"; }
-function songType(s){ const t = (s.tipo || s.type || "").toString().trim().toLowerCase(); if(t === "beat" || t === "beats") return "Beat"; return "Música"; }
+
+let shuffle = false;
+
+let repeat = false;
+
+let loading = false;
+
+let currentSong = null;
+
+let favorites = JSON.parse(
+    localStorage.getItem("djvince_favorites") || "[]"
+);
+
+
+// ======================================
+// FUNÇÕES DE IDENTIFICAÇÃO
+// ======================================
+
+function songName(song) {
+
+    return song.nome ||
+           song.name ||
+           song.title ||
+           song.filename ||
+           song.titulo ||
+           "Música sem título";
+
+}
+
+
+function artistName(song) {
+
+    return song.artista ||
+           song.artist ||
+           song.autor ||
+           song.author ||
+           "DJ Vince";
+
+}
+
+
+function songType(song) {
+
+    return String(
+        song.tipo ||
+        song.type ||
+        song.categoria ||
+        "Música"
+    ).toLowerCase();
+
+}
+
+
+// ======================================
+// IDENTIFICAR ID DO GOOGLE DRIVE
+// ======================================
+
+function getDriveId(song) {
+
+    const possibleURL =
+        song.url ||
+        song.audioUrl ||
+        song.audio ||
+        song.link ||
+        song.downloadUrl ||
+        "";
+
+    const match = String(possibleURL).match(
+        /\/d\/([a-zA-Z0-9_-]+)|[?&]id=([a-zA-Z0-9_-]+)/
+    );
+
+    if (match) {
+        return match[1] || match[2];
+    }
+
+    return String(
+        song.fileId ||
+        song.driveId ||
+        song.id ||
+        ""
+    );
+
+}
+
+
+// ======================================
+// ENDEREÇO DA MÚSICA
+// ======================================
+
+function getSongURL(song) {
+
+    const possibleURL =
+        song.url ||
+        song.audioUrl ||
+        song.audio ||
+        song.link ||
+        song.downloadUrl ||
+        song.urlDownload ||
+        "";
+
+    const url = String(possibleURL).trim();
+
+    if (/^https?:\/\//i.test(url)) {
+
+        const match = url.match(
+            /\/d\/([a-zA-Z0-9_-]+)|[?&]id=([a-zA-Z0-9_-]+)/
+        );
+
+        if (match) {
+
+            const id = match[1] || match[2];
+
+            return "https://drive.google.com/uc?export=download&id=" + id;
+
+        }
+
+        return url;
+
+    }
+
+    const id = getDriveId(song);
+
+    if (id) {
+
+        return "https://drive.google.com/uc?export=download&id=" + id;
+
+    }
+
+    return "";
+
+}
+
+
+// ======================================
+// CAPAS DAS MÚSICAS
+// ======================================
+
+function getCover(song) {
+
+    const cover =
+        song.capa ||
+        song.cover ||
+        song.imagem ||
+        song.image ||
+        song.photo ||
+        song.foto ||
+        song.thumbnail ||
+        "";
+
+    if (!cover) return "";
+
+    const match = String(cover).match(
+        /\/d\/([a-zA-Z0-9_-]+)|[?&]id=([a-zA-Z0-9_-]+)/
+    );
+
+    if (match) {
+
+        const id = match[1] || match[2];
+
+        return "https://drive.google.com/thumbnail?id=" +
+               id + "&sz=w500";
+
+    }
+
+    return cover;
+
+}
+
+
+// ======================================
+// DOWNLOAD
+// ======================================
+
+function getDownloadURL(song) {
+
+    const id = getDriveId(song);
+
+    if (id) {
+
+        return "https://drive.google.com/uc?export=download&id=" + id;
+
+    }
+
+    return getSongURL(song);
+
+}
+
+
+// ======================================
+// FAVORITOS
+// ======================================
+
+function favoriteId(song) {
+
+    return getDriveId(song) || songName(song);
+
+}
+
+
+function isFavorite(song) {
+
+    return favorites.includes(favoriteId(song));
+
+}
+
+
+function toggleFavorite(song) {
+
+    const id = favoriteId(song);
+
+    if (favorites.includes(id)) {
+
+        favorites = favorites.filter(x => x !== id);
+
+    } else {
+
+        favorites.push(id);
+
+    }
+
+    localStorage.setItem(
+        "djvince_favorites",
+        JSON.stringify(favorites)
+    );
+
+    renderSongs();
+
+    updateFavoriteButton();
+
+}
+
+
+// ======================================
+// CRIAR ELEMENTO DE CAPA
+// ======================================
+
+function makeCover(song, className) {
+
+    const div = document.createElement("div");
+
+    div.className = className;
+
+    const imageURL = getCover(song);
+
+    if (imageURL) {
+
+        const img = document.createElement("img");
+
+        img.src = imageURL;
+
+        img.alt = "Capa da música";
+
+        img.onerror = () => {
+
+            img.remove();
+
+            div.textContent = "🎵";
+
+        };
+
+        div.appendChild(img);
+
+    } else {
+
+        div.textContent = "🎵";
+
+    }
+
+    return div;
+
+}
+
+
+// ======================================
+// MOSTRAR MÚSICAS
+// ======================================
+
+function renderSongs() {
+
+    songList.innerHTML = "";
+
+    const search = $("searchInput").value.toLowerCase();
+
+    visibleSongs = songs.filter(song => {
+
+        const name = songName(song).toLowerCase();
+
+        const artist = artistName(song).toLowerCase();
+
+        const matchesSearch =
+            name.includes(search) ||
+            artist.includes(search);
+
+        let matchesFilter = true;
+
+        if (activeFilter === "Música") {
+
+            matchesFilter =
+                songType(song).includes("música") ||
+                songType(song).includes("musica");
+
+        }
+
+        if (activeFilter === "Beat") {
+
+            matchesFilter =
+                songType(song).includes("beat");
+
+        }
+
+        if (activeFilter === "Favoritos") {
+
+            matchesFilter = isFavorite(song);
+
+        }
+
+        return matchesSearch && matchesFilter;
+
+    });
+
+
+    if (!visibleSongs.length) {
+
+        songList.textContent =
+            "Nenhuma música encontrada.";
+
+        return;
+
+    }
+
+
+    visibleSongs.forEach((song, index) => {
+
+        const div = document.createElement("div");
+
+        div.className = "song";
+
+        if (
+            currentSong &&
+            favoriteId(currentSong) === favoriteId(song)
+        ) {
+
+            div.classList.add("playing");
+
+        }
+
+        const cover = makeCover(song, "cover");
+
+        const info = document.createElement("div");
+
+        info.className = "song-info";
+
+        const title = document.createElement("h3");
+
+        title.textContent = songName(song);
+
+        const artist = document.createElement("p");
+
+        artist.textContent = artistName(song);
+
+        info.append(title, artist);
+
+
+        const fav = document.createElement("button");
+
+        fav.className =
+            "favorite" + (isFavorite(song) ? " active" : "");
+
+        fav.textContent =
+            isFavorite(song) ? "♥" : "♡";
+
+        fav.onclick = () => toggleFavorite(song);
+
+
+        const play = document.createElement("button");
+
+        play.textContent = "▶";
+
+        play.onclick = () => playSong(index);
+
+
+        div.append(
+            cover,
+            info,
+            fav,
+            play
+        );
+
+        songList.appendChild(div);
+
+    });
+
+}
+
+
+// ======================================
+// ABRIR LEITOR COMPLETO
+// ======================================
+
+$("expandBtn").onclick = () => {
+
+    $("fullPlayer").classList.add("show");
+
+};
+
+$("closePlayer").onclick = () => {
+
+    $("fullPlayer").classList.remove("show");
+
+};
+
+
+// ======================================
+// ATUALIZAR INFORMAÇÕES DO LEITOR
+// ======================================
+
+function updatePlayer(song) {
+
+    currentSong = song;
+
+    const name = songName(song);
+
+    const artist = artistName(song);
+
+    const cover = getCover(song);
+
+    $("miniTitle").textContent = name;
+
+    $("miniArtist").textContent = artist;
+
+    $("bigTitle").textContent = name;
+
+    $("bigArtist").textContent = artist;
+
+    $("miniCover").src = cover || "";
+
+    $("bigCover").src = cover || "";
+
+    $("downloadBtn").href = getDownloadURL(song);
+
+    $("downloadBtn").setAttribute(
+        "download",
+        name + ".mp3"
+    );
+
+    updateFavoriteButton();
+
+    renderSongs();
+
+}
+
+
+// ======================================
+// ATUALIZAR BOTÃO FAVORITO DO PLAYER
+// ======================================
+
+function updateFavoriteButton() {
+
+    if (!currentSong) return;
+
+    $("favoriteBtn").textContent =
+        isFavorite(currentSong) ? "♥" : "♡";
+
+    $("favoriteBtn").classList.toggle(
+        "active",
+        isFavorite(currentSong)
+    );
+
+}
+
+
+// ======================================
+// REPRODUZIR MÚSICA
+// ======================================
+
+function playSong(index) {
+
+    if (index < 0 || index >= visibleSongs.length) return;
+
+    currentIndex = index;
+
+    const song = visibleSongs[index];
+
+    const url = getSongURL(song);
+
+    if (!url) {
+
+        alert("Esta música não possui um endereço válido.");
+
+        return;
+
+    }
+
+    audio.pause();
+
+    audio.src = url;
+
+    updatePlayer(song);
+
+    audio.load();
+
+    audio.play().catch(error => {
+
+        console.error("Erro de reprodução:", error);
+
+        alert(
+            "Não foi possível reproduzir esta música. Verifica se o ficheiro está acessível no Google Drive."
+        );
+
+    });
+
+}
+
+
+// ======================================
+// PLAY / PAUSE
+// ======================================
+
+function togglePlay() {
+
+    if (!audio.src) {
+
+        if (visibleSongs.length) {
+
+            playSong(0);
+
+        }
+
+        return;
+
+    }
+
+    if (audio.paused) {
+
+        audio.play().catch(error => {
+
+            console.error(error);
+
+        });
+
+    } else {
+
+        audio.pause();
+
+    }
+
+}
+
+
+$("miniPlay").onclick = togglePlay;
+
+$("bigPlay").onclick = togglePlay;
+
+
+// ======================================
+// ESTADO DO PLAYER
+// ======================================
+
+audio.addEventListener("play", () => {
+
+    $("miniPlay").textContent = "Ⅱ";
+
+    $("bigPlay").textContent = "Ⅱ";
+
+});
+
+audio.addEventListener("pause", () => {
+
+    $("miniPlay").textContent = "▶";
+
+    $("bigPlay").textContent = "▶";
+
+});
+
+
+// ======================================
+// PRÓXIMA MÚSICA
+// ======================================
+
+function nextSong() {
+
+    if (!visibleSongs.length) return;
+
+    let next;
+
+    if (shuffle && visibleSongs.length > 1) {
+
+        do {
+
+            next = Math.floor(
+                Math.random() * visibleSongs.length
+            );
+
+        } while (next === currentIndex);
+
+    } else {
+
+        next = currentIndex + 1;
+
+        if (next >= visibleSongs.length) {
+
+            next = 0;
+
+        }
+
+    }
+
+    playSong(next);
+
+}
+
+
+// ======================================
+// MÚSICA ANTERIOR
+// ======================================
+
+function previousSong() {
+
+    if (!visibleSongs.length) return;
+
+    if (audio.currentTime > 3) {
+
+        audio.currentTime = 0;
+
+        return;
+
+    }
+
+    le=== "beat" || t === "beats") return "Beat"; return "Música"; }
 function songKey(s){ return (audioUrl(s) + "|" + songName(s)).toLowerCase(); }
 function isFav(s){ return favorites.includes(songKey(s)); }
 function getPlays(s){ return plays[songKey(s)] || 0; }
